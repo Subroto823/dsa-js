@@ -1,0 +1,42 @@
+* Set
+
+   * a set is a data structure that can hold a collection of values. the values however must be unique.
+
+   * set can contain a mix of different data types. We can store strings, numbers or even objects all in the same set.
+
+   * sets are dynamically sized. we don't have to declare the size of a set before creating it.
+
+   * sets do not maintain an insertion order
+
+   * sets are iterables.
+
+
+Sets vs Array
+   * arrays can contain duplicate values whereas set cannot.
+
+   * insertion order is maintained in arrays but it is not the case with sets
+   
+   * searching and deleting an element in the set is faster compared to arrays
+
+
+* Map
+
+   * A map is an unordered collection of key-value pairs. Both keys and values can be of any data type.
+
+   * To retrieve a value, we can use the  corresponding key.
+
+   * Maps are iterables.
+
+Object vs Map:
+
+   * Objects are unordered whereas maps are ordered
+
+   * Keys in objects can only be string or symbol type whereas in maps, they can be of any type
+
+   * an object has a prototype and may contain a few default keys which may collide with our own keys if we're not careful. A map on the other hand doesn't contain any keys by default.
+
+   * Objects are not iterables where as maps are iterables.
+
+   * The number of items in an object must be determined manually where as it is readily available with the size property in a map.
+
+   * apart from storing data, we can attach functionality to an object whereas maps are restricted to just storing data.

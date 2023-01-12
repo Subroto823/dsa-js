@@ -1,0 +1,27 @@
+* an array is an ordered collection of values
+* an array is a data structure that can hold a collection of values
+
+   * arrays can contain a mix of different data types. You can store strings, booleans, numbers of even objects all in the same array.
+
+   * js arrays are resizable. we don't have to declare the size of an array before creating
+
+   Js arrays are zero-indexed and the insertion order is maintained
+
+   arrays are iterables.
+
+
+Array Big-O
+
+   # Insert/remove at the end - O(1)
+   # Insert/remove at beginning - O(n)
+   # Access - O(1)
+   # Search - O(n)
+   # Push/pop - O(1)
+   # Shift/unshift/concat/slice/splice - O(n)
+   # forEach/map/filter/reduce - O(n)
+   
+   # # #
+   when solving a problem we might use array.forEach or array.filter and the callback function would also contains a for loop. In such a scenario, our time complexity is quadratic(the runtime of the algorithm is directly proportional to the square of the size of the input).
+
+   (the interviewer might be not happy with that)
+

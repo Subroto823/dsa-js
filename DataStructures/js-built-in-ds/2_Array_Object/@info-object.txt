@@ -1,0 +1,41 @@
+* an object is an unordered collection of key-value pairs. The key must be string or symbol data type where as the value can be any data type
+   * is not iterable
+
+* objects in JavaScript may be defined as an unordered collection of related data, of primitive or reference types, in the form of “key: value” pairs
+
+# an object is a collection of key value pairs
+
+Objects Big-O
+    # Insert O(1)
+    # Remove O(1)
+    # Access O(1)
+    # Search O(n)
+
+* let's take a look at few methods of object
+
+    # Object.keys() - O(n)  ... returns an array of all the keys
+
+    # Object.values() - O(n)  ... returns an array of all the values
+    
+    # Object.entries() - O(n) ...returns an array of a given object's own enumerable string-keyed property [key, value] pairs.
+
+const obj = { foo: 'bar', baz: 42 };
+
+console.log(Object.entries(obj));
+output: [ ['foo', 'bar'], ['baz', 42] ]
+
+
+# Object.assign() ...which is used to copy the values and properties from one or more source objects to a target object.
+
+    Object.assign(target, ...sources)
+    
+    var obj1 = { a: 10 };
+    var obj2 = { b: 20 };
+    var obj3 = { c: 30 };
+
+    var new_obj = Object.assign(obj1, obj2, obj3);
+
+    console.log(new_obj);
+    Output : Object { a: 10, b: 20, c: 30 }
+
+    
