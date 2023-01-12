@@ -1,13 +1,18 @@
 const set = new Set([1, 2, 3]);
 
+// add element in set
 set.add(4);
 set.add(4);   // set will ignore this
 
+// delete element from set
 set.delete(3);
 
 for (const item of set) {
     process.stdout.write(item + " ");
 }
+
+console.log();
+console.log(set.values());
 
 console.log("\nSet size: " + set.size);
 

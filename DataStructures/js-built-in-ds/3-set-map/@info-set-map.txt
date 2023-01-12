@@ -1,4 +1,4 @@
-* Set
+# Set
 
    * a set is a data structure that can hold a collection of values. the values however must be unique.
 
@@ -11,7 +11,7 @@
    * sets are iterables.
 
 
-Sets vs Array
+# Sets vs Array
    * arrays can contain duplicate values whereas set cannot.
 
    * insertion order is maintained in arrays but it is not the case with sets
@@ -19,7 +19,7 @@ Sets vs Array
    * searching and deleting an element in the set is faster compared to arrays
 
 
-* Map
+# Map
 
    * A map is an unordered collection of key-value pairs. Both keys and values can be of any data type.
 
@@ -27,7 +27,8 @@ Sets vs Array
 
    * Maps are iterables.
 
-Object vs Map:
+
+# Object vs Map:
 
    * Objects are unordered whereas maps are ordered
 
