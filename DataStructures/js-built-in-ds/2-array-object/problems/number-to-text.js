@@ -1,6 +1,5 @@
 
 const numberToText = (number) => {
-    const digits = { twoDigits: 2, threeDigits: 10000, fourDigits: 4};
 
     const twoDigits = (number) => {
         const numbers = {
@@ -58,7 +57,6 @@ const numberToText = (number) => {
         }
         return twoDigits(number);
     }
-    console.log(threeDigits('101'));
 
     if(number < 100) {
         return twoDigits(number);
@@ -83,6 +81,3 @@ const numberToText = (number) => {
 }
 
 console.log(numberToText(991011));
-
-let a = "101";
-console.log(a.substring(1))

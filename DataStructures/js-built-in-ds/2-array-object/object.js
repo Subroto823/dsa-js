@@ -7,6 +7,9 @@ const obj = {
     },
 }
 
+// to check if a key exists in array
+console.log("name" in obj);
+
 console.log(obj);
 console.log(obj.name);
 console.log(obj["age"]);
