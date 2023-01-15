@@ -171,7 +171,7 @@ bst.insert(7);
 // console.log();
 
 var displayTree = tree => console.log(JSON.stringify(tree, null, 2));
-bst.delete(15);
+// bst.delete(15);
 displayTree(bst);
 
 // console.log(bst.search(bst.root, 10));
