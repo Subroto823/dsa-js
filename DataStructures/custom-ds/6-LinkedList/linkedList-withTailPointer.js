@@ -228,19 +228,17 @@ module.exports = {
     LinkedList
 }
 
-const list = new LinkedList();
+// const list = new LinkedList();
 
-list.append(10);
-list.append(20);
-list.append(30);
-list.append(40);
-list.append(50);
+// list.append(10);
+// list.append(20);
+// list.append(30);
+// list.append(40);
+// list.append(50);
 
-list.print();
-console.log(list.removeValue(40));
-console.log(list.removeValue(50))
+// list.print();
+// console.log(list.removeValue(40));
+// console.log(list.removeValue(50))
 
-
-list.print();
-console.log(list);
+// list.print();
 
