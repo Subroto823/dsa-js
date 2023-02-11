@@ -2,7 +2,6 @@
 Priority Queue(Min Heap Implementation)
 
     It can be implemented using other Data Structures but is commonly implemented using a Heap.
-
     Each node contains a priority. When we enqueue a node to the queue, it’s “bubbled up” to its place in the queue.
 
     Time Complexity:
