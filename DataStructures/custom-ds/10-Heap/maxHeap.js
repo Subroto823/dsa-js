@@ -11,6 +11,12 @@ class MaxHeap {
         return Math.floor((index - 1) / 2);
     }
 
+    swap(index1, index2) {
+        const elem = this.heap[index1];
+        this.heap[index1] = this.heap[index2];
+        this.heap[index2] = elem;
+    }
+
     insert = (element) => {
         this.heap.push(element);
         this.heapifyUp(this.heap.length - 1);
@@ -27,10 +33,24 @@ class MaxHeap {
         }
     }
 
-    swap(index1, index2) {
-        const elem = this.heap[index1];
-        this.heap[index1] = this.heap[index2];
-        this.heap[index2] = elem;
+    heapify(i) {
+        let large = i;
+        let l = 2 * i + 1;
+        let r = 2 * i + 2;
+        let length = this.size();
+
+        if (l < length && this.heap[l] > this.heap[large]) {
+            large = l;
+        }
+
+        if (r < length && this.heap[r] > this.heap[large]) {
+            large = r;
+        }
+
+        if (large != i) {
+            this.swap(i, large);
+            this.heapify(large);
+        }
     }
 
     remove() {
@@ -55,28 +75,9 @@ class MaxHeap {
         this.swap(i, size - 1);
         this.heap.length--;
 
-        for (let j = 0; j < Math.floor(size / 2) - 1; j++) {
+        // Build Max Heap
+        for (let j = Math.floor(size / 2) - 1; j >= 0; j--) {
             this.heapify(j);
-        }
-    }
-
-    heapify(i) {
-        let large = i;
-        let l = 2 * i + 1;
-        let r = 2 * i + 2;
-        let length = this.size();
-
-        if (l < length && this.heap[l] > this.heap[large]) {
-            large = l;
-        }
-
-        if (r < length && this.heap[r] > this.heap[large]) {
-            large = r;
-        }
-
-        if (large != i) {
-            this.swap(i, large);
-            this.heapify(large);
         }
     }
 
