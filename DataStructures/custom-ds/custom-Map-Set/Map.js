@@ -1,4 +1,4 @@
-class Map{
+class MyMap{
     #size = 0;
     constructor() {
         this.collection = {};
@@ -40,7 +40,7 @@ class Map{
     }
 }
 
-const map = new Map()
+const map = new MyMap()
 map.add("a", "abc");
 map.add("b", "bcd");
 
