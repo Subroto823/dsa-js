@@ -1,4 +1,4 @@
-const Stack = require('./stack');
+const Stack = require('../stack');
 
 const simplifyPath = (path) => {
     const stack = new Stack();

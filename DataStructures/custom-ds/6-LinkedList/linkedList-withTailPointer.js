@@ -224,7 +224,9 @@ class LinkedList {
     }
 }
 
-module.exports = LinkedList;
+module.exports = {
+    LinkedList
+}
 
 const list = new LinkedList();
 

@@ -52,7 +52,7 @@ class CircularQueue {
 
     print() {
         if(this.isEmpty()) {
-            console.log("Queue is empty!!");
+            process.stdout.write("Queue is empty!!\n");
         } else {
             let i;
             let str = '';
@@ -60,7 +60,7 @@ class CircularQueue {
                 str += this.items[i] + " ";
             }
             str += this.items[i];
-            console.log(str);
+            process.stdout.write(str + "\n");
         }
     }
 }
