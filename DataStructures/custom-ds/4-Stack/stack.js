@@ -23,6 +23,10 @@ class Stack {
         return this.items.length;
     }
 
+    join(item) {
+        return this.items.join(item);
+    }
+    
     print() {
         console.log(this.items.toString());
     }
