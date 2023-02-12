@@ -1,5 +1,5 @@
 /*
-LinkedList - Optimized Implementation with tail pointer
+Circular LinkedList - Optimized Implementation with tail pointer
 
 Time complexity: 
     # prepend O(1)
@@ -174,14 +174,18 @@ class LinkedList extends CircularLinkedList {
     }
 }
 
-const list = new LinkedList();
+module.exports = {
+    LinkedList
+}
 
-list.append(5);
-list.append(6);
-list.append(7);
-list.append(8);
+// const list = new LinkedList();
 
-list.printList();
+// list.append(5);
+// list.append(6);
+// list.append(7);
+// list.append(8);
 
-list.reverse();
-list.printList();
+// list.printList();
+
+// list.reverse();
+// list.printList();
