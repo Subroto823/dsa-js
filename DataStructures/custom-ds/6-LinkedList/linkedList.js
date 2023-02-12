@@ -173,11 +173,14 @@ class LinkedList {
     }
 }
 
-const list = new LinkedList();
-list.insert(10, 0);
-list.insert(20, 1);
-list.insert(40, 2);
+module.exports = {
+    LinkedList
+}
 
-list.removeValue(20);
+// const list = new LinkedList();
+// list.insert(10, 0);
+// list.insert(20, 1);
+// list.insert(40, 2);
 
-list.print();
+// list.reverse();
+// list.print();

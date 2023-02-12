@@ -155,7 +155,23 @@ class CircularLinkedList {
     }
 
     reverse() {
+        if(!this.head || this.getSize() === 1) return;
 
+        let cur = this.head;
+        let prev = null;
+
+        while(true) {
+            let next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+
+            if(cur.value === this.head.value) {
+                break;
+            }
+        }
+        cur.next = prev;
+        this.head = prev;
     }
 
     printList() {
@@ -183,4 +199,6 @@ list.prepend(3);
 list.insert(2, 7);
 
 list.printList();
+
+list.reverse();
 list.printList();
