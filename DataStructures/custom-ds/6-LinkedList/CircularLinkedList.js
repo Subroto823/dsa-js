@@ -191,6 +191,10 @@ class CircularLinkedList {
     }
 }
 
+module.exports = {
+    LinkedList
+}
+
 // const list = new CircularLinkedList();
 
 // list.append(5);
