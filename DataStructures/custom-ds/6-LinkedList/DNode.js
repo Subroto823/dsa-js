@@ -1,8 +1,9 @@
-// Node Class - For singly LinkedList
+// Node Class - For Doubly LinkedList
 class Node {
     constructor(value) {
         this.value = value;
         this.next = null;
+        this.prev = null;
     }
 }
 
