@@ -191,14 +191,16 @@ class CircularLinkedList {
     }
 }
 
-const list = new CircularLinkedList();
-list.append(5);
-list.append(8);
-list.append(10);
-list.prepend(3);
-list.insert(2, 7);
+// const list = new CircularLinkedList();
 
-list.printList();
+// list.append(5);
+// list.append(8);
+// list.append(10);
 
-list.reverse();
-list.printList();
+// list.prepend(3);
+// list.insert(2, 7);
+
+// list.printList();
+
+// list.reverse();
+// list.printList();
