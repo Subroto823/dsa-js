@@ -1,5 +1,5 @@
 /*
-Doubly LinkedList Implementation
+Doubly LinkedList Implementation (With Tail Pointer)
 
 Time complexity: 
     # prepend O(1)
