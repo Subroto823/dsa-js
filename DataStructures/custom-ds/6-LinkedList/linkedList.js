@@ -5,7 +5,6 @@ Time complexity:
     # prepend O(1)
     # append O(n)
         # it is possible to append a new node in constant time, but that involves maintaining a tail pointer that always point at the last node in the list
-
 */
 class Node {
     constructor(value) {
