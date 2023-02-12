@@ -46,7 +46,6 @@ class CircularLinkedList {
             if (prependFlag) this.head = node;
         }
         this.size++;
-        return node;
     }
 
     prepend(value) {
