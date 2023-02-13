@@ -13,22 +13,22 @@ Time complexity of
 class DequeOptimized {
     constructor(capacity) {
         this.capacity = capacity;
-        items = new int[capacity];
+        this.items = new Array(capacity).fill(0);
         this.front = -1;
         this.rear = -1;
-        this.size = 0;
+        this._size = 0;
     }
 
     size() {
-        return this.size;
+        return this._size;
     }
 
     isFull() {
-        return (this.size() === capacity);
+        return (this.size() === this.capacity);
     }
 
     isEmpty() {
-        return this.size() == 0;
+        return this.size() === 0;
     }
 
     insertFront(value) {
@@ -37,86 +37,86 @@ class DequeOptimized {
             return;
         }
 
-        if (front == -1) {
-            front = 0;
-            rear = 0;
+        if (this.front === -1) {
+            this.front = 0;
+            this.rear = 0;
         }
         else {
-            front = (front != 0) ? --front : capacity - 1;
+            this.front = (this.front !== 0) ? --this.front : this.capacity - 1;
         }
-        size++;
-        items[front] = value;
+        this._size++;
+        this.items[this.front] = value;
     }
 
     insertRear(value) {
-        if (isFull()) {
+        if (this.isFull()) {
             process.stdout.write("No space left!\n");
             return;
         }
 
-        if (front == -1) {
-            front = 0;
-            rear = 0;
+        if (this.front === -1) {
+            this.front = 0;
+            this.rear = 0;
         } else {
-            rear = ++rear % capacity;
+            this.rear = ++this.rear % this.capacity;
         }
-        size++;
-        items[rear] = value;
+        this._size++;
+        this.items[this.rear] = value;
     }
 
     removeFromFront() {
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             process.stdout.write("Queue is Empty!\n");
             return -1;
         }
 
-        let elem = items[front];
-        items[front] = 0;
+        let elem = this.items[this.front];
+        this.items[this.front] = 0;
 
         // Deque has only one element
-        if (front == rear) {
-            front = -1;
-            rear = -1;
+        if (this.front === this.rear) {
+            this.front = -1;
+            this.rear = -1;
         } else {
-            front = ++front % capacity;
+            this.front = ++this.front % this.capacity;
         }
-        size--;
+        this._size--;
         return elem;
     }
 
     removeFromRear() {
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             process.stdout.write("Queue is Empty!\n");
             return -1;
         }
 
-        let elem = items[rear];
-        items[rear] = 0;
+        let elem = this.items[this.rear];
+        this.items[this.rear] = 0;
 
-        if (front == rear) {
-            front = -1;
-            rear = -1;
+        if (this.front === this.rear) {
+            this.front = -1;
+            this.rear = -1;
         } else {
-            rear = (rear != 0) ? --rear : capacity - 1;
+            this.rear = (this.rear !== 0) ? --this.rear : this.capacity - 1;
         }
-        size--;
+        this._size--;
         return elem;
     }
 
-    int getFront() {
+    getFront() {
         if (this.isEmpty()) {
             process.stdout.write("Queue is Empty!\n");
             return -1;
         }
-        return items[front];
+        return this.items[this.front];
     }
 
-    int getRear() {
+    getRear() {
         if (this.isEmpty()) {
             process.stdout.write("Queue is Empty!\n");
             return -1;
         }
-        return items[rear];
+        return this.items[this.rear];
     }
 
     print() {
@@ -124,25 +124,25 @@ class DequeOptimized {
         if (this.isEmpty()) {
             process.stdout.write("Queue is Empty!\n");
         } else {
-            for (i = front; i != rear; i = ++i % capacity) {
-                process.stdout.write(items[i] + "  ");
+            for (i = this.front; i != this.rear; i = ++i % this.capacity) {
+                process.stdout.write(this.items[i] + "  ");
             }
-            process.stdout.write(items[i] + "\n");
+            process.stdout.write(this.items[i] + "\n");
         }
     }
 }
-        const dq = new DequeOptimized(5);
 
-        dq.insertRear(12);
-        dq.insertRear(14);
-        dq.insertRear(10);
-        dq.print();
+module.exports = {
+    DequeOptimized
+}
 
-        // dq.removeFromRear();
-        // dq.print();
+// const dq = new DequeOptimized(5);
 
-        dq.removeFromFront();
-        dq.insertFront(4);
-        dq.insertRear(15);
-        dq.insertFront(2);
-        dq.print();
+// dq.insertRear(5);
+// dq.insertRear(7);
+// dq.insertRear(8);
+// dq.insertFront(2);
+// dq.print();
+
+// dq.removeFromFront();
+// dq.print();
