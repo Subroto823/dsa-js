@@ -2,42 +2,38 @@
 Deque or Double Ended Queue is a type of queue in which insertion and removal of elements can either be performed from the front or the rear. 
 Thus, it does not follow FIFO rule (First In First Out).
 
-Not optimized enough!!!
+Time complexity of
 
-Time Complexity of
-
-    removeFromFront() - O(n)
-    insertFront() - O(n)
+    removeFromFront() - O(1)
+    insertFront() - O(1)
     removeFromRear() - O(1)
     insertRear() - O(1)
 */
 
-class Deque {
-    int items[];
-    int front, rear, capacity;
-
-    public Deque(int capacity) {
+class DequeOptimized {
+    constructor(capacity) {
         this.capacity = capacity;
         items = new int[capacity];
-        front = -1;
-        rear = -1;
+        this.front = -1;
+        this.rear = -1;
+        this.size = 0;
     }
 
-    int size() {
-        return rear + 1;
+    size() {
+        return this.size;
     }
 
-    boolean isFull() {
-        return (size() == capacity);
+    isFull() {
+        return (this.size() === capacity);
     }
 
-    boolean isEmpty() {
-        return (front == -1);
+    isEmpty() {
+        return this.size() == 0;
     }
 
-    void insertFront(int value) {
-        if (isFull()) {
-            System.out.println("Overflow");
+    insertFront(value) {
+        if (this.isFull()) {
+            process.stdout.write("No space left!\n");
             return;
         }
 
@@ -46,17 +42,15 @@ class Deque {
             rear = 0;
         }
         else {
-            for(int i = rear + 1; i > 0; i--) {
-                items[i] = items[i - 1];
-            }
-            rear++;
+            front = (front != 0) ? --front : capacity - 1;
         }
+        size++;
         items[front] = value;
     }
 
-    void insertRear(int value) {
+    insertRear(value) {
         if (isFull()) {
-            System.out.println("No empty space available!");
+            process.stdout.write("No space left!\n");
             return;
         }
 
@@ -64,93 +58,91 @@ class Deque {
             front = 0;
             rear = 0;
         } else {
-            rear++;
+            rear = ++rear % capacity;
         }
+        size++;
         items[rear] = value;
     }
 
-    int removeFromFront() {
+    removeFromFront() {
         if (isEmpty()) {
-            System.out.println("Queue Underflow\n");
+            process.stdout.write("Queue is Empty!\n");
             return -1;
         }
 
-        int elem = items[front];
+        let elem = items[front];
+        items[front] = 0;
 
         // Deque has only one element
         if (front == rear) {
             front = -1;
             rear = -1;
         } else {
-
-            for(int i = 0; i < size() - 1; i++) {
-                items[i] = items[i + 1];
-            }
-            items[rear--] = 0;
+            front = ++front % capacity;
         }
+        size--;
         return elem;
     }
 
-    int removeFromRear() {
+    removeFromRear() {
         if (isEmpty()) {
-            System.out.println(" Underflow");
+            process.stdout.write("Queue is Empty!\n");
             return -1;
         }
 
-        int elem = items[rear];
+        let elem = items[rear];
+        items[rear] = 0;
 
         if (front == rear) {
             front = -1;
             rear = -1;
         } else {
-            rear--;
+            rear = (rear != 0) ? --rear : capacity - 1;
         }
+        size--;
         return elem;
     }
 
     int getFront() {
-        if (isEmpty()) {
-            System.out.println(" Underflow");
+        if (this.isEmpty()) {
+            process.stdout.write("Queue is Empty!\n");
             return -1;
         }
         return items[front];
     }
 
     int getRear() {
-        if (isEmpty()) {
-            System.out.println(" Underflow\n");
+        if (this.isEmpty()) {
+            process.stdout.write("Queue is Empty!\n");
             return -1;
         }
         return items[rear];
     }
 
-    void display() {
-        int i;
-        if (isEmpty()) {
-            System.out.println("Empty Queue");
+    print() {
+        let i;
+        if (this.isEmpty()) {
+            process.stdout.write("Queue is Empty!\n");
         } else {
-            for (i = front; i < rear; i++) {
-                System.out.print(items[i] + "  ");
+            for (i = front; i != rear; i = ++i % capacity) {
+                process.stdout.write(items[i] + "  ");
             }
-            System.out.println(items[i]);
+            process.stdout.write(items[i] + "\n");
         }
     }
-
-    public static void main(String[] args) {
-
-        Deque dq = new Deque(5);
+}
+        const dq = new DequeOptimized(5);
 
         dq.insertRear(12);
         dq.insertRear(14);
         dq.insertRear(10);
-        dq.display();
+        dq.print();
 
-        // System.out.println(dq.getRear());
+        // dq.removeFromRear();
+        // dq.print();
 
-        // dq.insertFront(7);
-        // dq.insertFront(8);
-
-        // System.out.println(dq.getFront());
-        dq.display();
-    }
-}
+        dq.removeFromFront();
+        dq.insertFront(4);
+        dq.insertRear(15);
+        dq.insertFront(2);
+        dq.print();

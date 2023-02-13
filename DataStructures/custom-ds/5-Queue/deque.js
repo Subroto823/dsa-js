@@ -6,10 +6,10 @@ Not optimized enough!!!
 
 Time Complexity of
 
-    removeFromthis.front() - O(n)
-    insertthis.front() - O(n)
-    removeFromthis.rear() - O(1)
-    insertthis.rear() - O(1)
+    removeFromFront() - O(n)
+    insertFront() - O(n)
+    removeFromRear() - O(1)
+    insertRear() - O(1)
 */
 
 class Deque {
