@@ -1,3 +1,5 @@
+// array reverse - in place
+
 function reverse(arr) {
     let start = 0;
     let end = arr.length - 1;
