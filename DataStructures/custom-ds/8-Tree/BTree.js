@@ -1,21 +1,25 @@
 class BTreeNode {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
+    constructor(T, isLeaf) {
+        this.key = new Array(2 * T - 1).fill(0);
+        this.children = new Array(2 * T).fill(null);
+        this.leaf = isLeaf;
+        this.n = 0;
+        this.t = T;
+    }
+
+    find(k) {
+        for(let i = 0; i < this.n; i++) {
+            if(this.key[i] === k) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
 
-class BinarySearchTree {
-    constructor() {
-        this.root = null;
-    }
-
-    
-}
+class BTree {}
 
 const btree = new BTree();
-console.log(bst.isEmpty());
 
 btree.insert(10);
 btree.insert(5);
@@ -23,14 +27,6 @@ btree.insert(15);
 btree.insert(3);
 btree.insert(7);
 
-// bst.preOrder(bst.root);
-// console.log();
-
-// bst.inOrder(bst.root);
-// console.log();
-
-// bst.postOrder(bst.root);
-// console.log();
 
 var displayTree = tree => console.log(JSON.stringify(tree, null, 2));
 // bst.delete(15);
