@@ -45,7 +45,7 @@ class SegmentTree{
         let mid = (start + end) >> 1;
 
         let x = this.sumInRangeQuery(left, start, mid, i, j, carry + this.tree[at].prop);
-        let y = this.sumInRangeQuery(right, mid + 1, end, i, j, this.tree[at].prop);
+        let y = this.sumInRangeQuery(right, mid + 1, end, i, j, carry + this.tree[at].prop);
 
         return x + y;
     }
@@ -94,7 +94,7 @@ class SegmentTree{
 let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 const st = new SegmentTree(arr);
 
-st.updateInRange(1, 1, 2);
+st.updateInRange(0, 2, 2);
 console.log(st.tree);
 console.log(st.sumInRange(0, 2));
 

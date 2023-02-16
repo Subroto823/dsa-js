@@ -28,14 +28,14 @@ class SegmentTree{
 
     sumInRangeQuery(at, start, end, i, j, carry = 0) {
         if(i > end || j < start) return 0;
-        if(i <= start && j >= end) return this.tree[at] + carry * (end - start + 1);
+        if(i <= start && j >= end) return this.tree[at] + (end - start + 1) * carry;
 
         let left = (at << 1) + 1;
         let right = (at << 1) + 2;
         let mid = (start + end) >> 1;
 
         let x = this.sumInRangeQuery(left, start, mid, i, j, carry + this.prop[at]);
-        let y = this.sumInRangeQuery(right, mid + 1, end, i, j, this.prop[at]);
+        let y = this.sumInRangeQuery(right, mid + 1, end, i, j, carry + this.prop[at]);
 
         return x + y;
     }
@@ -70,7 +70,7 @@ class SegmentTree{
     }
 
     // update the previous value with newValue, in [i, j] range 
-    // newValue = newValue + prevValue(sum)
+    // newValue = newValue + prevValue(prop[at])
     updateInRange(i, j, newValue) {
         this.updateInRangeQuery(0, 0, this.n - 1, i, j, newValue);
     }
@@ -86,3 +86,4 @@ const st = new SegmentTree(arr);
 
 st.updateInRange(0, 2, 2);
 console.log(st.sumInRange(0, 2));
+console.log(st.prop);
