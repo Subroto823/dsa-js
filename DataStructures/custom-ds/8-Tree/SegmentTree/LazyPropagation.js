@@ -1,3 +1,11 @@
+// Segment Tree - With Lazy Propagation
+class Node {
+    constructor(sum) {
+        this.sum = sum;
+        this.prop = 0;
+    }
+}
+
 class SegmentTree{
     constructor(arr) {
         this.n = arr.length;
@@ -69,9 +77,9 @@ class SegmentTree{
 }
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8];
-const segTree = new SegmentTree(arr);
-console.log(segTree.tree);
-console.log(segTree.sumInRange(0, 3));
+const st = new SegmentTree(arr);
+console.log(st.tree);
+console.log(st.sumInRange(0, 3));
 
-segTree.update(2, 10);
-console.log(segTree.sumInRange(0, 3));
+st.update(2, 10);
+console.log(st.sumInRange(0, 3));
