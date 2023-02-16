@@ -1,40 +1,42 @@
 // @@@@@@@@@@ working on - not done yet
 'use strict';
 
-const nodeColor = {
+const COLOR = {
   RED : 0,
   BLACK : 1
 }
 
-class RBNode {
-    constructor(value) {
-        this.value = value;
+class Node {
+    constructor(key, color) {
+        this.key = key || null;
         this.left = null;
         this.right = null;
-        this.color = null;
         this.parent = null;
+        this.color = color || COLOR.RED;
     }
 
     isRed() {
-        this.color === nodeColor.RED;
+        return this.color === COLOR.RED;
     }
 
     getValue() {
-        return this.value;
+        return this.key;
     }
 }
 
-class RedBlackTree {
+class RBT {
     constructor() {
+        this.leaf = new Node(0, COLOR.BLACK);
         this.root = null;
+        this.size = 0;
     }
 
     isEmpty() {
-        return this.root === null;
+        return this.size === 0;
     }
 
     insert(value) {
-        
+        this.size++;
     }
 
     insertNode(root, newNode) {
@@ -116,14 +118,13 @@ class RedBlackTree {
     }
 }
 
-const rbtree = new RedBlackTree();
-console.log(rbtree.isEmpty());
+const rbtree = new RBT();
 
-rbtree.insert(10);
-rbtree.insert(5);
-rbtree.insert(15);
-rbtree.insert(3);
-rbtree.insert(7);
+// rbtree.insert(10);
+// rbtree.insert(5);
+// rbtree.insert(15);
+// rbtree.insert(3);
+// rbtree.insert(7);
 
 // rbtree.preOrder(rbtree.root);
 // console.log();
@@ -135,4 +136,4 @@ rbtree.insert(7);
 // console.log();
 
 var displayTree = tree => console.log(JSON.stringify(tree, null, 2));
-displayTree(rbtree);
+// displayTree(rbtree);
