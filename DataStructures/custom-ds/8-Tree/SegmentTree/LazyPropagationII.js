@@ -84,6 +84,7 @@ class SegmentTree{
 let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 const st = new SegmentTree(arr);
 
+console.log(st.sumInRange(0, 2));
+
 st.updateInRange(0, 2, 2);
 console.log(st.sumInRange(0, 2));
-console.log(st.prop);
