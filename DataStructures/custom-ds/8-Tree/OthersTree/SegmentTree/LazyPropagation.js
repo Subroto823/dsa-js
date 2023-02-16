@@ -1,17 +1,27 @@
-// Segment Tree - With Lazy Propagation
+// Segment Tree - With Lazy Propagation (Using Node Class)
+
+class Node {
+    constructor() {
+        this.sum = 0;
+        this.prop = 0;
+    }
+}
 
 class SegmentTree{
     constructor(arr) {
         this.n = arr.length;
-        this.tree = new Array(this.n * 4).fill(0);
-        this.prop = new Array(this.n * 4).fill(0);
+        this.tree = new Array(this.n * 4);
+
+        for(let i = 0; i < this.n * 4; i++) {
+            this.tree[i] = new Node();
+        }
         this.build(arr, 0, 0, this.n - 1);
     }
 
     // build segment tree - for sum
     build(arr, at, start, end) {
         if(start === end) {
-            this.tree[at] = arr[start];
+            this.tree[at].sum = arr[start];
             return;
         }
 
@@ -23,19 +33,19 @@ class SegmentTree{
         this.build(arr, right, mid + 1, end);
 
         // we will change this line according to our needs
-        this.tree[at] = this.tree[left] + this.tree[right];
+        this.tree[at].sum = this.tree[left].sum + this.tree[right].sum;
     }
 
     sumInRangeQuery(at, start, end, i, j, carry = 0) {
         if(i > end || j < start) return 0;
-        if(i <= start && j >= end) return this.tree[at] + (end - start + 1) * carry;
+        if(i <= start && j >= end) return this.tree[at].sum + carry * (end - start + 1);
 
         let left = (at << 1) + 1;
         let right = (at << 1) + 2;
         let mid = (start + end) >> 1;
 
-        let x = this.sumInRangeQuery(left, start, mid, i, j, carry + this.prop[at]);
-        let y = this.sumInRangeQuery(right, mid + 1, end, i, j, carry + this.prop[at]);
+        let x = this.sumInRangeQuery(left, start, mid, i, j, carry + this.tree[at].prop);
+        let y = this.sumInRangeQuery(right, mid + 1, end, i, j, carry + this.tree[at].prop);
 
         return x + y;
     }
@@ -53,8 +63,8 @@ class SegmentTree{
         if(j < start || i > end) return;
 
         if(start >= i && end <= j) {
-            this.tree[at] += (end - start + 1) * newValue;
-            this.prop[at] += newValue;
+            this.tree[at].sum += (end - start + 1) * newValue;
+            this.tree[at].prop += newValue;
             return;
         }
 
@@ -66,11 +76,11 @@ class SegmentTree{
         this.updateInRangeQuery(left, start, mid, i, j, newValue);
         this.updateInRangeQuery(right, mid + 1, end, i, j, newValue);
 
-        this.tree[at] = this.tree[left] + this.tree[right] + (end - start + 1) * this.prop[at];
+        this.tree[at].sum = this.tree[left].sum + this.tree[right].sum + (end - start + 1) * this.tree[at].prop;
     }
 
     // update the previous value with newValue, in [i, j] range 
-    // newValue = newValue + prevValue(prop[at])
+    // newValue = newValue + prevValue(sum)
     updateInRange(i, j, newValue) {
         this.updateInRangeQuery(0, 0, this.n - 1, i, j, newValue);
     }
@@ -84,7 +94,6 @@ class SegmentTree{
 let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 const st = new SegmentTree(arr);
 
-console.log(st.sumInRange(0, 2));
-
 st.updateInRange(0, 2, 2);
-console.log(st.sumInRange(0, 2));
+console.log(st.tree);
+console.log(st.sumInRange(0, 2)); 
