@@ -97,4 +97,3 @@ const st = new SegmentTree(arr);
 st.updateInRange(0, 2, 2);
 console.log(st.tree);
 console.log(st.sumInRange(0, 2));
-
