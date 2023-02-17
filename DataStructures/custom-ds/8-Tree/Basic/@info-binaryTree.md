@@ -1,13 +1,12 @@
 ### Binary Tree
-    
-    A binary tree is a tree data structure in which each parent node can have at most two children. Each node of a binary tree consists of three items:
+* A binary tree is a tree data structure in which each parent node can have at most two children. Each node of a binary tree consists of three items:
 
-        1. data item
-        2. address of left child
-        3. address of right child
+    1. data item
+    2. address of left child
+    3. address of right child
 
 
-# Types of Binary Tree
+    # Types of Binary Tree
 
     1. Full Binary Tree
         A full Binary tree is a special type of binary tree in which every parent node/internal node has either two or no children.
@@ -34,7 +33,7 @@
         It is a type of binary tree in which the difference between the height of the left and the right subtree for each node is either 0 or 1.
 
 
-# Binary Tree Applications
+    # Binary Tree Applications
 
     * For easy and quick access to data
     * In router algorithms
