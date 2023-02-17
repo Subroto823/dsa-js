@@ -17,7 +17,8 @@
     Different tree data structures allow quicker and easier access to the data as it is a non-linear data structure.
 
 
-Tree Usage
+# Tree Usage
+
     # File systems for directory structure
     # A family tree
     # An organisation tree
@@ -26,7 +27,7 @@ Tree Usage
     # Abstract syntax trees
 
 
-Tree Terminology
+# Tree Terminology
     
     # Node 
        A node is an entity that contains a key or value and pointers to its child nodes.
@@ -84,7 +85,7 @@ Tree Terminology
     
     Compilers use a syntax tree to validate the syntax of every program you write
 
-@@@
+###
 When it comes to trees, you're rarely asked to implement generic tree.
 
 More often or not, interviews are circle around one specific type of tree. Which is the Binary Search Tree.
