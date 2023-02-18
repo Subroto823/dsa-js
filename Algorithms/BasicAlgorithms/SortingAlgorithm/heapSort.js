@@ -5,12 +5,7 @@ heapSort - descending order (using minHeap)
     Space Complexity: O(1)
 
 */
-
-function swap (arr, index1, index2) {
-    let tmp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = tmp;
-}
+const { swap } = require("./swap");
 
 function buildMinHeap(arr, size) {
     for(let i = Math.floor(size/2) - 1; i >= 0; i--) {
