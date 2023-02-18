@@ -11,7 +11,7 @@ const binarySearch = (arr, target) => {
 
 
     while(end - start > 1) {
-        let mid = start + Math.floor((end - start) / 2);
+        let mid = (start + end) >> 1;
         
         if(target <= arr[mid]) {
             end = mid;
@@ -26,4 +26,4 @@ const binarySearch = (arr, target) => {
 }
 
 
-console.log(binarySearch([-5, 2, 4, 6, 20], 20));
+console.log(binarySearch([-5, 2, 4, 6, 20], 6));
