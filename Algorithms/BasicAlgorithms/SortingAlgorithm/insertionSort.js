@@ -1,7 +1,9 @@
-/*
- Time Complexity - O(n^2)
- It’s a stable algorithm.
- 
+/**
+ * @Insertion Sort
+ *
+ * @Time Complexity - O(n^2)
+ * @stable algorithm.
+ * 
  */
 
 const insertionSort = (arr) => {
@@ -15,10 +17,10 @@ const insertionSort = (arr) => {
         }
         arr[j+1] = numberToInsert;
     }
-
     return arr;
 }
 
-const res = insertionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]);
+const arr = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92];
 
-console.log(res);
+insertionSort(arr);
+console.log(arr);
