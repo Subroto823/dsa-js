@@ -1,17 +1,19 @@
-/*
- *
- * Time Complexity - O(n^2)
- * Quadratic time complexity isn't great for sorting
+/**
+ * 
+ * @Time Complexity - O(n^2)
+ * @little optimized than the previous implementation but still the time complexity is quadratic
+ * @stable
  */
+
+const { swap } = require("./swap");
+
 const bubbleSort = (arr) => {
     let swapped;
     do {
         swapped = false;
         for(let i = 0; i < arr.length - 1; i++) {
             if(arr[i] > arr[i+1]) {
-                let temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
+                swap(arr, i, i + 1);
                 swapped = true;
             }
         }
@@ -20,5 +22,7 @@ const bubbleSort = (arr) => {
     return arr;
 }
 
-const res = bubbleSort([1,4,2,8,345,123,43,32,5643,63,123,43,2,55,1,234,92]);
-console.log(res);
+let arr = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92];
+
+bubbleSort(arr);
+console.log(arr);
