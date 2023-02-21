@@ -1,6 +1,7 @@
-/*
- * Fibonacci recursive implementation
- * Time complexity - O(2^n) ........terrible
+/**
+ * 
+ * @Fibonacci recursive implementation
+ * @Time complexity - O(2^n) ..... exponential
  * recursion is not a good solution to the fibonacci solution problem
  */
 

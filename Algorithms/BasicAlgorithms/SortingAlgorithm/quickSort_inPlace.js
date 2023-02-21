@@ -2,6 +2,7 @@
  * @Quick Sort
  * @inplace implementation - without taking extra space
 */
+
 const { swap } = require("./swap");
 
 function partition(arr, left, right) {

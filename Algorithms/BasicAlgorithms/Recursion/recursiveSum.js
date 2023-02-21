@@ -15,5 +15,6 @@ function recursiveSum(array, start) {
     return array[start] + recursiveSum(array, start + 1);
 }
 
-let arr = [1, 2, 3, 4];
+let arr = [1, 2, 3, 4, 5];
 console.log(slowSum(arr));
+console.log(sum(arr));
