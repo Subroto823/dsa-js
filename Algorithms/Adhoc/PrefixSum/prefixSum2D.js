@@ -24,24 +24,24 @@ class PrefixSum2D {
      */
 
     build(prefix, matrix) {
-        let rowLen = matrix.length;
-        let columnLen = matrix[0].length;
+        let rows = matrix.length;
+        let columns = matrix[0].length;
 
         prefix[0][0] = matrix[0][0];
 
         // prefix sum of 1st row
-        for(let i = 1; i < columnLen; i++) {
+        for(let i = 1; i < columns; i++) {
             prefix[0][i] = nums[0][i] + prefix[0][i - 1];
         }
 
         // prefix sum of 1st column
-        for(let i = 1; i < rowLen; i++) {
+        for(let i = 1; i < rows; i++) {
             prefix[i][0] = nums[i][0] + prefix[i - 1][0];
         }
 
         // for other rows and columns
-        for(let i = 1; i < rowLen; i++) {
-            for(let j = 1; j < columnLen; j++) {
+        for(let i = 1; i < rows; i++) {
+            for(let j = 1; j < columns; j++) {
                 prefix[i][j] = matrix[i][j] + prefix[i-1][j] + prefix[i][j-1] - prefix[i-1][j-1];
             }
         }
