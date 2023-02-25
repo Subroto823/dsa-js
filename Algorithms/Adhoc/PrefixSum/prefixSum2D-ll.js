@@ -31,7 +31,6 @@ class PrefixSum2D {
         let rowLen = matrix.length;
         let columnLen = matrix[0].length;
 
-        // for other rows and columns
         for(let i = 0; i < rowLen; i++) {
             for(let j = 0; j < columnLen; j++) {
                 let row = i + 1;
