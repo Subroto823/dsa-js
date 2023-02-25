@@ -1,3 +1,7 @@
+/**
+ * @prefixSum (cumulative sum technique)
+ */
+
 class PrefixSum {
     constructor(nums) {
         this.prefix = new Array(nums.length);
