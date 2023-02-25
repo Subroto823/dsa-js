@@ -9,22 +9,49 @@ class PrefixSum2D {
         this.prefix = new Array(matrix.length)
             .fill()
             .map(() => new Array(matrix[0].length).fill(0));
+
         this.build(this.prefix, nums);
     }
 
-    build(prefix, nums) {
-        // prefix[0] = nums[0];
-        // for(let i = 1; i < nums.length; i++) {
-        //     prefix[i] = nums[i] + prefix[i - 1];
-        // }
+    /**
+     @build prefixSum array for matrix(2d array)
+
+        @determine prefix sum of 1st row
+        @determine prefix sum of 1st column
+        @then , populate other row and columns with following...
+
+            prefix[i][j] = prefix[i][j] + prefix[i][j-1] + prefix[i-1][j] - prefix[i-1][j-1];
+     */
+
+    build(prefix, matrix) {
+        let rowLen = matrix.length;
+        let columnLen = matrix[0].length;
+
+        prefix[0][0] = matrix[0][0];
+
+        // prefix sum of 1st row
+        for(let i = 1; i < columnLen; i++) {
+            prefix[0][i] = nums[0][i] + prefix[0][i - 1];
+        }
+
+        // prefix sum of 1st column
+        for(let i = 1; i < rowLen; i++) {
+            prefix[i][0] = nums[i][0] + prefix[i - 1][0];
+        }
+
+        // for other rows and columns
+        for(let i = 1; i < rowLen; i++) {
+            for(let j = 1; j < columnLen; j++) {
+                prefix[i][j] = matrix[i][j] + prefix[i-1][j] + prefix[i][j-1] - prefix[i-1][j-1];
+            }
+        }
     }
 
-    sumInRange(start, end) {
-        if(start < 0 || end >= this.prefix.length || start > end) {
-            process.stdout.write("Invalid Input!\n");
-            return;
-        }
-        return this.prefix[end] - (this.prefix[start - 1] || 0);
+    sumRegion(row1, col1, row2, col2) {
+        const pre = this.prefix;
+        let sum = pre[row2][col2] - (pre?.[row1-1]?.[col2] || 0) - (pre[row2]?.[col1-1] || 0) + (pre?.[row1-1]?.[col1-1] || 0);
+
+        return !Number.isNaN(sum) ? sum : -1;
     }
 }
 
@@ -34,17 +61,8 @@ let nums = [
     [7, 8, 9],
 ];
 
-/*
-prefixSum = [
-    [1, 3, 6],
-    [5, 12, 21],
-    [12, 27, 45]
-]
-*/
-
 const pf = new PrefixSum2D(nums);
-console.log(pf.prefix);
 
-// console.log(pf.sumInRange(0, 3));
-// console.log(pf.sumInRange(2, 4));
-// console.log(pf.sumInRange(4, 9));
+console.table(pf.prefix);
+console.log(pf.sumRegion(1, 1, 2, 2));
+
