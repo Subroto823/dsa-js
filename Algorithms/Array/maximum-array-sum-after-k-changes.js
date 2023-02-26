@@ -8,14 +8,12 @@ function sumOfArray(nums) {
 
 function maxSumAfterKNegations(arr, k) {
     arr.sort((a, b) => a - b);
-
     let n = arr.length;
-    let i = 0;
 
-    while(i < n && k > 0 && arr[i] < 0) {
-        arr[i] = arr[i] * (-1);
+    for(let i = 0; i < n; i++) {
+        if(k === 0 || arr[i] > 0) break;
+        arr[i] = -arr[i]
         k--;
-        i++;
     }
 
     // If k is odd then we have to done single operation and it must be done on the smallest positive element
@@ -27,10 +25,9 @@ function maxSumAfterKNegations(arr, k) {
                 minIndx = i;
             }
         }
-
-        arr[minIndx] = arr[minIndx] * (-1);
+        arr[minIndx] = -arr[minIndx];
     }
     return sumOfArray(arr);
 }
 
-console.log(maxSum([2,-3,-1,5,-4], 2));
+console.log(maxSumAfterKNegations([2,-3,-1,5,-4], 2));
