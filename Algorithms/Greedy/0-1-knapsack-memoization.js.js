@@ -36,7 +36,7 @@ console.log(knapsack(capacity, weight, profit, n));
 
 /**
  * 
- * @Time Complexity : O(2^n)
+ * @Time Complexity : O(n*capacity)
  * @Space Complexity : O(n)
  * 
  */
