@@ -4,7 +4,7 @@
  * 
  */
 
-class Graph {
+class AdjacencyList {
     constructor() {
         this.adjacencyList = {}
     }
@@ -56,7 +56,7 @@ class Graph {
     }
 }
 
-const graph = new Graph();
+const graph = new AdjacencyList();
 
 graph.addVertex("A");
 graph.addVertex("B");
