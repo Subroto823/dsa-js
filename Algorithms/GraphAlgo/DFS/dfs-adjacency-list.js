@@ -8,20 +8,23 @@
 */
 const { AdjacencyList } = require("../graph-adjacency-list-i");
 
-function dfs(adjMatrix, start) {
-    const n = adjMatrix.length;
-    const visited = new Array(n).fill(false);
 
-    return dfsHelper(adjMatrix, start, visited, n);
+function dfs(adjacencyList, start) {
+    const visited = new Array(adjacencyList.length).fill(false);
+    return dfsHelper(adjacencyList, start, visited);
 }
 
-function dfsHelper(adjMatrix, start, visited, n, traversal=[]) {
-    traversal.push(start);
-    visited[start] = true;
+function dfsHelper(adjacencyList, vertex, visited, traversal=[]) {
+    if(!vertex) return null;
 
-    for(let i = 0; i < n; i++) {
-        if(adjMatrix[start][i] === 1 && !visited[i]) {
-            dfsHelper(adjMatrix, i, visited, n, traversal);
+    traversal.push(vertex);
+    visited[vertex] = true;
+
+    for(let i = 0; i < adjacencyList[vertex].length; i++) {
+        let neighbor = adjacencyList[vertex][i];
+
+        if(!visited[neighbor]) {
+            dfsHelper(adjacencyList, neighbor, visited, traversal);
         }
     }
     return traversal;
@@ -29,4 +32,10 @@ function dfsHelper(adjMatrix, start, visited, n, traversal=[]) {
 
 const graph = new AdjacencyList();
 graph.addVertex(1, 2, 3, 4);
+
+graph.addEdge(1, 2);
+graph.addEdge(2, 4);
+graph.addEdge(3, 4);
+
 console.log(graph.adjacencyList);
+console.log(dfs(graph.adjacencyList, 1));
