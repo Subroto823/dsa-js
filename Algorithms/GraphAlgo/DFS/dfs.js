@@ -1,34 +1,36 @@
 /**
+* 
+* @DFS - Depth First Search (in adjacency matrix)
 *
-* @Time Complexity: O(N * M)
-* @Auxiliary Space: O(N * M)
+* @Time Complexity: O(N^2)
+* @Auxiliary Space: O(N^2)
 *
 */
 
-function dfs(graph, start) {
-    const n = graph.length;
+function dfs(adjMatrix, start) {
+    const n = adjMatrix.length;
     const visited = new Array(n).fill(false);
-    
-    return dfsHelper(graph, start, visited, n);
+
+    return dfsHelper(adjMatrix, start, visited, n);
 }
 
-function dfsHelper(graph, start, visited, n, traversal=[]) {
+function dfsHelper(adjMatrix, start, visited, n, traversal=[]) {
     traversal.push(start);
     visited[start] = true;
 
     for(let i = 0; i < n; i++) {
-        if(graph[start][i] === 1 && !visited[i]) {
-            dfsHelper(graph, i, visited, n, traversal);
+        if(adjMatrix[start][i] === 1 && !visited[i]) {
+            dfsHelper(adjMatrix, i, visited, n, traversal);
         }
     }
     return traversal;
 }
 
-const graph = [
+const adjMatrix = [
     [0, 1, 1, 0],
     [1, 0, 0, 1],
     [1, 0, 0, 0],
     [0, 1, 0, 0]
 ]
 
-console.log(dfs(graph, 1));
+console.log(dfs(adjMatrix, 1));
