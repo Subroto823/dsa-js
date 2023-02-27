@@ -6,8 +6,7 @@
 */
 
 function bfs(graph, start) {
-    const n = graph.length;
-    const visited = new Array(n).fill(false);
+    const visited = new Array(graph.length).fill(false);
     const traversal = [];
 
     let queue = [];
