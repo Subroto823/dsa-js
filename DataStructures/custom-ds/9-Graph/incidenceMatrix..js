@@ -20,8 +20,8 @@ const incMatUndirected = [
 /* To make a directed graph, use -1 for an edge leaving a particular node and 1 for an edge entering a node. */
 
 var incMatDirected = [
-    [0, -1, 1, -1],
+    [1, 0, -1, 1],
     [-1, 1, 0, 0],
-    [1, 0, 0, 1],
-    [0, 0, -1, 0]
+    [0, -1, 1, 0],
+    [0, 0, 0, -1]
 ];
