@@ -1,12 +1,13 @@
 /**
 *
-* @Time Complexity: O(N * M)
-* @Auxiliary Space: O(N * M)
+* @BFS - Breadth First Search (in Adjacency Matrix)
+* @Time Complexity: O(N^2)
+* @Auxiliary Space: O(N^2)
 *
 */
 
-function bfs(graph, start) {
-    const visited = new Array(graph.length).fill(false);
+function bfs(adjMatrix, start) {
+    const visited = new Array(adjMatrix.length).fill(false);
     const traversal = [];
 
     let queue = [];
@@ -20,8 +21,8 @@ function bfs(graph, start) {
         traversal.push(curr);
 
         // go to the adjacent vertices
-        for (let i = 0; i < graph[curr].length; i++) {
-            if (graph[curr][i] === 1 && !visited[i]) {
+        for (let i = 0; i < adjMatrix[curr].length; i++) {
+            if (adjMatrix[curr][i] === 1 && !visited[i]) {
                 queue.push(i);
                 visited[i] = true;
             }
@@ -30,11 +31,11 @@ function bfs(graph, start) {
     return traversal;
 }
 
-const graph = [
+const adjMatrix = [
     [0, 1, 1, 0],
     [1, 0, 0, 1],
     [1, 0, 0, 0],
     [0, 1, 0, 0]
 ]
 
-console.log(bfs(graph, 1));
+console.log(bfs(adjMatrix, 1));
