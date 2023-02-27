@@ -1,6 +1,6 @@
 /**
 * 
-* @DFS iterative - Depth First Search Iterative (in adjacency List)
+* @BFS - Breadth First Search (in adjacency List)
 *
 * @Time Complexity: O(V+E)
 * @Space Complexity: O(V+E)
@@ -10,20 +10,20 @@
 const { AdjacencyList } = require("../graph-adjacency-list-i");
 
 
-function dfsIterative(adjacencyList, start) {
+function bfs(adjacencyList, start) {
     const traversal = [];
     const visited = new Array(adjacencyList.length).fill(false);
 
-    const stack = [start];
+    const queue = [start];
     visited[start] = true;
 
-    while(stack.length) {
-        let currVertex = stack.pop();
+    while(queue.length) {
+        let currVertex = queue.shift();
         traversal.push(currVertex);
 
         for(let neighbor of adjacencyList[currVertex]) {
             if(!visited[neighbor]) {
-                stack.push(neighbor);
+                queue.push(neighbor);
                 visited[neighbor] = true;
             }
         }
@@ -39,4 +39,4 @@ graph.addEdge(2, 4);
 graph.addEdge(3, 4);
 
 console.log(graph.adjacencyList);
-console.log(dfsIterative(graph.adjacencyList, 1));
+console.log(bfs(graph.adjacencyList, 1));
