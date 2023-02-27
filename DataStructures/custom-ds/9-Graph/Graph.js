@@ -66,7 +66,10 @@ graph.addEdges("A", "B");
 graph.addEdges("B", "C");
 
 graph.display();
+console.log();
+
 console.log(graph.hasEdge("A", "B"));
+console.log();
 
 graph.removeVertex("A");
 graph.display();
