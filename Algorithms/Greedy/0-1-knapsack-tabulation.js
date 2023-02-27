@@ -10,21 +10,17 @@
  * Note: The constraint here is we can either put an item completely into the bag or cannot put it at all [It is not possible to put a part of an item into the bag].
  */
 
-function knapsack(capacity, weight, profit, n, memo={}) {
-    if(capacity === 0 || n === 0 ) return 0;
+function knapsack(capacity, weight, profit) {
+    const table = new Array(capacity+1).fill(0);
 
-    // if weight of the nth item is more than capacity, then that item can't be included 
-    if(weight[n-1] > capacity) {
-        return knapsack(capacity, weight, profit, n-1);
+    for(let i = 0; i < weight.length; i++) {
+        for(let j = capacity; j >= 0; j--) {
+            if(weight[i] <= j) {
+                table[j] = Math.max(table[j], table[j-weight[i]] + profit[i]);
+            }
+        }
     }
-
-    let key = `${n}${capacity}`
-
-    if(key in memo) {
-        return memo[key];
-    } else {
-        return memo[key] = Math.max(profit[n-1]+ knapsack(capacity - weight[n-1], weight, profit, n-1), knapsack(capacity, weight, profit, n-1));
-    }
+    return table[capacity];
 }
 
 let capacity = 50;
