@@ -3,9 +3,11 @@ class AdjacencyList {
         this.adjacencyList = {};
     }
 
-    addVertex(vertex) {
-        if(!this.adjacencyList[vertex]) {
-            this.adjacencyList[vertex] = [];
+    addVertex(...vertices) {
+        for(let vertex of vertices) {
+            if(!this.adjacencyList[vertex]) {
+                this.adjacencyList[vertex] = [];
+            }
         }
     }
 
