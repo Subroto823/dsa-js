@@ -1,6 +1,7 @@
 /**
  * 
- * @_0_1_Fractional_Knapsack
+ * @_0_1_Fractional_Knapsack 
+ * @Optimal solution - using memoization(dynamic programming)
  * 
  * What is the 0/1 Knapsack Problem?
  * 
@@ -9,37 +10,33 @@
  * Note: The constraint here is we can either put an item completely into the bag or cannot put it at all [It is not possible to put a part of an item into the bag].
  */
 
-class Item {
-    constructor(price, weight) {
-        this.price = price;
-        this.weight = weight;
+function knapsack(capacity, weight, profit, n, memo={}) {
+    if(capacity === 0 || n === 0 ) return 0;
+
+    // if weight of the nth item is more than capacity, then that item can't be included 
+    if(weight[n-1] > capacity) {
+        return knapsack(capacity, weight, profit, n-1);
+    }
+
+    let key = `${n}${capacity}`
+
+    if(key in memo) {
+        return memo[key];
+    } else {
+        return memo[key] = Math.max(profit[n-1]+ knapsack(capacity - weight[n-1], weight, profit, n-1), knapsack(capacity, weight, profit, n-1));
     }
 }
 
-function cmp(a, b) {
-    /*
-    We want to order on decreasing order of price/weight
-    So, 
-        return a.price / a.weight > b.price / b.weight;
-    
-    But it is better if we can avoid divison because of possible precision loss.
-    So, we can rewrite it as following. */
-    return (a.price * b.weight) > (a.weight * b.price) ? 1 : -1;
-}
+let capacity = 50;
+let profit = [50, 80, 120];
+let weight = [10, 20, 30];
+let n = weight.length;
 
-function fractionalKnapsack(items, W) {
-    items.sort(cmp);
+console.log(knapsack(capacity, weight, profit, n));
 
-    let ans = 0;
-    for(let i = 0; i < items.length; i++) {
-        let z = Math.min(W, items[i].weight);
-        W -= z;
-        ans += (z * items[i].price);
-    }
-    return ans;
-}
-
-let W = 50;
-let items = [new Item(120, 30), new Item(100, 30), new Item(60, 10)];
-
-console.log(fractionalKnapsack(items, W));
+/**
+ * 
+ * @Time Complexity : O(2^n)
+ * @Space Complexity : O(n)
+ * 
+ */
