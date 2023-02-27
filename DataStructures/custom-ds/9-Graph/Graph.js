@@ -1,6 +1,6 @@
-/* 
+/** 
  *
- * Adjacency List
+ * @Adjacency List
  * 
  */
 
