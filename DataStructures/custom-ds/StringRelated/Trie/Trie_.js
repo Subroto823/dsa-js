@@ -31,7 +31,6 @@ class Trie {
         curr.setEnd(true);
     }
 
-    // iterative
     removeWord(word) {
         const list = [this.root];
         let curr = this.root;
@@ -66,11 +65,6 @@ class Trie {
                 parent.children.delete(word[i-1]);
             }
         }
-    }
-
-    // recursive
-    remove(word) {
-
     }
 
     search(word) {
@@ -128,13 +122,8 @@ myTrie.add("dolphin");
 myTrie.add("do");
 myTrie.add("dorm");
 myTrie.add("mat");
-// myTrie.add("maniac");
+myTrie.add("maniac");
 myTrie.add("matrix");
-
-console.log(myTrie.removeWord("matrix"));
-console.log(myTrie.removeWord("mat"));
-
-
 
 console.log(myTrie.isWord("doll"));
 console.log(myTrie.isWord("do"));
@@ -142,5 +131,3 @@ console.log(myTrie.isWord("dor"));
 
 myTrie.print();
 console.log(myTrie.wordsWithPrefix("ma"))
-console.log(myTrie.root.children);
-
