@@ -10,44 +10,72 @@ class Trie {
         this.root = new Node();
     }
 
-    insert(word) {
+    add(word) {
         let curr = this.root;
-        for (let i = 0; i < word.length; i++) {
-            let charToInsert = word[i];
-            if (!(charToInsert in curr.children)) {
+        for(let charToInsert of word) {
+
+            // check if the letter is already available in the current node or not
+            //if not available
+            if(!(charToInsert in curr.children)) {
                 curr.children[charToInsert] = new Node();
             }
 
+            // if available
             curr = curr.children[charToInsert];
         }
-
         curr.isWordEnd = true;
     }
 
     contains(word) {
         let curr = this.root;
-        for (let i = 0; i < word.length; i++) {
-            let charToFind = word[i];
-            if (!(charToFind in curr.children)) {
+        for(let charToFind of word) {
+            if(!(charToFind in curr.children)) {
                 return false;
             }
-
             curr = curr.children[charToFind];
         }
-
         return curr.isWordEnd;
     }
 
-    startsWithPrefix(prefix) {
+    startWithPrefix(prefix) {
         let curr = this.root;
-        for (let i = 0; i < prefix.length; i++) {
-            let charToFind = prefix[i];
-            if (!(charToFind in curr.children)) {
+
+        for(let charToFind of prefix) {
+            if(!(charToFind in curr.children)) {
                 return false;
             }
-
             curr = curr.children[charToFind];
         }
         return true;
     }
+
+    print() {
+        let words = [];
+
+        const reTRIEve= (node = this.root, string = '') => {
+            for (let char in node.children) {
+                reTRIEve(node.children[char], string.concat(char));
+            }
+            if(node.isWordEnd) {
+                words.push(string);
+            }
+        }
+
+        reTRIEve(this.root, '');
+        process.stdout.write(words.join(" "));
+    }
 }
+
+const myTrie = new Trie();
+
+myTrie.add("dork");
+myTrie.add("doll");
+myTrie.add("dolphin");
+myTrie.add("do");
+myTrie.add("dorm");
+
+console.log(myTrie.contains("doll"));
+console.log(myTrie.contains("do"));
+console.log(myTrie.contains("dor"));
+
+myTrie.print();

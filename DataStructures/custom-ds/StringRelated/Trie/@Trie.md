@@ -3,18 +3,27 @@
 
 * It is an advanced data structure that is sometimes also known as prefix tree or digital tree.
 
+* A trie is an ordered search tree commonly used to hold strings, or more generically associative arrays or dynamic datasets in which the keys are strings. 
+ 
+
 
 # Properties of a Trie Data Structure
 
 * Every node (except root) will store a letter in the alphabet
 
-* Each node of a Trie represents a string and each edge represents a character.
+* Each node of a Trie represents a string and each edge represents a character. Unlike a binary tree, nodes are not associated with actual values. 
+
+Instead, the path to a node represents a specific key. For instance, if we wanted to store the string code in a trie, we would have four nodes, one for each letter: c — o — d — e. 
+Following that path through all these nodes will then create code as a string — that path is the key we stored.
     
 * Every node consists of hashmaps or an array of pointers, with each index representing a character and a flag to indicate if any string ends at the current node.
 
-* Trie data structure can contain any number of characters including alphabets, numbers, and special characters.
+* Unlike binary trees a node can store any number of child nodes.
 
 * Each path from the root to any node represents a word or string.
+
+* They are very good at storing sets of data when many keys will have overlapping prefixes, for example, all the words in a dictionary. 
+
 
 
 #  Strengths
