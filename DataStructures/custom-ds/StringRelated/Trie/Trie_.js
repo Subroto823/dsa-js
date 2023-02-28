@@ -98,7 +98,7 @@ class Trie {
         return words;
     }
 
-    reTRIEve(node, word, wordList) {
+    reTRIEve(node, word, wordList = []) {
         if(node.isWordEnd()) {
             wordList.push(word);
         }
