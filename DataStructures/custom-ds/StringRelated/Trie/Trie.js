@@ -37,7 +37,7 @@ class Trie {
         return curr.isWordEnd;
     }
 
-    startWithPrefix(prefix) {
+    startsWith(prefix) {
         let curr = this.root;
 
         for(let charToFind of prefix) {
