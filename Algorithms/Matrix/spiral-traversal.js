@@ -34,8 +34,9 @@ var spiralOrder = function (matrix) {
     return traversal;
 };
 
-let matrix = 
-[[1, 2, 3],
- [4, 5, 6],
- [7, 8, 9]]
+let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
 console.log(spiralOrder(matrix));
