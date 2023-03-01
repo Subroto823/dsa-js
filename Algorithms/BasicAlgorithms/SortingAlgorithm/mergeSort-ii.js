@@ -3,7 +3,9 @@
 
     Time Complexity - O(nlogn)
         # This is the best time complexity we can get while sorting
+    Space Complexity - O(n)
  */
+const { randomArray } = require("./helper/randomNumbers");
 
 const merge = (arr, low, mid, high) => {
     let merged = new Array(high - low + 1).fill(0);
@@ -41,7 +43,6 @@ const mergeSort = (arr, low = 0, high = arr.length - 1) => {
     }
 }
 
-let arr = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]
-
+let arr = randomArray(20, 40);
 mergeSort(arr);
 console.log(arr);
