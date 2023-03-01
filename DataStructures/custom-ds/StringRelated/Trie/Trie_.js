@@ -105,11 +105,11 @@ class Trie {
         for(let char of node.children.keys()) {
             this.reTRIEve(node.children.get(char), word.concat(char), wordList);
         }
+        return wordList;
     }
 
     print() {
-        let words = [];
-        this.reTRIEve(this.root, '', words);
+        let words = this.reTRIEve(this.root, '');
         process.stdout.write(words.join(" ") + "\n");
     }
 }

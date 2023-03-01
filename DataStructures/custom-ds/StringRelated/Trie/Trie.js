@@ -49,18 +49,18 @@ class Trie {
         return true;
     }
 
-    reTRIEve (node, word, wordList) {
+    reTRIEve (node, word, wordList = []) {
         if(node.isWordEnd) {
             wordList.push(word);
         }
         for (let char in node.children) {
             this.reTRIEve(node.children[char], word.concat(char), wordList);
         }
+        return wordList;
     }
     
     print() {
-        let words = [];
-        this.reTRIEve(this.root, '', words);
+        let words = this.reTRIEve(this.root, '');
         process.stdout.write(words.join(" ") + "\n");
     }
 }
