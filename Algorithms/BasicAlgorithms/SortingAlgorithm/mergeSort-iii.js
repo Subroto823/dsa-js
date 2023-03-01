@@ -4,35 +4,38 @@
     Time Complexity - O(nlogn)
         # This is the best time complexity we can get while sorting
     Space Complexity - O(n)
+
+    # This implementation is more optimal than the previous two
  */
 
 const { randomArray } = require("./helper/randomNumbers");
 
 function sortArray(nums) {
-    let aux = new Array(arr.length).fill(0);
-    mergeSort(nums, aux, 0, arr.length - 1);
+    let merged = new Array(arr.length).fill(0);
+    mergeSort(nums, merged, 0, arr.length - 1);
 }
 
-function mergeSort(arr, aux, lo, hi) {
+function mergeSort(arr, merged, lo, hi) {
     if (lo < hi) {
         let mid = (lo + hi) >> 1;
-        mergeSort(arr, aux, lo, mid);
-        mergeSort(arr, aux, mid + 1, hi);
-        merge(arr, aux, lo, mid, hi);
+        mergeSort(arr, merged, lo, mid);
+        mergeSort(arr, merged, mid + 1, hi);
+        merge(arr, merged, lo, mid, hi);
     }
 }
 
-function merge(arr, aux, lo, mid, high) {
-    for (let k = lo; k <= high; k++) {
-        aux[k] = arr[k];
-    }
+function merge(nums, merged, lo, mid, high) {
 
     let i = lo, j = mid + 1;
     for (let k = lo; k <= high; k++) {
-        if (i > mid) arr[k] = aux[j++];
-        else if (j > high) arr[k] = aux[i++];
-        else if (aux[j] < aux[i]) arr[k] = aux[j++];
-        else arr[k] = aux[i++];
+        if (i > mid) merged[k] = nums[j++];
+        else if (j > high) merged[k] = nums[i++];
+        else if (nums[j] < nums[i]) merged[k] = nums[j++];
+        else merged[k] = nums[i++];
+    }
+
+    for (let k = lo; k <= high; k++) {
+        nums[k] = merged[k];
     }
 }
 
