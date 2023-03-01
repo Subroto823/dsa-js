@@ -1,14 +1,16 @@
-/*
-Time Complexity - O(nlogn)
-    # This is the best time complexity we can get while sorting
+/**
+ @Merge Sort
+ 
+    Time Complexity - O(nlogn)
+        # This is the best time complexity we can get while sorting
  
  */
 
 const merge = (leftArr, rightArr) => {
     const sortedArr = [];
 
-    while(leftArr.length && rightArr.length) {
-        if(leftArr[0] <= rightArr[0]) {
+    while (leftArr.length && rightArr.length) {
+        if (leftArr[0] <= rightArr[0]) {
             sortedArr.push(leftArr.shift());
         } else {
             sortedArr.push(rightArr.shift());
@@ -18,7 +20,7 @@ const merge = (leftArr, rightArr) => {
 }
 
 const mergeSort = (arr) => {
-    if(arr.length < 2) {
+    if (arr.length < 2) {
         return arr;
     }
 
