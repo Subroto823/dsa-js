@@ -1,9 +1,11 @@
 /**
- @Problem Statement
+ @Search Maze
 
- Given a 2D array of black and white entries representing a maze with designated entrance and exit points, find a path from the entrance to the exit, if one exists.
+    Problem Statement
 
- We’ll represent the white entries with 0’s and black entries with 1’s. The white entries represent open areas and the black entries walls.
+    Given a 2D array of black and white entries representing a maze with designated entrance and exit points, find a path from the entrance to the exit, if one exists.
+
+    We’ll represent the white entries with 0’s and black entries with 1’s. The white entries represent open areas and the black entries walls.
 */
 
 var hasPath = function(maze, start, destination) {
