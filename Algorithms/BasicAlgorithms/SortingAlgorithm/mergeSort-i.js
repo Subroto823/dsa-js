@@ -2,9 +2,7 @@
  @Merge Sort
  
     Time Complexity - O(nlogn)
-        # This is the best time complexity we can get while sorting
     Space Complexity - O(n)
- 
  */
 
 const merge = (leftArr, rightArr) => {
