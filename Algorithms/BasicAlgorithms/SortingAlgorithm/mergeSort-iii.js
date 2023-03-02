@@ -11,8 +11,8 @@
 const { randomArray } = require("./helper/randomNumbers");
 
 function sortArray(nums) {
-    let merged = new Array(arr.length).fill(0);
-    mergeSort(nums, merged, 0, arr.length - 1);
+    let merged = new Array(nums.length).fill(0);
+    mergeSort(nums, merged, 0, nums.length - 1);
 }
 
 function mergeSort(arr, merged, lo, hi) {
