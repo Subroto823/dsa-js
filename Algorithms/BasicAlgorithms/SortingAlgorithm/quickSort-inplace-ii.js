@@ -15,6 +15,7 @@ function quickSort(nums, left = 0, right = nums.length - 1) {
             swap(nums, ++pivot, i);
         }
     }
+    
     swap(nums, left, pivot);
     quickSort(nums, left, pivot - 1);
     quickSort(nums, pivot + 1, right);
