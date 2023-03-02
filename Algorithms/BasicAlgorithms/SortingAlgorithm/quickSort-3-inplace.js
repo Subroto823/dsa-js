@@ -3,7 +3,7 @@
  * @inplace implementation - without taking extra space
  * 
  * */
-const { swap } = require("./swap");
+const { swap } = require("./helper/swap");
 const { randomArray } = require("./helper/randomNumbers");
 
 function quickSort(nums, left = 0, right = nums.length - 1) {
