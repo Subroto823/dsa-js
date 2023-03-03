@@ -9,7 +9,6 @@
     @Solution :
 
     # Maintain a map that maps the original vertex to its counterpart. Copy over the edges.
-    # Use BFS to visit the adjacent vertices (edges).
     # Time Complexity: O(n), where n is the total number of nodes.
 */
 
