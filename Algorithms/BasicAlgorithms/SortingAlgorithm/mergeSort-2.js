@@ -8,9 +8,10 @@ const { randomArray } = require("./helper/randomNumbers");
 
 const merge = (arr, low, mid, high) => {
     let merged = new Array(high - low + 1).fill(0);
+
     let i = low;
     let j = mid + 1;
-    let k = low;
+    let k = 0;
 
     while (i <= mid && j <= high) {
         if (arr[i] < arr[j]) {
@@ -28,20 +29,25 @@ const merge = (arr, low, mid, high) => {
         merged[k++] = arr[j++];
     }
 
+    k = 0;
     for (let i = low; i <= high; i++) {
-        arr[i] = merged[i];
+        arr[i] = merged[k++];
     }
 }
 
 const mergeSort = (arr, low = 0, high = arr.length - 1) => {
-    if (low < high) {
-        let mid = (low + high) >> 1;
-        mergeSort(arr, low, mid);
-        mergeSort(arr, mid + 1, high);
-        merge(arr, low, mid, high);
-    }
+    if (low >= high) return;
+
+    let mid = low + Math.floor((high - low) / 2);
+
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid + 1, high);
+
+    merge(arr, low, mid, high);
 }
 
-let arr = randomArray(20, 40);
+let arr = randomArray(1000000);
+console.time();
 mergeSort(arr);
-console.log(arr);
+console.timeEnd();
+// console.log(arr);
