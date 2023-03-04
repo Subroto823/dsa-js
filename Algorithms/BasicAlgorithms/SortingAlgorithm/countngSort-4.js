@@ -17,8 +17,6 @@ function countingSort (nums) {
     let n = nums.length;
 
     let min = getMin(nums);
-    console.log(min);
-    console.log(nums)
     
     for(let i = 0; i < n; i++) {
         count[nums[i]] = ++count[nums[i]] || 1;

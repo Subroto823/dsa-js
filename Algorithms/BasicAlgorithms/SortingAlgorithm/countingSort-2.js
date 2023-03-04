@@ -7,14 +7,14 @@
     N -> number of elements in the array
     k -> Range(Max number)
 */
-const { randomNumbers } = require("./helper/randomNumbers");
+const { randomArray } = require("./helper/randomNumbers");
 const { getMax } = require("./helper/maxMinInArray");
 
 function countSort(array) {
     let output = [];
     let n = array.length;
 
-    let max = getMax(array, n);
+    let max = getMax(array);
     let count = new Array(max + 1).fill(0);
 
     // Store the count of each element
@@ -36,6 +36,6 @@ function countSort(array) {
     return output;
 }
 
-let arr = randomNumbers(20);
+let arr = randomArray(20);
 let res = countSort(arr);
 console.log(res);
