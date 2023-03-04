@@ -1,29 +1,39 @@
 /**
 @BucketSort
 
-    Time Complexity: O(n + k)
-    Space Complexity: O(n + k)
+    Time Complexity :
+        Average : O(n+k)
+        Worst: O(n^2)
+
+	Space Complexity : O(n+k)
+    
+    @Stable
 */
-const { getMax } = require("./helper/maxMinInArray");
+const { getMinMax } = require("./helper/maxMinInArray");
 const { randomNumbers } = require("./helper/randomNumbers");
 
-function bucketSort(nums) {
-    let sortedArray = []
-    let n = nums.length;
-    let buckets = new Array(n).fill().map(() => []);
+function bucketSort(nums, bucketSize = 40) {
+    const { min, max } = getMinMax(nums);
 
-    for(let i = 0; i < n; i++) {
-        let bucketIndex = Math.floor(nums[i]) * n;
-        console.log(bucketIndex);
-        buckets[bucketIndex].push(nums[i]);
+    let bucketCount = ~~((max - min) / bucketSize) + 1;
+    let buckets = new Array(bucketCount)
+        .fill()
+        .map(() => []);
+    
+    for(let num of nums) {
+        buckets[~~((num - min) / bucketSize)].push(num);
     }
-    console.log(buckets);
+
+    let i = 0;
+    for(let bucket of buckets) {
+        bucket.sort((a, b) => a - b);
+        bucket.forEach( num => {
+            nums[i++] = num;
+        })
+    }
 }
 
-let arr = randomNumbers(20, 20);
-// arr = [3, 4, 3, 12, 2, 6]
-
-console.time();
-let res = bucketSort(arr);
-console.timeEnd();
-// console.log(arr);
+let arr = randomNumbers(20, 40);
+arr = [0.4, 0.35, 0.42, 0.41, 0.40, 0.36]
+bucketSort(arr);
+console.log(arr);
