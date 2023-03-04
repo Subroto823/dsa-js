@@ -24,16 +24,17 @@ function bucketSort(nums, bucketSize = 40) {
         buckets[~~((num - min) / bucketSize)].push(num);
     }
 
-    let i = 0;
-    for(let bucket of buckets) {
+    let k = 0;
+    buckets.forEach( bucket => {
         bucket.sort((a, b) => a - b);
         bucket.forEach( num => {
-            nums[i++] = num;
+            nums[k++] = num;
         })
-    }
+    })
+    return nums;
 }
 
 let arr = randomNumbers(20, 40);
-arr = [0.4, 0.35, 0.42, 0.41, 0.40, 0.36]
+arr = [0.4, 0.35, 0.42, 0.41, 0.40, 0.36];
 bucketSort(arr);
 console.log(arr);
