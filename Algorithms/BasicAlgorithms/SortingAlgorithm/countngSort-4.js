@@ -8,6 +8,7 @@
     k -> Range(Max - Min)
 */
 
+const { getMin } = require("./helper/maxMinInArray");
 const { randomNumbers } = require("./helper/randomNumbers");
 
 function countingSort (nums) {
@@ -15,7 +16,9 @@ function countingSort (nums) {
     let sortedArray = [];
     let n = nums.length;
 
-    let min = nums.reduce((num, acc) => Math.min(num, acc), Infinity);
+    let min = getMin(nums);
+    console.log(min);
+    console.log(nums)
     
     for(let i = 0; i < n; i++) {
         count[nums[i]] = ++count[nums[i]] || 1;

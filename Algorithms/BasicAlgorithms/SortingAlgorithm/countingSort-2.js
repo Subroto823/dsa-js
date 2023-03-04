@@ -8,11 +8,12 @@
     k -> Range(Max number)
 */
 const { randomNumbers } = require("./helper/randomNumbers");
+const { getMax } = require("./helper/maxMinInArray");
 
 function countSort(array) {
     let output = [];
     let n = array.length;
-    
+
     let max = getMax(array, n);
     let count = new Array(max + 1).fill(0);
 
