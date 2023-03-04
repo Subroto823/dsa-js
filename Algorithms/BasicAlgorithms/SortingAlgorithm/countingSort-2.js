@@ -2,36 +2,44 @@
 @Counting Sort (for positive number)
 
     Time Complexity: O(N + k) 
-    Space Complexity: O(N)
+    Space Complexity: O(N + k)
 
     N -> number of elements in the array
     k -> Range(Max number)
 */
-const { randomArray } = require("./helper/randomNumbers");
+const { randomNumbers } = require("./helper/randomNumbers");
 
-function countingSort (nums) {
-    let count = {};
-    let sortedArray = [];
-    let n = nums.length;
+function countSort(array) {
+    let output = [];
+    let n = array.length, max = -Infinity;
+    let count;
 
-    for(let i = 0; i < n; i++) {
-        count[nums[i]] = ++count[nums[i]] || 1;
+    // Find the largest element of the array
+    for (let i = 0; i < n; i++) {
+        max = Math.max(max, array[i]);
     }
 
-    let i = 0;
+    count = new Array(max + 1).fill(0);
 
+    // Store the count of each element
+    for (let i = 0; i < n; i++) {
+        count[array[i]]++;
+    }
+
+    
+    let i = 0;
     while(n > 0) {
-        if(!count[i]) {
-            i++
+        if(count[i] === 0) {
+            i++;
         } else {
-            sortedArray.push(i);
+            output.push(i);
             count[i]--;
             n--;
         }
     }
-    return sortedArray;
+    return output;
 }
 
-let arr = randomArray(20, 40);
-let res = countingSort(arr);
+let arr = randomNumbers(20);
+let res = countSort(arr);
 console.log(res);

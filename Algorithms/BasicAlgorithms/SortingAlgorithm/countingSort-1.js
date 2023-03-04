@@ -2,28 +2,27 @@
 @Counting Sort (for positive number)
 
     Time Complexity: O(N + k) 
-    Space Complexity: O(k)
+    Space Complexity: O(N + k)
 
     N -> number of elements in the array
     k -> Range(Max number)
 */
-
 const { randomArray } = require("./helper/randomNumbers");
 
 function countingSort (nums, range = nums.length) {
     let count = {};
     let sortedArray = [];
+    let n = nums.length;
 
     for (let i = 0; i < range; i++) {
         count[i] = 0;
     }
 
-    for(let i = 0; i < range; i++) {
+    for(let i = 0; i < n; i++) {
         count[nums[i]]++;
     }
 
     let i = 0;
-    let n = nums.length;
 
     while(n > 0) {
         if(count[i] === 0) {
@@ -38,5 +37,6 @@ function countingSort (nums, range = nums.length) {
 }
 
 let arr = randomArray(20, 40);
+console.log(arr);
 let res = countingSort(arr, 40);
 console.log(res);
