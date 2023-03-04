@@ -11,15 +11,10 @@ const { randomNumbers } = require("./helper/randomNumbers");
 
 function countSort(array) {
     let output = [];
-    let n = array.length, max = -Infinity;
-    let count;
-
-    // Find the largest element of the array
-    for (let i = 0; i < n; i++) {
-        max = Math.max(max, array[i]);
-    }
-
-    count = new Array(max + 1).fill(0);
+    let n = array.length;
+    
+    let max = getMax(array, n);
+    let count = new Array(max + 1).fill(0);
 
     // Store the count of each element
     for (let i = 0; i < n; i++) {
