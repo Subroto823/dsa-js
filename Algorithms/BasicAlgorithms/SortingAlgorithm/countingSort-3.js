@@ -14,8 +14,8 @@ function countingSort (nums) {
     let count = {};
     let sortedArray = [];
     let n = nums.length;
-    let min = Math.min.apply(undefined, nums);
-
+    let min = nums.reduce((num, acc) => Math.min(num, acc), Infinity);
+    
     for(let i = 0; i < n; i++) {
         count[nums[i]] = ++count[nums[i]] || 1;
     }
@@ -34,8 +34,7 @@ function countingSort (nums) {
     return sortedArray;
 }
 
-let arr = randomNumbers(20, -5, 10);
-console.log(arr);
+let arr = randomNumbers(1000000);
 
 console.time();
 let res = countingSort(arr);
