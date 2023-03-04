@@ -8,7 +8,7 @@
     k -> Range(Max - Min)
 */
 
-const { randomArray } = require("./helper/randomNumbers");
+const { randomNumbers } = require("./helper/randomNumbers");
 
 function countingSort (nums) {
     let count = {};
@@ -34,9 +34,9 @@ function countingSort (nums) {
     return sortedArray;
 }
 
-// let arr = randomArray(10000000);
-arr = [-1, 4, 3, -4, 5, 8, 9, -7, -2, 10, 2, -8]
-// arr = [3, 5, 1, 2, 6, 2, 5, 6, 8, 6, 7];
+let arr = randomNumbers(20, -5, 10);
+console.log(arr);
+
 console.time();
 let res = countingSort(arr);
 console.timeEnd();

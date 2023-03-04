@@ -7,9 +7,8 @@ function randomNumbers(length, min = 0, max = length) {
     return Array.from({ length: length }, () => {
         let maxNum = ~~(Math.random() * max);
         let minNum = Math.floor(Math.random() * min);
-        return maxNum & 1 ? minNum : maxNum;
-    }
-    );
+        return Math.random() < 0.35 ? minNum : maxNum;
+    });
 }
 
 module.exports = {
