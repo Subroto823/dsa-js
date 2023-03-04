@@ -34,9 +34,6 @@ function countingSort (nums) {
     return sortedArray;
 }
 
-let arr = randomNumbers(1000000);
-
-console.time();
+let arr = randomNumbers(20, -10, 10);
 let res = countingSort(arr);
-console.timeEnd();
 console.log(res);
