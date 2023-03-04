@@ -4,5 +4,5 @@ function randomArray(length, max = length) {
 }
 
 module.exports = {
-    randomArray 
+    randomArray
 }
