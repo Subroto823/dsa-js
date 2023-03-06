@@ -4,13 +4,23 @@ function randomArray(length, max = length) {
 }
 
 function randomNumbers(length, min = 0, max = length) {
-    return Array.from({ length: length }, () => {
-        let maxNum = ~~(Math.random() * max);
-        let minNum = Math.floor(Math.random() * min);
+    if(arguments.length === 2) {
+        if(min > 0) {
+            max = min;
+            min = 0;
+        }
+    }
 
-        return Math.random() < 0.35 && min !== 0 ? minNum : maxNum;
+    return Array.from({ length: length }, () => {
+        return randomRange(min, max);
     });
 }
+
+function randomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(randomNumbers(10, 10));
 
 module.exports = {
     randomArray,
