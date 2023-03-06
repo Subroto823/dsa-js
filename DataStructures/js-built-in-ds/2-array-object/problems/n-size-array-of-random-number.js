@@ -3,5 +3,5 @@ function randomArray(length, max = 100) {
     return Array.from({length: length}, () => ~~(Math.random() * max));
 }
 
-console.log(randomArrayTwo(40, 50));
+console.log(randomArray(40, 50));
 
