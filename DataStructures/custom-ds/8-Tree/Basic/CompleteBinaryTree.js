@@ -19,6 +19,11 @@ class BinaryTree {
         this.root = null;
     }
 
+    isCompleteTree(node) {
+        const numOfNodes = this.countNumNodes(node);
+        return this.isComplete(node, 0, numOfNodes);
+    }
+
     // count the number of nodes
     countNumNodes(node) {
         if (node === null) return 0;
@@ -35,9 +40,23 @@ class BinaryTree {
             && this.isComplete(node.right, 2 * indx + 2, numOfNodes)
     }
 
-    isCompleteTree(node) {
-        const numOfNodes = this.countNumNodes(node);
-        return this.isComplete(node, 0, numOfNodes);
+
+    // iterative
+    isCompleteTreeII(root) {
+        const queue = [root];
+        let nullFound, node;
+
+        while (queue.length) {
+            node = queue.shift();
+
+            if (nullFound && node) return false;
+            if (!node) nullFound = true;
+
+            if (node) {
+                queue.push(node.left, node.right);
+            }
+        }
+        return true;
     }
 }
 
