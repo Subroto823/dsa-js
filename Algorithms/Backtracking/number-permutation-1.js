@@ -7,18 +7,18 @@ function permutation(n) {
 }
 
 function generate(idx, n, number, visited) {
-    if(idx === n + 1) {
+    if (idx === n + 1) {
         console.log(...number);
         return;
     }
 
-    for(let i = 0; i <= n; i++) {
-        if(visited[i]) continue;
-
-        visited[i] = true;
-        number[idx] = i;
-        generate(idx + 1, n, number, visited);
-        visited[i] = false;
+    for (let i = 0; i <= n; i++) {
+        if (!visited[i]) {
+            visited[i] = true;
+            number[idx] = i;
+            generate(idx + 1, n, number, visited);
+            visited[i] = false;
+        }
     }
 }
 
