@@ -1,23 +1,24 @@
-function combinations(arr) {
-    const res = [];
-    let start = 0;
-    let end = arr.length - 1;
+// Given two integers n and k, return all possible combinations of k numbers out of 1 … n.
 
-    function generate(array, start, end) {
-        if(start === end) {
-            res.push([...array]);
+function combinations(n, k) {
+    const result = [];
+
+    function generate(start, k, comb = []) {
+        if(k === 0) {
+            result.push([...comb]);
+            return;
         }
 
-        for(let i = start; i <= end; i++) {
-            swap(array, start, i);
-            generate(array, start + 1, end);
-            swap(array, start, i);
+        for(let i = start; i <= n; i++) {
+            comb.push(i);
+            generate(i + 1, k - 1, comb);
+            comb.pop();
         }
     }
 
-    generate(arr, start, end);
-    return res;
+    generate(1, k);
+    return result;
 }
 
-console.log(combinations([5, 8]));
-console.log(combinations(["a", "b"]));
+let  n = 4, k = 2
+console.log(combinations(n, k)); // [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
