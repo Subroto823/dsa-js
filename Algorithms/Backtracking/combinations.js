@@ -1,6 +1,4 @@
-const { swap } = require('../../helpers/array-swap');
-
-function permutation(arr) {
+function combinations(arr) {
     const res = [];
     let start = 0;
     let end = arr.length - 1;
@@ -21,5 +19,5 @@ function permutation(arr) {
     return res;
 }
 
-console.log(permutation([5, 8]));
-console.log(permutation(["a", "b"]));
+console.log(combinations([5, 8]));
+console.log(combinations(["a", "b"]));
