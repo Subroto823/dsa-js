@@ -4,14 +4,14 @@ function combinations(n) {
 
     function getCombinations (start, comb = []) {
         for(let i = start; i <= n; i++) {
-            let tmp = [...comb, i];
-            result.push(tmp);
-            getCombinations(i + 1, tmp);
+            let curr = [...comb, i];
+            result.push(curr);
+            getCombinations(i + 1, curr);
         }
     }
-
+    
     getCombinations(1);
     return result;
 }
 
-console.log(combinations(2));
+console.log(combinations(3));

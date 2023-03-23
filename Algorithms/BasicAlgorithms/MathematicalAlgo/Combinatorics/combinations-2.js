@@ -8,6 +8,7 @@ function combinations(elements) {
             getCombinations(array.slice(i + 1), curr);
         }
     }
+    
     getCombinations(elements);
     return result;
 }
