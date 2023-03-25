@@ -12,6 +12,28 @@ Example:
     Output: 2 * 3 * 4 = 24
 
     Input: [0, -1, 10, 7, 5] 
-    Output: 10, * 7 * 5 = 350
+    Output: 10 * 7 * 5 = 350
+
+    Input: [-5, -2, -1, 0, 0, 1, 1, 5]
+    Output: -5 * -2 * 5 = 50
  */
 
+function maxp3 (A) {
+    A.sort((a, b) => a - b);
+
+    let n = A.length;
+
+    let hi3 = A[n - 1] * A[n - 2] * A[n - 3];
+    let lo2hi1 = A[0] * A[1] * A[n - 1];
+
+    return Math.max(hi3, lo2hi1);
+}
+
+numbers = [1, 2, 3, 4];
+console.log(maxp3(numbers));
+
+numbers = [0, -1, 10, 7, 5];
+console.log(maxp3(numbers));
+
+numbers = [-5, -2, -1, 0, 0, 1, 1, 5];
+console.log(maxp3(numbers));
