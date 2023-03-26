@@ -1,6 +1,9 @@
-def candy(A):
-    n = len(A);
-    data = sorted((x, i) for i, x in enumerate(A))
-    print(data)
+def seats(A):
+    MOD = 10000003
 
-candy([1, 3, 7, 1])
+    crosses = [i for i, c in enumerate(A) if c == "x"]
+    print(crosses)
+    crosses = [(cross-i) for i, cross in enumerate(crosses)]
+    print(crosses)
+
+seats('..x..x.')
