@@ -11,18 +11,19 @@ const { AdjacencyList } = require("../graph-adjacency-list-i");
 function depthFirstSearch(adjacencyList, source, n) {
     const traversal = [];
     const visited = new Array(n + 1).fill(false);
+
     const stack = [source];
+    visited[source] = true;
 
     while (stack.length) {
         let currentVertex = stack.pop();
-
-        if (visited[currentVertex]) continue;
-
         traversal.push(currentVertex);
-        visited[currentVertex] = true;
 
         for (let neighbor of adjacencyList[currentVertex]) {
-            stack.push(neighbor);
+            if (!visited[neighbor]) {
+                stack.push(neighbor);
+                visited[neighbor] = true;
+            }
         }
     }
     return traversal;
