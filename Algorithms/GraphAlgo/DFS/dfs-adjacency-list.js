@@ -5,9 +5,10 @@
     @Space Complexity: O(V+E)
 */
 
-function depthFirstSearch(graph, source, n) {
-    const visited = new Array(n).fill(false);
-    return traverse(graph, source, visited);
+function depthFirstSearch(graph, source) {
+    const visited = {};
+    let x = traverse(graph, source, visited);
+    return x;
 }
 
 function traverse(graph, node, visited, traversal=[]) {
@@ -41,4 +42,4 @@ graph = {
     3: [1],
     4: [2]
 }
-console.log(depthFirstSearch(graph, 1, 4));
+console.log(depthFirstSearch(graph, 1));
