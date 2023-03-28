@@ -5,22 +5,22 @@
     Space Complexity: O(V+E)
 */
 
-function breadthFirstSearch(adjacencyList, start) {
+function breadthFirstSearch(adjacencyList, source) {
     const traversal = [];
     const visited = {};
 
-    const queue = [start];
+    const queue = [source];
+    visited[source] = true;
 
     while (queue.length) {
         let currentVertex = queue.shift();
-
-        if (visited[currentVertex]) continue;
-
         traversal.push(currentVertex);
-        visited[currentVertex] = true;
 
         for (let neighbor of adjacencyList[currentVertex]) {
-            queue.push(neighbor);
+            if (!visited[neighbor]) {
+                queue.push(neighbor);
+                visited[neighbor] = true;
+            }
         }
     }
     return traversal;
