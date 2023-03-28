@@ -10,7 +10,7 @@ const { AdjacencyList } = require("../graph-adjacency-list-i");
 
 function depthFirstSearch(adjacencyList, source, n) {
     const traversal = [];
-    const visited = new Array(n).fill(false);
+    const visited = new Array(n + 1).fill(false);
     const stack = [source];
 
     while (stack.length) {
@@ -29,22 +29,21 @@ function depthFirstSearch(adjacencyList, source, n) {
 }
 
 // directed graph
-graph = {
-    a: ['c', 'b'],
-    b: ['d'],
-    c: ['e'],
-    d: ['f'],
-    e: [],
-    f: ['d']
+let graph = {
+    1: [2, 3],
+    2: [1, 4],
+    3: [4],
+    4: [5, 1],
+    5: [1, 3]
 }
-console.log(depthFirstSearch(graph, 'a', 6));
+console.log(depthFirstSearch(graph, 1, 5));
 
 
 // undirected graph
-let graph = new AdjacencyList();
+graph = new AdjacencyList();
 graph.addVertex(1, 2, 3, 4);
 graph.addEdge(1, 2);
 graph.addEdge(2, 4);
 graph.addEdge(3, 4);
 
-console.log(depthFirstSearch(graph.adjacencyList, 1, graph.length));
+// console.log(depthFirstSearch(graph.adjacencyList, 1, graph.length));
