@@ -6,9 +6,7 @@
     Space Complexity: O(V+E)
 
 */
-
 const { AdjacencyList } = require("../graph-adjacency-list-i");
-
 
 function depthFirstSearch(adjacencyList, source, n) {
     const traversal = [];
