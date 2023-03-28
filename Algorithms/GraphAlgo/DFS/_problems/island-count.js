@@ -22,13 +22,12 @@ const islandCount = (grid) => {
 function dfs(grid, row, col) {
     if(!isValid(grid, row, col)) return false;
 
+    const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]];
     grid[row][col] = 'W';
 
-    dfs(grid, row + 1, col);
-    dfs(grid, row, col + 1);
-    dfs(grid, row - 1, col);
-    dfs(grid, row, col - 1);
-
+    for(let direction of directions) {
+        dfs(grid, row + direction[0], col + direction[1]);
+    }
     return true;
 }
 
