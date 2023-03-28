@@ -1,12 +1,14 @@
 class AdjacencyList {
     constructor() {
         this.adjacencyList = {};
+        this.length = 0;
     }
 
     addVertex(...vertices) {
         for(let vertex of vertices) {
             if(!this.adjacencyList[vertex]) {
                 this.adjacencyList[vertex] = [];
+                this.length++;
             }
         }
     }
@@ -34,10 +36,13 @@ class AdjacencyList {
     }
 
     removeVertex(vertex) {
+        if(!(vertex in this.adjacencyList)) return;
+
         for(let adjacentVertex of this.adjacencyList[vertex]) {
             this.removeEdge(vertex, adjacentVertex);
         }
         delete this.adjacencyList[vertex];
+        this.length--;
     }
 }
 
@@ -60,4 +65,8 @@ class AdjacencyList {
 
 module.exports = {
     AdjacencyList
+}
+
+let obj = {
+    a: "hello"
 }
