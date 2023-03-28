@@ -14,7 +14,7 @@ function traverse(adjMatrix, source, visited, traversal = []) {
     traversal.push(source);
     visited[source] = true;
 
-    for (let i = 0; i < adjMatrix.length; i++) {
+    for (let i = 0; i < adjMatrix[source].length; i++) {
         if (adjMatrix[source][i] === 1 && !visited[i]) {
             traverse(adjMatrix, i, visited, traversal);
         }
