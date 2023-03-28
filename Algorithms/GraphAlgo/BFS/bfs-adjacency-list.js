@@ -7,20 +7,20 @@
 
 function breadthFirstSearch(adjacencyList, start) {
     const traversal = [];
-    const visited = new Array(adjacencyList.length).fill(false);
+    const visited = {};
 
     const queue = [start];
-    visited[start] = true;
 
-    while(queue.length) {
-        let currVertex = queue.shift();
-        traversal.push(currVertex);
+    while (queue.length) {
+        let currentVertex = queue.shift();
 
-        for(let neighbor of adjacencyList[currVertex]) {
-            if(!visited[neighbor]) {
-                queue.push(neighbor);
-                visited[neighbor] = true;
-            }
+        if (visited[currentVertex]) continue;
+
+        traversal.push(currentVertex);
+        visited[currentVertex] = true;
+
+        for (let neighbor of adjacencyList[currentVertex]) {
+            queue.push(neighbor);
         }
     }
     return traversal;
@@ -45,4 +45,4 @@ graph = {
     3: [1],
     4: [2]
 }
-console.log(breadthFirstSearch(graph, 1, 4));
+console.log(breadthFirstSearch(graph, 1));
