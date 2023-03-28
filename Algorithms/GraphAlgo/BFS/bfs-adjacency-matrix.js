@@ -1,29 +1,26 @@
 /**
-*
-* @BFS - Breadth First Search (in Adjacency Matrix)
-*
-* @Time Complexity: O(N^2)
-* @Auxiliary Space: O(N^2)
-*
+@BFS - Breadth First Search (in Adjacency Matrix)
+
+    Time Complexity: O(N^2)
+    Auxiliary Space: O(N^2)
 */
 
-function bfs(adjMatrix, start) {
+function breadthFirstSearch(adjMatrix, source) {
     const visited = new Array(adjMatrix.length).fill(false);
     const traversal = [];
-
     let queue = [];
 
-    // Mark the starting node/vertex as visited and put it into the queue
-    queue.push(start);
-    visited[start] = true;
+    // Mark the sourceing node/vertex as visited and put it into the queue
+    queue.push(source);
+    visited[source] = true;
 
     while (queue.length != 0) {
-        let curr = queue.shift();
-        traversal.push(curr);
+        let currentVertex = queue.shift();
+        traversal.push(currentVertex);
 
         // go to the adjacent vertices
-        for (let i = 0; i < adjMatrix[curr].length; i++) {
-            if (adjMatrix[curr][i] === 1 && !visited[i]) {
+        for (let i = 0; i < adjMatrix[currentVertex].length; i++) {
+            if (adjMatrix[currentVertex][i] === 1 && !visited[i]) {
                 queue.push(i);
                 visited[i] = true;
             }
@@ -39,4 +36,4 @@ const adjMatrix = [
     [0, 1, 0, 0]
 ]
 
-console.log(bfs(adjMatrix, 1));
+console.log(breadthFirstSearch(adjMatrix, 1));
