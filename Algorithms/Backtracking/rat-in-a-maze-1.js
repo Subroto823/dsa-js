@@ -12,14 +12,12 @@ function findPath(maze) {
             possiblePaths.push(path);
             return;
         }
-    
-        if (isFeasible(row + 1, col, maze, n)) {
+
+        if (isFeasible(row, col, maze, n)) {
             path += 'D';
             helper(row + 1, col);
             path = path.slice(0, path.length - 1);
-        }
 
-        if(isFeasible(row, col + 1, maze, n)) {
             path += "R";
             helper(row, col + 1);
             path = path.slice(0, path.length - 1);
