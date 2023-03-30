@@ -16,14 +16,14 @@ function countPaths(maze) {
             return;
         }
 
+        const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+
         if (isFeasible(row, col, maze, n, visited)) {
             visited[row][col] = true;
             
-            helper(row + 1, col);
-            helper(row, col + 1);
-            helper(row - 1, col);
-            helper(row, col - 1);
-
+            for(let [dx, dy] of directions) {
+                helper(row + dx, col + dy);
+            }
             visited[row][col] = false;
         }
     }
