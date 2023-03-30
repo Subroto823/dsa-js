@@ -16,32 +16,24 @@ function findPath(maze) {
             possiblePaths.push(path);
             return;
         }
-        visited[row][col] = true;
-    
-        if (isFeasible(row + 1, col, maze, n, visited)) {
-            path += 'D';
-            helper(row + 1, col);
-            path = path.slice(0, path.length - 1);
-        }
 
-        if(isFeasible(row, col + 1, maze, n, visited)) {
-            path += "R";
-            helper(row, col + 1);
-            path = path.slice(0, path.length - 1);
-        }
+        // direction array
+        const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+        const moves = ['D', 'R', 'U', 'L']
 
-        if(isFeasible(row, col - 1, maze, n, visited)) {
-            path += "L";
-            helper(row, col - 1);
-            path = path.slice(0, path.length - 1);
-        }
+        if (isFeasible(row, col, maze, n, visited)) {
+            visited[row][col] = true;
 
-        if(isFeasible(row - 1, col, maze, n, visited)) {
-            path += "U";
-            helper(row - 1, col);
-            path = path.slice(0, path.length - 1);
+            directions.forEach((direction, i) => {
+                let [dx, dy] = direction;
+
+                path += moves[i];
+                helper(row + dx, col + dy);
+                path = path.slice(0, path.length - 1);
+            })
+
+            visited[row][col] = false;
         }
-        visited[row][col] = false;
     }
 
     helper(0, 0);
