@@ -1,36 +1,31 @@
 /**
- * 
- * How far away every node is from the given root node?
- * 
- */
+ How far away every node is from the given source node? 
+*/
 
-function bfs(graph, root) {
+function bfs(graph, source) {
     const distance = {};
 
     for(let i = 0; i < graph.length; i++) {
         distance[i] = Infinity;
     }
-    distance[root] = 0;
+    distance[source] = 0;
 
-    let queue = [root];
-    let curr;
+    const queue = [source];
 
     while(queue.length != 0) {
-        curr = queue.shift();
+        let currentVertex = queue.shift();
+        let neighborIndices = [];
 
-        let currConnected = graph[curr];
-        let neighborIdx = [];
-        var idx = currConnected.indexOf(1);
+        graph[currentVertex].forEach((element, i) => {
+            if(element === 1) {
+                neighborIndices.push(i);
+            }
+        });
 
-        while(idx !== -1) {
-            neighborIdx.push(idx);
-            idx = currConnected.indexOf(1, idx + 1);
-        }
-
-        for(let i = 0; i < neighborIdx.length; i++) {
-            if(distance[neighborIdx[i]] === Infinity) {
-                distance[neighborIdx[i]] = distance[curr] + 1;
-                queue.push(neighborIdx[i]);
+        for(let neighbor of neighborIndices) {
+            if(distance[neighbor] === Infinity) {
+                distance[neighbor] = distance[currentVertex] + 1;
+                queue.push(neighbor);
             }
         }
     }
