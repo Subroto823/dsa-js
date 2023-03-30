@@ -21,29 +21,20 @@ function findPath(maze, x, y, n, solution) {
         return true;
     }
 
+    const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+
     if (isFeasible(maze, x, y, n)) {
         if(solution[x][y] === 1) {
             return false;
         }
         solution[x][y] = 1;
 
-        if(findPath(maze, x + 1, y, n, solution)) {
-            return true;
+        for(let [dx, dy] of directions) {
+            if(findPath(maze, x + dx, y + dy, n, solution)) {
+                return true;
+            }
         }
-        if(findPath(maze, x, y + 1, n, solution)) {
-            return true;
-        }
-
-        if(findPath(maze, x - 1, y, n, solution)) {
-            return true;
-        }
-
-        if(findPath(maze, x, y - 1, n, solution)) {
-            return true;
-        }
-
         solution[x][y] = 0;
-        return false;
     }
     return false;
 }
