@@ -1,10 +1,5 @@
 /*
-Bicoloring / Bipartite Graph
-
-A graph is said to be Bicolorable if it can be properly colored using 2 colors, condition is no two adjacent vertices can have the same color.
-
-A graph is bicolorable if and only if it has no odd cycle. 
-A bipartite graph is 2-colorable.
+Bicoloring / Bipartite Graph (Adjacency Matrix)
 
 (This solution works only for connected graph. We can use an external loop to make it work for disconnected graph also.)
 */
