@@ -1,37 +1,18 @@
-/*
-Priority Queue(Min Heap Implementation)
-
-    It can be implemented using other Data Structures but is commonly implemented using a Heap.
-    Each node contains a priority. When we enqueue a node to the queue, it’s “bubbled up” to its place in the queue.
-
-    Time Complexity:
-        enqueue() - O()
-        dequeue() - O()
-*/
-class Task {
-    constructor(task, priority) {
-        this.task = task;
-        this.priority = priority;
-    }
-}
+/* Priority Queue(Min Heap Implementation) */
 
 class PriorityQueue {
     constructor(capacity) {
-        this.size = 0;
+        this.length = 0;
         this.capacity = capacity;
         this.heap = new Array(capacity).fill(null);
     }
 
-    size() {
-        return this.size;
-    }
-
     isEmpty() {
-        return this.size === 0;
+        return this.length === 0;
     }
 
     isFull() {
-        return this.size === this.capacity;
+        return this.length === this.capacity;
     }
 
     parentIndex (index) {
@@ -49,7 +30,7 @@ class PriorityQueue {
         let children = this.heap[index];
         let parent = this.heap[this.parentIndex(index)];
 
-        while(currentIndex > 0 && children.priority < parent.priority) {
+        while(currentIndex > 0 && children[1] < parent?.[1]) {
             this.swap(currentIndex, this.parentIndex(index));
 
             currentIndex = this.parentIndex(index);
@@ -58,13 +39,12 @@ class PriorityQueue {
         }
     }
 
-    enQueue(item, priority) {
+    enQueue(element) {
         if(this.isFull()) {
             process.stdout.write("Queue is full!");
         } else {
-            const newTask = new Task(item, priority);
-            this.heap[this.size++] = newTask;
-            this.heapifyUp(this.size - 1);
+            this.heap[this.length++] = element;
+            this.heapifyUp(this.length - 1);
         }
     }
 
@@ -73,11 +53,11 @@ class PriorityQueue {
         let l = (2 * i) + 1;
         let r = (2 * i) + 2;
 
-        if(l < this.size && this.heap[l].priority < this.heap[smallest].priority) {
+        if(l < this.length && this.heap[l][1] < this.heap[smallest][1]) {
             smallest = l;
         }
 
-        if(r < this.size && this.heap[r].priority < this.heap[smallest].priority) {
+        if(r < this.length && this.heap[r][1] < this.heap[smallest][1]) {
             smallest = r;
         }
 
@@ -92,35 +72,19 @@ class PriorityQueue {
 
         if (!this.isEmpty()) {
             task = this.heap[0];
-            this.swap(0, --this.size);
-            this.heap[this.size] = null;
+            this.swap(0, --this.length);
+            this.heap[this.length] = null;
 
             this.heapifyDown(0);
         }
         return task;
     }
 
-    front() {
-        if (!this.isEmpty()) return this.collection[0][0];
-    }
-
     printQueue() {
-        if (this.isEmpty()) {
-            process.stdout.write("Queue is empty!");
-        } else {
-            for (let i = 0; i < this.size; i++) {
-                process.stdout.write((i + 1) + " " + this.heap[i].task + " (priority " + this.heap[i].priority + ")\n");
-            }
-        }
-        process.stdout.write("\n");
+        console.log(this.heap)
     }
 }
 
-const queue = new PriorityQueue();
-queue.enQueue("Coding", 3);
-queue.enQueue("Sleeping", 2);
-queue.enQueue("Music", 1);
-queue.enQueue("Being sad for no reason for a while", 7);
-queue.enQueue("Tv Series", 5);
-
-queue.printQueue();
+module.exports = {
+    PriorityQueue
+}

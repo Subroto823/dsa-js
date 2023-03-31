@@ -1,31 +1,27 @@
 /**
- @Dijkstra (Priority Queue)
+ @Dijkstra (Adjacency List)
 
-    Time Complexity:  O(VlogV)
+    Time Complexity: O(ElogV)
     Space Complexity: O(V)
 */
-const { PriorityQueue } = require('./priority-queue');
 
 function dijkstra(graph, source) {
-    console.log(graph);
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
     let count = 0;
 
-    const Queue = new PriorityQueue(V);
-    Queue.enQueue([source, 0]);
+    const Queue = [source];
     distance[source] = 0;
 
     while (Queue.length) {
-        let currentVertex = Queue.deQueue();
-        currentVertex = currentVertex[0];
+        let currentVertex = Queue.shift();
 
         for (let [neighbor, weight] of graph[currentVertex]) {
             let newDistance = (distance[currentVertex] + weight);
 
             if (newDistance < distance[neighbor]) {
                 distance[neighbor] = distance[currentVertex] + weight;
-                Queue.enQueue([neighbor, weight]);
+                Queue.push(neighbor);
                 count++;
             }
         }
@@ -55,7 +51,7 @@ graph = [
     [[5, 1], [6, 8]],
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 5));
 
 graph = [
     [[3, 10], [2, 7], [1, 2]],
@@ -121,4 +117,7 @@ graph = [
 ]
 console.log('weight(descending)');
 console.log(dijkstra(graph, 7));
+
 console.timeEnd();
+
+
