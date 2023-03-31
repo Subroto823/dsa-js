@@ -7,7 +7,6 @@
 const { PriorityQueue } = require('./priority-queue');
 
 function dijkstra(graph, source) {
-    console.log(graph);
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
     let count = 0;
@@ -21,17 +20,15 @@ function dijkstra(graph, source) {
         currentVertex = currentVertex[0];
 
         for (let [neighbor, weight] of graph[currentVertex]) {
-            let newDistance = (distance[currentVertex] + weight);
+            let newDistance = distance[currentVertex] + weight;
 
             if (newDistance < distance[neighbor]) {
-                distance[neighbor] = distance[currentVertex] + weight;
-                Queue.enQueue([neighbor, weight]);
-                count++;
+                distance[neighbor] = newDistance;
+                Queue.enQueue([neighbor, distance[neighbor]]);
             }
         }
     }
-    console.log(distance);
-    console.log(count);
+    return distance;
 }
 
 // adjacent node of vertex i -> [[node, weight], ...]

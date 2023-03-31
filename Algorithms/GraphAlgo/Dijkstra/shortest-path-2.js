@@ -19,7 +19,7 @@ function dijkstra(graph, source) {
             let newDistance = (distance[currentVertex] + weight);
 
             if(newDistance < distance[neighbor]) {
-                distance[neighbor] = distance[currentVertex] + weight;
+                distance[neighbor] = newDistance
                 Queue.push(neighbor);
             }
         }

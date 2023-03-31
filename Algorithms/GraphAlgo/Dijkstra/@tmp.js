@@ -26,8 +26,7 @@ function dijkstra(graph, source) {
             }
         }
     }
-    console.log(distance);
-    console.log(count);
+    return distance;
 }
 
 // adjacent node of vertex i -> [[node, weight], ...]
@@ -51,7 +50,7 @@ graph = [
     [[5, 1], [6, 8]],
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
-console.log(dijkstra(graph, 5));
+console.log(dijkstra(graph, 7));
 
 graph = [
     [[3, 10], [2, 7], [1, 2]],
