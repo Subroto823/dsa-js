@@ -62,9 +62,7 @@ graph = [
     [0, 0, 2, 0, 0, 0, 6, 7, 0]
 ];
 
-console.time();
 console.log(dijkstra(graph, 0));
-console.timeEnd();
 
 graph = [
     [0, 1, 2, 3],
