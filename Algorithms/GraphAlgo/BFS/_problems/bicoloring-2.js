@@ -1,4 +1,5 @@
-/*
+/**
+@TODO
 Bicoloring / Bipartite Graph (Adjacency Matrix)
 
 (This solution works only for connected graph. We can use an external loop to make it work for disconnected graph also.)
