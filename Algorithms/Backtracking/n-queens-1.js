@@ -1,42 +1,48 @@
-function solveNQueens(n) {
-    let queen = new Array(n).fill(0);
-    let column = new Array(20).fill(0);
-    let diagonal1 = new Array(40).fill(0);
-    let diagonal2 = new Array(40).fill(0);
+var solveNQueens = function(n) {
+    let results = [];
 
-    const board = [];
+    const isValid = (colPlacement) => {
+        let rows = colPlacement.length - 1;
+        for(let i = 0; i < rows; i++) {
+            let diff = Math.abs(colPlacement[i] - colPlacement[rows]);
 
-    function solve(at) {
-        if (at === n + 1) {
-            let solution = []
-            console.log(queen)
-            for (let i = 1; i <= n; i++) {
-                let newRow = '.'.repeat(queen[i] - 1) + 'Q' + '.'.repeat(n - queen[i]);
-                solution.push(newRow);
+            if(diff === 0 || diff === rows - i) {
+                return false;
             }
-            board.push(solution);
+        }
+        return true;
+    }
+
+    const solve = (row, colPlacement = []) => {
+        if(row === n) {
+            results.push([...colPlacement]);
             return;
         }
 
-        for (let i = 1; i <= n; i++) {
-            if (column[i] || diagonal1[i + at] || diagonal2[n + i - at]) continue;
+        for(let col = 0; col < n; col++) {
+            colPlacement.push(col);
 
-            queen[at] = i;
-
-            column[i] = 1
-            diagonal1[i + at] = 1;
-            diagonal2[n + i - at] = 1;
-
-            solve(at + 1);
-
-            column[i] = 0
-            diagonal1[i + at] = 0
-            diagonal2[n + i - at] = 0
+            if(isValid(colPlacement)) {
+                solve(row + 1, colPlacement);
+            }
+            colPlacement.pop();
         }
     }
 
-    solve(1);
-    return board;
+    solve(0)
+
+    results = results.map((result) => {
+        return result.map(queenIndex => {
+            let newRow = '';
+            for(let i = 0; i < n; i++) {
+                newRow += (i === queenIndex) ? 'Q' : '.';
+            }
+            return newRow;
+        });
+    });
+    return results;
 }
 
-console.log(solveNQueens(4));
+console.time();
+console.log(solveNQueens(9));
+console.timeEnd();
