@@ -5,6 +5,8 @@ A graph is said to be Bicolorable if it can be properly colored using 2 colors, 
 
 A graph is bicolorable if and only if it has no odd cycle. 
 A bipartite graph is 2-colorable.
+
+(This solution works only for connected graph. We can use an external loop to make it work for disconnected graph also.)
 */
 
 const COLOR = {
