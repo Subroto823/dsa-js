@@ -61,5 +61,36 @@ function isBipartite(graph) {
     return true;
 }
 
-let res = isBipartite([[], [2, 4, 6], [1, 4, 8, 9], [7, 8], [1, 2, 8, 9], [6, 9], [1, 5, 7, 8, 9], [3, 6, 9], [2, 3, 4, 6, 9], [2, 4, 5, 6, 7, 8]]);
-console.log(res);
+let graph = [
+    [], 
+    [2, 4, 6], 
+    [1, 4, 8, 9], 
+    [7, 8], 
+    [1, 2, 8, 9], 
+    [6, 9], 
+    [1, 5, 7, 8, 9], 
+    [3, 6, 9], 
+    [2, 3, 4, 6, 9], 
+    [2, 4, 5, 6, 7, 8]
+]
+console.log(isBipartite(graph));
+
+graph = [
+    [],
+    [2, 3],
+    [1, 4],
+    [1, 4],
+    [2, 3, 5],
+    [4]
+];
+console.log(isBipartite(graph));
+
+graph = [
+    [],
+    [2, 5],
+    [3, 4],
+    [2, 4],
+    [2, 3],
+    [1]
+];
+console.log(isBipartite(graph));
