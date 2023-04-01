@@ -12,7 +12,7 @@ function dijkstra(graph, source) {
     const visited = new Int8Array(V);
     let count = 0;
 
-    const Queue = new PriorityQueue(V);
+    const Queue = new PriorityQueue();
     Queue.enQueue(source, 0);
     distance[source] = 0;
 
