@@ -9,25 +9,29 @@ const { PriorityQueue } = require('./priority-queue');
 function dijkstra(graph, source) {
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
+    const visited = new Int8Array(V);
     let count = 0;
 
     const Queue = new PriorityQueue(V);
-    Queue.enQueue([source, 0]);
+    Queue.enQueue(source, 0);
     distance[source] = 0;
 
     while (Queue.length) {
-        let currentVertex = Queue.deQueue();
-        currentVertex = currentVertex[0];
+        let currentVertex = Queue.deQueue().node;
 
         for (let [neighbor, weight] of graph[currentVertex]) {
+            // if(visited[neighbor]) continue;
             let newDistance = distance[currentVertex] + weight;
 
             if (newDistance < distance[neighbor]) {
                 distance[neighbor] = newDistance;
-                Queue.enQueue([neighbor, distance[neighbor]]);
+                Queue.enQueue(neighbor, distance[neighbor]);
+                visited[currentVertex] = 1
+                count++;
             }
         }
     }
+    console.log(count)
     return distance;
 }
 
