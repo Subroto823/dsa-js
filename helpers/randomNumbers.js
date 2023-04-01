@@ -22,6 +22,7 @@ function randomRange(min, max) {
 
 module.exports = {
     randomArray,
-    randomNumbers
+    randomNumbers,
+    randomRange
 }
 
