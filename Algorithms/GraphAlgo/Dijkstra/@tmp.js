@@ -26,6 +26,7 @@ function dijkstra(graph, source) {
             }
         }
     }
+    console.log(count)
     return distance;
 }
 
@@ -50,7 +51,7 @@ graph = [
     [[5, 1], [6, 8]],
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 0));
 
 graph = [
     [[3, 10], [2, 7], [1, 2]],
@@ -71,7 +72,7 @@ graph = [
     [[7, 2], [5, 3], [2, 4], [1, 9]]
 ]
 console.log('vertex(descending)');
-console.log(dijkstra(graph, 7))
+console.log(dijkstra(graph, 0))
 
 graph = [
     [[1, 2], [2, 7], [3, 10]],
@@ -93,7 +94,7 @@ graph = [
     [[7, 2], [5, 3], [2, 4], [1, 9]]
 ]
 console.log('weight - ascendin');
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 0));
 
 graph = [
     [[3, 10], [2, 7], [1, 2]],
@@ -115,7 +116,7 @@ graph = [
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
 console.log('weight(descending)');
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 0));
 
 console.timeEnd();
 

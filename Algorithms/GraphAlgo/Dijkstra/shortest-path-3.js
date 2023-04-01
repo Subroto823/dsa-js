@@ -9,8 +9,6 @@ const { PriorityQueue } = require('./priority-queue');
 function dijkstra(graph, source) {
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
-    const visited = new Int8Array(V);
-    let count = 0;
 
     const Queue = new PriorityQueue();
     Queue.enQueue(source, 0);
@@ -20,18 +18,14 @@ function dijkstra(graph, source) {
         let currentVertex = Queue.deQueue().node;
 
         for (let [neighbor, weight] of graph[currentVertex]) {
-            // if(visited[neighbor]) continue;
             let newDistance = distance[currentVertex] + weight;
 
             if (newDistance < distance[neighbor]) {
                 distance[neighbor] = newDistance;
                 Queue.enQueue(neighbor, distance[neighbor]);
-                visited[currentVertex] = 1
-                count++;
             }
         }
     }
-    console.log(count)
     return distance;
 }
 
@@ -56,7 +50,7 @@ graph = [
     [[5, 1], [6, 8]],
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 8));
 
 graph = [
     [[3, 10], [2, 7], [1, 2]],
@@ -77,7 +71,7 @@ graph = [
     [[7, 2], [5, 3], [2, 4], [1, 9]]
 ]
 console.log('vertex(descending)');
-console.log(dijkstra(graph, 7))
+console.log(dijkstra(graph, 8))
 
 graph = [
     [[1, 2], [2, 7], [3, 10]],
@@ -99,7 +93,7 @@ graph = [
     [[7, 2], [5, 3], [2, 4], [1, 9]]
 ]
 console.log('weight - ascendin');
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 8));
 
 graph = [
     [[3, 10], [2, 7], [1, 2]],
@@ -121,5 +115,5 @@ graph = [
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
 console.log('weight(descending)');
-console.log(dijkstra(graph, 7));
+console.log(dijkstra(graph, 8));
 console.timeEnd();
