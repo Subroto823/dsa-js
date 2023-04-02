@@ -16,9 +16,9 @@ class DisjointSet{
         }
     }
 
-    unions(x, y) {
-        let xRoot = findRepresentative(x);
-        let yRoot = findRepresentative(y);
+    union(x, y) {
+        let xRoot = this.findRepresentative(x);
+        let yRoot = this.findRepresentative(y);
 
         if(xRoot !== yRoot) {
             this.parent[xRoot] = yRoot;
@@ -37,9 +37,9 @@ class DisjointSet{
 
 const ds = new DisjointSet(5);
 
-ds.unions(0, 2);
-ds.unions(4, 2);
+ds.union(0, 2);
+ds.union(4, 2);
 console.log(ds.findRepresentative(4) === ds.findRepresentative(0));
 
-ds.unions(1, 3);
+ds.union(1, 3);
 console.log(ds.findRepresentative(2) === ds.findRepresentative(3));
