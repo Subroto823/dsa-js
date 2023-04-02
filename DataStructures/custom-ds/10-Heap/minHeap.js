@@ -3,7 +3,7 @@ class minHeap {
         this.heap = new Array();
     }
 
-    size() {
+    get length() {
         return this.heap.length;
     }
 
@@ -56,7 +56,7 @@ class minHeap {
     remove() {
         let max = this.heap[0];
         let last = this.heap.pop();
-        this.heap[0] = last;
+        this.heap[0] = this.heap[];
         this.heapify(0);
         return max;
     }
