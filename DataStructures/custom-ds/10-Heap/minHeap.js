@@ -19,7 +19,7 @@ class minHeap {
 
     insert = (element) => {
         this.heap.push(element);
-        this.heapifyUp(this.heap.length - 1);
+        this.heapifyUp(this.length - 1);
     }
 
     heapifyUp = (index) => {
@@ -37,13 +37,12 @@ class minHeap {
         let smallest = i;
         let l = 2 * i + 1;
         let r = 2 * i + 2;
-        let length = this.size();
 
-        if (l < length && this.heap[l] < this.heap[smallest]) {
+        if (l < this.length && this.heap[l] < this.heap[smallest]) {
             smallest = l;
         }
 
-        if (r < length && this.heap[r] < this.heap[smallest]) {
+        if (r < this.length && this.heap[r] < this.heap[smallest]) {
             smallest = r;
         }
 
@@ -54,11 +53,12 @@ class minHeap {
     }
 
     remove() {
-        let max = this.heap[0];
-        let last = this.heap.pop();
-        this.heap[0] = this.heap[];
+        let min = this.heap[0];
+        this.heap[0] = this.heap[this.length - 1];
+        this.heap.pop();
         this.heapify(0);
-        return max;
+
+        return min;
     }
 
 
@@ -66,24 +66,24 @@ class minHeap {
         if (!value) return;
 
         let i;
-        let size = this.size();
+        let len = this.length;
 
-        for (i = 0; i < size; i++) {
+        for (i = 0; i < len; i++) {
             if (value === this.heap[i]) break;
         }
 
-        this.swap(i, size - 1);
-        this.heap.length--;
+        this.swap(i, len - 1);
+        this.heap.pop();
 
         // Build Min Heap
-        for (let j = Math.floor(size / 2) - 1; j >= 0; j--) {
+        for (let j = Math.floor(len / 2) - 1; j >= 0; j--) {
             this.heapify(j);
         }
     }
 
     printHeap() {
         let txt = "";
-        for (let i = 0; i < this.size(); i++) {
+        for (let i = 0; i < this.length; i++) {
             txt += this.heap[i] + " ";
         }
         process.stdout.write(txt + "\n");
