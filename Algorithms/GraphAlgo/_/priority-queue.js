@@ -9,13 +9,16 @@ class priorityNode {
 
 class PriorityQueue {
     constructor(capacity) {
-        this.length = 0;
         this.capacity = capacity ? capacity : Infinity;
         this.heap = [];
     }
 
     isEmpty() {
         return this.length === 0;
+    }
+
+    get length() {
+        return this.heap.length;
     }
 
     isFull() {
@@ -54,7 +57,7 @@ class PriorityQueue {
         } else {
             const newNode = new priorityNode(element, priority);
             this.heap.push(newNode);
-            this.heapifyUp(++this.length - 1);
+            this.heapifyUp(this.length - 1);
         }
     }
 
@@ -78,15 +81,15 @@ class PriorityQueue {
     }
 
     deQueue() {
-        let deleteNode = null;
+        if (this.isEmpty()) return null;
+
         let heap = this.heap;
 
-        if (!this.isEmpty()) {
-            deleteNode = this.heap[0];
-            heap[0] = heap.pop();
-            --this.length;
-            this.heapifyDown(0);
-        }
+        let deleteNode = heap[0];
+        heap[0] = heap[this.length - 1];
+        heap.pop();
+        this.heapifyDown(0);
+
         return deleteNode;
     }
 }

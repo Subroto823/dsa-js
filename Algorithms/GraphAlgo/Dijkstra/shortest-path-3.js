@@ -4,7 +4,7 @@
     Time Complexity:  O(VlogV)
     Space Complexity: O(V)
 */
-const { PriorityQueue } = require('./priority-queue');
+const { PriorityQueue } = require('../_/priority-queue');
 
 function dijkstra(graph, source) {
     const V = graph.length;
@@ -26,6 +26,8 @@ function dijkstra(graph, source) {
             }
         }
     }
+    console.log(Queue.heap)
+    console.log(Queue.length)
     return distance;
 }
 
@@ -36,7 +38,7 @@ let graph = [
     [[0, 7], [3, 1]],
     [[0, 10], [1, 2], [2, 1]]
 ]
-console.log(dijkstra(graph, 1));
+console.log(dijkstra(graph, 2));
 
 graph = [
     [[1, 3], [2, 2], [3, 7], [4, 3], [6, 11]],
@@ -50,4 +52,4 @@ graph = [
     [[5, 1], [6, 8]],
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
-console.log(dijkstra(graph, 2));
+// console.log(dijkstra(graph, 2));
