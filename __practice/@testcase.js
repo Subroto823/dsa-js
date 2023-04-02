@@ -1,5 +1,5 @@
-const { randomRange } = require('../../../helpers/randomNumbers.js');
-const { swap } = require('../../../helpers/swap.js');
+const { randomRange } = require('../helpers/randomNumbers.js');
+const { swap } = require('../helpers/swap.js');
 
 function buildCase(N) {
     let graph = [];

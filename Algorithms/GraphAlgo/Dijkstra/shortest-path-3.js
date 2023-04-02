@@ -26,8 +26,6 @@ function dijkstra(graph, source) {
             }
         }
     }
-    console.log(Queue.heap)
-    console.log(Queue.length)
     return distance;
 }
 
@@ -52,4 +50,4 @@ graph = [
     [[5, 1], [6, 8]],
     [[1, 9], [2, 4], [5, 3], [7, 2]]
 ]
-// console.log(dijkstra(graph, 2));
+console.log(dijkstra(graph, 2));
