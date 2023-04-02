@@ -6,6 +6,7 @@ class DisjointSet {
 
     init(N) {
         for(let i = 0; i < N; i++) {
+            // In the beginning everyone is their own representative
             this.parent[i] = i;
         }
     }
