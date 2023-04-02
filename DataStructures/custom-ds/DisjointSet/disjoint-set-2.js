@@ -38,7 +38,7 @@ class DisjointSet{
 const ds = new DisjointSet(5);
 
 ds.union(0, 2);
-ds.union(4, 2);
+ds.union(0, 4);
 console.log(ds.findRepresentative(4) === ds.findRepresentative(0));
 
 ds.union(1, 3);
