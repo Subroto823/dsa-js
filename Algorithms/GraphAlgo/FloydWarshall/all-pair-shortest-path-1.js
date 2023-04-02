@@ -4,8 +4,8 @@ function floydWarshall(matrix) {
     for(let k = 0; k < N; k++) {
         for(let i = 0; i < N; i++) {
             for(let j = 0; j < N; j++) {
-                let distance = matrix[i][k] + matrix[k][j];
                 
+                let distance = matrix[i][k] + matrix[k][j];
                 if(distance < matrix[i][j]) {
                     matrix[i][j] = distance
                 }
