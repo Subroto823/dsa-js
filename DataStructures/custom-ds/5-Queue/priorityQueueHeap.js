@@ -17,9 +17,12 @@ class Task {
 
 class PriorityQueue {
     constructor(capacity) {
-        this.length = 0;
         this.capacity = capacity ? capacity : Infinity;
         this.heap = [];
+    }
+
+    get length() {
+        return this.heap.length;
     }
 
     isEmpty() {
@@ -30,7 +33,7 @@ class PriorityQueue {
         return this.length === this.capacity;
     }
 
-    parentIndex (index) {
+    parentIndex(index) {
         return Math.floor((index - 1) / 2);
     }
 
@@ -46,7 +49,7 @@ class PriorityQueue {
         let currentIndex = index;
         let parentIndex = this.parentIndex(index);
 
-        while(currentIndex > 0 && heap[currentIndex].priority < heap[parentIndex].priority) {
+        while (currentIndex > 0 && heap[currentIndex].priority < heap[parentIndex].priority) {
             this.swap(currentIndex, parentIndex);
 
             currentIndex = parentIndex;
@@ -55,12 +58,12 @@ class PriorityQueue {
     }
 
     enQueue(item, priority) {
-        if(this.isFull()) {
+        if (this.isFull()) {
             process.stdout.write("Queue is full!\n");
         } else {
             const newNode = new Task(item, priority);
             this.heap.push(newNode);
-            this.heapifyUp(++this.length - 1);
+            this.heapifyUp(this.length - 1);
         }
     }
 
@@ -69,31 +72,30 @@ class PriorityQueue {
         let l = (2 * i) + 1;
         let r = (2 * i) + 2;
 
-        if(l < this.length && this.heap[l].priority < this.heap[smallest].priority) {
+        if (l < this.length && this.heap[l].priority < this.heap[smallest].priority) {
             smallest = l;
         }
 
-        if(r < this.length && this.heap[r].priority < this.heap[smallest].priority) {
+        if (r < this.length && this.heap[r].priority < this.heap[smallest].priority) {
             smallest = r;
         }
 
-        if(smallest !== i) {
+        if (smallest !== i) {
             this.swap(i, smallest);
             this.heapifyDown(smallest);
         }
     }
 
     deQueue() {
-        let deleteTask = null;
+        if (this.isEmpty()) return null;
+
         let heap = this.heap;
 
-        if (!this.isEmpty()) {
-            deleteTask = heap[0];
-            heap[0] = heap.pop();
-            --this.length;
+        let deleteTask = heap[0];
+        heap[0] = heap[this.length - 1];
+        heap.pop();
+        this.heapifyDown(0);
 
-            this.heapifyDown(0);
-        }
         return deleteTask;
     }
 
