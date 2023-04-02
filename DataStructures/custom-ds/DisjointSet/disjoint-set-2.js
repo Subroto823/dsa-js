@@ -1,11 +1,9 @@
 /*
 Disjoint Set (With path compression)
 
-    With path compression, finding representive will be more optimal. With path compression, if we run findRepresentative m times,
-
-        Time complexity will be O(mlogn)
+    With path compression, if we run findRepresentative m times, the time complexity will be O(mlogn), which is more optimal.
 */
-With
+
 class DisjointSet{
     constructor(N) {
         this.parent = new Array(N).fill(0);
@@ -18,7 +16,7 @@ class DisjointSet{
         }
     }
 
-    union(x, y) {
+    unions(x, y) {
         let xRoot = findRepresentative(x);
         let yRoot = findRepresentative(y);
 
@@ -31,7 +29,7 @@ class DisjointSet{
         if(this.parent[r] === r) {
             return r;
         }
-        // path compression
+        // Path compression
         this.parent[r] = this.findRepresentative(this.parent[r]);
         return this.parent[r];
     }
