@@ -1,3 +1,9 @@
+/*
+Disjoint Set (Without path compression)
+
+    Without path compression, the time complexity of findRepresentative will be O(n), depending on the depth.
+*/
+
 class DisjointSet {
     constructor(N) {
         this.parent = new Array(N).fill(0);
