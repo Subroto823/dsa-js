@@ -21,5 +21,4 @@ let matrix = [
     [Infinity, 5, 0, Infinity],
     [20, Infinity, 8, 0]
 ]
-
 console.log(floydWarshall(matrix))
