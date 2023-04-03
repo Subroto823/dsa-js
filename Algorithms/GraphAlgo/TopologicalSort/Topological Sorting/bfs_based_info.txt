@@ -1,0 +1,33 @@
+We will always try to execute those nodes that have outdegree 0.
+
+Then after execution of all those 0 outdegrees, we will execute which are directly dependent on currently resolved tasks (currently resolved tasks’ outdegrees will become 0 now) and so on will execute all other tasks. 
+
+We look closely we are doing these executions are done level-wise or in a Breadth-first search (BFS) manner.
+
+Algorithm: 
+ 
+Step-1: Compute in-degree (number of incoming edges) for each of the vertex present in the DAG and initialize the count of visited nodes as 0.
+
+Step-2: Pick all the vertices with in-degree as 0 and add them into a queue (Enqueue operation)
+
+Step-3: Remove a vertex from the queue (Dequeue operation) and then. 
+ 
+Increment the count of visited nodes by 1.
+
+Decrease in-degree by 1 for all its neighbouring nodes.
+If the in-degree of neighbouring nodes is reduced to zero, then add it to the queue.
+
+Step 4: Repeat Step 3 until the queue is empty.
+
+Step 5: If the count of visited nodes is not equal to the number of nodes in the graph then the topological sort is not possible for the given graph.
+
+
+Complexity Analysis: 
+ 
+Time Complexity: O(V+E). 
+
+The outer for loop will be executed V number of times and the inner for loop will be executed E number of times.
+
+Auxiliary Space: O(V).
+ 
+The queue needs to store all the vertices of the graph. So the space required is O(V)
