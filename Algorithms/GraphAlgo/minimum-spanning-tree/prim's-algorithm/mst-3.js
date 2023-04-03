@@ -17,13 +17,14 @@ function primMST(graph, source) {
 
     while(queue.length) {
         let current = queue.deQueue();
+        let {node: currentNode, priority: currentNodeCost} = current;
 
-        if(visited[current.node]) continue;
+        if(visited[currentNode]) continue;
         
-        visited[current.node] = true;
-        ans += current.priority;
+        visited[currentNode] = true;
+        ans += currentNodeCost;
 
-        for(let [neighbor, weight] of graph[current.node]) {
+        for(let [neighbor, weight] of graph[currentNode]) {
             if(visited[neighbor]) continue;
 
             if(weight < cost[neighbor]) {
