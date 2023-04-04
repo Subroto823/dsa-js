@@ -5,7 +5,7 @@ Minimum Spanning Tree
 */
 const { PriorityQueue } = require('../../_/priority-queue');
 
-function primMST(graph, source) {
+function primsMST(graph, source) {
     const N = graph.length;
     const cost = new Array(N).fill(Infinity);
     const visited = new Array(N).fill(false);
@@ -42,7 +42,7 @@ let graph = [
     [[0, 4], [1, 1], [3, 2]],
     [[1, 3], [2, 2]]
 ];
-console.log(primMST(graph, 0));
+console.log(primsMST(graph, 0));
 
 graph = [
     [[1, 4], [2, 2]],
@@ -50,7 +50,7 @@ graph = [
     [[0, 2], [1, 1], [3, 2]],
     [[1, 3], [2, 2]]
 ];
-console.log(primMST(graph, 0));
+console.log(primsMST(graph, 0));
 
 graph = [
     [[1, 2], [2, 3]],
@@ -59,4 +59,4 @@ graph = [
     [[1, 4], [2, 1], [4, 2]],
     [[3, 2], [2, 3]]
 ]
-console.log(primMST(graph, 0));
+console.log(primsMST(graph, 0));
