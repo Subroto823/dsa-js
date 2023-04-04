@@ -25,7 +25,13 @@
 
 
 * Time Complexity: O(ElogE) or O(ElogV),
-Sorting of edges takes O(ELogE) time. After sorting, we iterate through all edges and apply the find-union algorithm. 
-The find and union operations can take at most O(LogV) time. So overall complexity is O(ELogE + ELogV) time. The value of E can be at most O(V2), so O(LogV) is O(LogE) the same. Therefore, the overall time complexity is O(ElogE) or O(ElogV)
+    Sorting of edges takes O(ELogE) time. After sorting, we iterate through all edges and apply the find-union algorithm. 
+    The find and union operations can take at most O(LogV) time. So overall complexity is O(ELogE + ELogV) time. The value of E can be at most O(V2), so O(LogV) is O(LogE) the same. Therefore, the overall time complexity is O(ElogE) or O(ElogV)
 
 * Auxiliary Space: O(V + E), where V is the number of vertices and E is the number of edges in the graph
+
+
+###
+    * Prim's algorithm works comparetively faster than Kruskal's, if the graph is a dense graph. Otherwise Kruskal's algorithm works faster.
+
+    * Another important difference is, if the graph contains more than one component, then Kruskal's algorithm discover's minimum spanning tree for all componenent. But Prim's algorithm works only for the One component (first / source node belongs to ).
