@@ -16,7 +16,7 @@ class DisjointSet {
         }
     }
 
-    findRepresentative(r) {
+    find(r) {
         if (this.parent[r] !== r) {
             this.parent[r] = this.findRepresentative(this.parent[r]);
         }
