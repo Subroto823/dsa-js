@@ -18,15 +18,15 @@ class DisjointSet {
 
     find(r) {
         if (this.parent[r] !== r) {
-            this.parent[r] = this.findRepresentative(this.parent[r]);
+            this.parent[r] = this.find(this.parent[r]);
         }
         return this.parent[r];
     }
 
     // Union by size
     union(a, b) {
-        let setOfA = this.findRepresentative(a);
-        let setOfB = this.findRepresentative(b);
+        let setOfA = this.find(a);
+        let setOfB = this.find(b);
 
         if (setOfA === setOfB) return;
 
