@@ -1,4 +1,4 @@
-function primMST(graph, source) {
+function primsMST(graph, source) {
     
 }
 
