@@ -13,6 +13,7 @@ class Edge {
     }
 }
 
+// Edges array from adjacency list
 function buildEdgesArray(graph) {
     const edges = [];
 
@@ -44,7 +45,7 @@ function kruskalsMST(graph) {
 }
 
 
-// adjacency list - vertex i [[neighbor, weight], ...]
+// Adjacency list - vertex i [[neighbor, weight], ...]
 let graph = [
     [[1, 4], [2, 2]],
     [[0, 4], [2, 1], [3, 3]],
@@ -60,4 +61,4 @@ graph = [
     [[1, 4], [2, 1], [4, 2]],
     [[3, 2], [2, 3]]
 ]
-console.log(kruskalsMST(graph, 0));
+console.log(kruskalsMST(graph));
