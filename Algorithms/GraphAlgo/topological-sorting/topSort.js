@@ -78,6 +78,8 @@ addEdge(4, 0);
 addEdge(4, 1);
 addEdge(2, 3);
 addEdge(3, 1);
+console.log(adj)
+
 console.log(
 "Following is a Topological Sort");
 topSort();

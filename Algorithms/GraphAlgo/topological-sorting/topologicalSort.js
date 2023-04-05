@@ -85,6 +85,7 @@ graph.addEdge(4, 1);
 graph.addEdge(2, 3);
 graph.addEdge(3, 1);
 
+console.log(graph);
 console.log(
 "Following is a Topological Sort");
 graph.topSort();
