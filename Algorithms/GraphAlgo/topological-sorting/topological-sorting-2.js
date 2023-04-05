@@ -4,22 +4,37 @@ Topological Sorting (bfs based)
 */
 
 function topSort(G) {
-    /*
-    // L - empty list will contain sorted elements
-    // S - Set of all nodes with zero indegree
+    const topOrder = [],
+        indegree = {},
+        queue = [];
 
-    while S is not empty
+    for(let node in G) {
+        indegree[node] = 0;
+    }
 
-    remove a node u from s
-    L.add(u)
+    for(let node in G) {
+        for(let neighbor of G[node]) {
+            indegree[neighbor]++;
+        }
+    }
 
-    for each adjacent node v of u do
-        remove edge(u, v) from the graph
-        if v has no other incoming edges
-        S.add(v)
+    for(let node in G) {
+        if(indegree[node] === 0) queue.push(node);
+    }
 
-    */
-   // return L;
+    while(queue.length) {
+        let currentNode = queue.shift();
+        topOrder.push(currentNode);
+
+        for(let neighbor of G[currentNode]) {
+            indegree[neighbor]--;
+
+            if(indegree[neighbor] === 0) {
+                queue.push(neighbor);
+            }
+        }
+    }
+    return topOrder;
 }
 
 // Adjacency List
@@ -30,4 +45,4 @@ let graph = {
     D: ['E'],
     E: []
 }
-console.log(topSort(graph)); // [A, B, C, D, E] or [A, C, B, D, E]
+console.log(topSort(graph)); // [A, B, C, D, E]
