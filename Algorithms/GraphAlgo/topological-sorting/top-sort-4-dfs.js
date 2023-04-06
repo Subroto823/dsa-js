@@ -6,15 +6,13 @@ Topological Sorting (dfs based)
 function topSort(G) {
     const stack = [],
         vertices = Object.keys(G);
-        N = vertices.length,
         visited = {};
 
-    for(let vertex of vertices) {
-        visited[vertex] = false;
+    for(let node of vertices) {
+        visited[node] = false;
     }
 
-    for (let i = 0; i < N; i++) {
-        let node = vertices[i];
+    for (let node of vertices) {
         if (visited[node] === false) {
             topSortHelper(G, node, stack, visited);
         }
