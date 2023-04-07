@@ -20,7 +20,7 @@ function topSort(G, source) {
     }
     
     dfs(G, source);
-    return reversedTopOrder.reverse()
+    return reversedTopOrder.reverse();
 }
 
 let graph = [
