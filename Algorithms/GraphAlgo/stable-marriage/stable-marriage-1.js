@@ -24,10 +24,11 @@ function stableMarriage(prefer, N) {
                     wPartner[woman - N] = currentMan;
                     mEngaged[currentMan] = true;
                     freeMen--;
-                } else {
+                } 
+                else {
                     let previousMan = wPartner[woman - N];
 
-                    if(!womenPrefersPrevMan(prefer, woman, previousMan, currentMan)) {
+                    if(!wPrefersPrevMan(prefer, woman, previousMan, currentMan)) {
                         wPartner[woman - N] = currentMan;
                         mEngaged[currentMan] = true;
                         mEngaged[previousMan] = false;
@@ -39,7 +40,7 @@ function stableMarriage(prefer, N) {
     return helper(wPartner, N);
 }
 
-function womenPrefersPrevMan(prefer, woman, previousMan, currentMan) {
+function wPrefersPrevMan(prefer, woman, previousMan, currentMan) {
     for(let preferedMan of prefer[woman]) {
         if(preferedMan === previousMan) {
             return true;
