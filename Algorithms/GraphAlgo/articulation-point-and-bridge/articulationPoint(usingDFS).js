@@ -65,15 +65,11 @@ class Graph {
     }
 
     ap() {
-        let visited = new Array(this.V);
-        let disc = new Array(this.V);
-        let low = new Array(this.V);
-        let parent = new Array(this.V);
-        let ap = new Array(this.V);
-
-        parent.fill(this.NIL);
-        visited.fill(false);
-        ap.fill(false);
+        let visited = new Array(this.V).fill(false);
+        let disc = new Array(this.V).fill(0);
+        let low = new Array(this.V).fill(0);
+        let parent = new Array(this.V).fill(this.NIL);
+        let ap = new Array(this.V).fill(false);
 
         for(let i = 0; i < this.V; i++) {
             if(visited[i] == false) {
@@ -91,24 +87,12 @@ class Graph {
     }
 }
 
-console.log("Articulation points in the graph:  ")
-let graph = new Graph(7);
-graph.addEdge(0, 1);
-graph.addEdge(1, 2);
-graph.addEdge(2, 0);
-graph.addEdge(1, 3);
-graph.addEdge(1, 4);
-graph.addEdge(1, 6);
-graph.addEdge(3, 5);
-graph.addEdge(4, 5);
-
-graph.ap();
-
-console.log("Articulation points in second graph: ");
+console.log("Articulation points in graph: ");
 let graph2 = new Graph(5);
 graph2.addEdge(1, 0);
 graph2.addEdge(0, 2);
 graph2.addEdge(2, 1);
 graph2.addEdge(0, 3);
 graph2.addEdge(3, 4);
+console.log(graph2.adj)
 graph2.ap();
