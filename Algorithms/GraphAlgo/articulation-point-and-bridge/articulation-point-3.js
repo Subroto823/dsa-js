@@ -48,8 +48,13 @@
                 }
             }
         }
+        
         findArticulationPoint(G, 0);
-        return ap;
+        
+        return ap.reduce((acc, element, i) => {
+            if (element) acc.push(i);
+            return acc;
+        }, []);
     }
     
     let graph = [
@@ -63,5 +68,14 @@
         [1],
         [0, 2],
         [1]
+    ];
+    console.log(articulationPoint(graph))
+
+    graph = [
+        [1, 2, 3], 
+        [0, 2], 
+        [0, 1], 
+        [0, 4], 
+        [3]
     ];
     console.log(articulationPoint(graph))
