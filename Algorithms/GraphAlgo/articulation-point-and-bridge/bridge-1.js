@@ -1,7 +1,10 @@
-/*
-Tarjan's algorithm (dfs) 
-
+/**
+# Bridge / Cut Edge / Critical Edge
+  
+    # Tarjan's Algorithm (Using dfs)
+    # Time Complexity: O(V + E)
  */
+
 
 function bridge(G) {
     const N = G.length,
@@ -12,32 +15,32 @@ function bridge(G) {
         bridges = [];
     let time = 0;
 
-
     function dfs(G, node) {
+        time++;
+        disc[node] = time;
+        low[node] = time;
         visited[node] = true;
-        disc[node] = low[node] = ++time;
-    
-        for (let neighbor of G[node]) {    
+
+        for (let neighbor of G[node]) {
+            if (neighbor === parent[node]) continue;
+
             if (!visited[neighbor]) {
                 parent[neighbor] = node;
                 dfs(G, neighbor);
-                // check if the subtree rooted with v has a connection with one of the ancestors of u
                 low[node] = Math.min(low[node], low[neighbor]);
-    
-                // If the lowest vertex reachable from subtree under 'neighbor' is below 'node' in DFS tree, then node-neighbor is a bridge
-                if (disc[node] < low[neighbor]) {
+
+                if (low[neighbor] > disc[node]) {
                     bridges.push([node, neighbor]);
                 }
             }
-            
-            else if (neighbor !== parent[node]) {
-                low[node] = Math.min(low[node], disc[neighbor])
+            else {
+                low[node] = Math.min(low[node], low[neighbor]);
             }
         }
     }
 
     dfs(G, 0);
-    return bridges
+    return bridges;
 }
 
 let graph = [
@@ -61,11 +64,13 @@ graph = [
 ];
 console.log(bridge(graph));
 
-graph = [
-    [1, 2, 3],
-    [0, 2],
-    [0, 1],
-    [0, 4],
-    [3]
+graph = [ 
+    [ 1, 2, 3 ], 
+    [ 0, 2 ], 
+    [ 0, 1 ], 
+    [ 0, 4 ], 
+    [ 3 ] 
 ];
 console.log(bridge(graph));
+
+
