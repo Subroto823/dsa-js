@@ -16,32 +16,32 @@ function articulationPoint(G) {
         ap = new Array(N).fill(false);
     let time = 0;
 
-    function findArticulationPoint(G, u) {
+    function findArticulationPoint(G, node) {
         let noOfChildren = 0;
         time++;
-        disc[u] = time;
-        low[u] = time;
-        visited[u] = true;
+        disc[node] = time;
+        low[node] = time;
+        visited[node] = true;
 
-        for (let neighbor of G[u]) {
-            if (neighbor === parent[u]) continue;
+        for (let neighbor of G[node]) {
+            if (neighbor === parent[node]) continue;
 
             if (visited[neighbor]) { // This is a backage
-                low[u] = Math.min(low[u], disc[neighbor]);
+                low[node] = Math.min(low[node], disc[neighbor]);
             }
 
             if (!visited[neighbor]) {
-                parent[neighbor] = u;
+                parent[neighbor] = node;
                 findArticulationPoint(G, neighbor);
-                low[u] = Math.min(low[u], low[neighbor]);
+                low[node] = Math.min(low[node], low[neighbor]);
 
-                if (disc[u] <= low[neighbor] && parent[u] !== -1) {
-                    ap[u] = true;
+                if (disc[node] <= low[neighbor] && parent[node] !== -1) {
+                    ap[node] = true;
                 }
                 noOfChildren++;
             }
-            if (noOfChildren > 1 && parent[u] === -1) {
-                ap[u] = true;
+            if (noOfChildren > 1 && parent[node] === -1) {
+                ap[node] = true;
             }
         }
     }
