@@ -35,6 +35,8 @@ function bridge(G) {
             }
             else {
                 low[node] = Math.min(low[node], low[neighbor]);
+                // low[node] = Math.min(low[node], disc[neighbor])
+
             }
         }
     }
