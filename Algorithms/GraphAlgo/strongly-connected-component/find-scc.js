@@ -19,17 +19,18 @@ function findSCC(graph)  {
 
     const reversedGraph = reverseGraph(graph, N);
     visited = new Array(N).fill(false);
-    let totalSCC = 0;
+    let scc = [];
 
     while(stack.length) {
         let currentNode = stack.pop();
 
         if(!visited[currentNode]) {
-            totalSCC++;
-            dfsII(reversedGraph, visited, currentNode);
+            let components = [];
+            dfsII(reversedGraph, visited, currentNode, components);
+            scc.push(components);
         }
     }
-    return totalSCC;
+    return scc;
 }
 
 function dfs(graph, visited, node, stack) {
@@ -55,12 +56,13 @@ function reverseGraph (graph, N) {
     return reversedGraph;
 }
 
-function dfsII(graph, visited, node) {
+function dfsII(graph, visited, node, components) {
     visited[node] = true;
+    components.push(node);
 
     for(let neighbor of graph[node]) {
         if(!visited[neighbor]) {
-            dfsII(graph, visited, neighbor);
+            dfsII(graph, visited, neighbor, components);
         }
     }
 }
