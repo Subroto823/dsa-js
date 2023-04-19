@@ -6,63 +6,68 @@
     (Implementation of Kosaraju’s algorithm)
 */
 
+const COLOR = {
+    WHITE: 0,
+    GRAY: -1,
+    BLACK: 1
+}
+
 function findSCC(graph)  {
     const N = graph.length,
         stack = [];
-    let visited = new Array(N).fill(false);
+    let colors = new Array(N).fill(COLOR.WHITE);
 
     for(let i = 0; i < N; i++) {
-        if(!visited[i]) {
-            dfs(graph, visited, i, stack);
+        if(colors[i] === COLOR.WHITE) {
+            dfs(graph, colors, i, stack);
         }
     }
 
-    const reversedGraph = reverseGraph(graph, N);
-    visited = new Array(N).fill(false);
+    const reversedGraph = reverseEdges(graph, N);
     let scc = [];
 
     while(stack.length) {
         let currentNode = stack.pop();
 
-        if(!visited[currentNode]) {
+        if(colors[currentNode] === COLOR.GRAY) {
             let components = [];
-            dfsII(reversedGraph, visited, currentNode, components);
+            dfsII(reversedGraph, colors, currentNode, components);
             scc.push(components);
         }
     }
     return scc;
 }
 
-function dfs(graph, visited, node, stack) {
-    visited[node] = true;
+function dfs(graph, colors, node, stack) {
+    colors[node] = COLOR.GRAY;
 
     for(let neighbor of graph[node]) {
-        if(!visited[neighbor]) {
-            dfs(graph, visited, neighbor, stack);
+        if(colors[neighbor] === COLOR.WHITE) {
+            dfs(graph, colors, neighbor, stack);
         }
     }
     stack.push(node);
 }
 
-function reverseGraph (graph, N) {
-    const reversedGraph = new Array(N).fill()
+function reverseEdges (graph, N) {
+    const reversedEdges = new Array(N).fill()
         .map(() => []);
 
     for(let i = 0; i < N; i++) {
         for(let neighbor of graph[i]) {
-            reversedGraph[neighbor].push(i);
+            reversedEdges[neighbor].push(i);
         }
     }
-    return reversedGraph;
+    return reversedEdges;
 }
 
-function dfsII(graph, visited, node, components) {
-    visited[node] = true;
+function dfsII(graph, colors, node, components) {
+    colors[node] = COLOR.BLACK;
     components.push(node);
 
     for(let neighbor of graph[node]) {
-        if(!visited[neighbor]) {
-            dfsII(graph, visited, neighbor, components);
+        if(colors[neighbor] === COLOR.GRAY) {
+            dfsII(graph, colors, neighbor, components);
         }
     }
 }
