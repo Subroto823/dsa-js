@@ -18,4 +18,4 @@ var coinChange = function (coins, amount) {
 };
 
 let coins = [1, 2, 5], amount = 11;
-console.log(coinChange(coins, amount))
+console.log(coinChange(coins, amount));
