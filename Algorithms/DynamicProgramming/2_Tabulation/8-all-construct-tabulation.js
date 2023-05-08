@@ -37,7 +37,6 @@ const allConstruct = (target, wordBank) => {
             }
         }
     }
-
     return table[target.length];
 }
 

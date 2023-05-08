@@ -23,7 +23,6 @@ const canSum = (targetSum, numbers) => {
             }
         }
     }
-
     return table[targetSum]
 }
 
