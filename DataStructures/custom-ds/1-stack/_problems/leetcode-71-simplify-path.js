@@ -1,20 +1,15 @@
 const Stack = require('../stack');
 
 const simplifyPath = (path) => {
-    const stack = new Stack();
-    let arr = path.split('/');
-    let item = '';
+    const stack = new Stack(),
+        arr = path.split('/');
 
     for(let i = 0; i < arr.length; i++) {
-        item = arr[i];
+        let item = arr[i];
         if(item === '' || item === '.') continue;
 
-        if(item === '..') {
-            stack.pop();
-        } else {
-            stack.push(item);
-        }
-
+        if(item === '..') stack.pop();
+        else stack.push(item);
     }
     return "/" + stack.join("/");
 }
