@@ -1,5 +1,7 @@
 /**
+ * 
  * @prefixSum (cumulative sum technique)
+ * 
  */
 
 class PrefixSum {
