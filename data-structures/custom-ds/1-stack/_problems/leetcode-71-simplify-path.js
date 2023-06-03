@@ -11,6 +11,7 @@ const simplifyPath = (path) => {
         if(item === '..') stack.pop();
         else stack.push(item);
     }
+    
     return "/" + stack.join("/");
 }
 
