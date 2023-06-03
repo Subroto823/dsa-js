@@ -1,4 +1,4 @@
-const { LinkedList } = require("../6-LinkedList/linkedList-withTailPointer");
+const { LinkedList } = require("../3-linked-list/linkedlist-with-tail-pointer");
 
 class LinkedListQueue {
     constructor() {
@@ -30,8 +30,9 @@ class LinkedListQueue {
     }
 }
 
-const queue = new LinkedListQueue() 
-console.log(queue.isEmpty());
+const queue = new LinkedListQueue();
+
+console.log(queue.isEmpty(), '\n');
 
 queue.enqueue(10);
 queue.enqueue(20);
@@ -40,6 +41,7 @@ queue.enqueue(40);
 
 console.log(queue.getSize());
 queue.print();
+console.log();
 
 console.log(queue.dequeue());
 queue.print();
