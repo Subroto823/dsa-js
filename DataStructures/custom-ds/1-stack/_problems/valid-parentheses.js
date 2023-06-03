@@ -1,40 +1,38 @@
-const Stack = require('./@stack');
+const Stack = require('../stack');
 
 const validParentheses = (str) => {
     const stack = new Stack();
 
-    if(str.length === 0) return "It's a empty string!!"; 
-
-    for(let i = 0; i < str.length; i++) {
+    for (let i = 0; i < str.length; i++) {
         let ob = str[i];
 
-        if(ob === '(' || ob === '{' || ob === '[') {
+        if (ob === '(' || ob === '{' || ob === '[') {
             stack.push(ob);
             continue;
         }
-    
-        if(stack.isEmpty()) return false;
+
+        if (stack.isEmpty()) return false;
 
         let check;
-        
-        switch(ob) {
+
+        switch (ob) {
             case ')':
                 check = stack.pop();
-                if(check == '{' || check == '[') {
+                if (check == '{' || check == '[') {
                     return false;
                 }
                 break;
 
             case '}':
                 check = stack.pop();
-                if(check == '(' || check == '[') {
+                if (check == '(' || check == '[') {
                     return false;
                 }
                 break;
 
             case ']':
                 check = stack.pop();
-                if(check == '{' || check == '(') {
+                if (check == '{' || check == '(') {
                     return false;
                 }
                 break;
