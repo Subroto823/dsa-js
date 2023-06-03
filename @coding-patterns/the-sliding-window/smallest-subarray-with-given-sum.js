@@ -1,6 +1,6 @@
 /**
  * 
- * @Smallest subarray size
+ * Smallest subarray size
  * 
  */
 
