@@ -38,6 +38,7 @@ stack.push(10);
 stack.push(30);
 console.log(stack.getSize());
 stack.print();
+console.log();
 
 console.log(stack.pop());
 stack.print();
