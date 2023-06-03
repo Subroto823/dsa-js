@@ -1,6 +1,8 @@
 /*
- * The time complexity of deque() method is linear - O(n) , Because we have used shift() inside the dequeue. We can optimize the Big-O to Constant complexity of O(1) - using object instead of array as the list.
- *
+ Queue
+
+ The time complexity of dequeue() method is linear - O(n) , Because we have used shift() inside the dequeue.
+ We can optimize the Big-O to Constant complexity of O(1) - using object instead of array as the list.
  */
 class Queue {
     constructor() {
