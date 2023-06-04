@@ -1,9 +1,9 @@
-Binary Tree
+# Binary Tree
     # A binary tree is a tree data structure in which each node has at most two children.
     # They are referred to as left child and right child.
 
 
-@@@ BST - Binary Search Tree
+### BST - Binary Search Tree
 
     # A binary tree that has two following property
         # The value of each left node must be smaller than the parent node
