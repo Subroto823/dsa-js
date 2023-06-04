@@ -1,5 +1,6 @@
-const { TreeNode } = require('./tree-node');
+const { TreeNode } = require('../tree-node');
 
+// bfs solution
 const treeIncludes = (root, value) => {
     if(!root) return [];
 

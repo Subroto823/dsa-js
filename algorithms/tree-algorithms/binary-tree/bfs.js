@@ -1,4 +1,4 @@
-const { TreeNode } = require('./tree-node');
+const { TreeNode } = require('../tree-node');
 
 const depthFirstSeach = (root) => {
     const queue = [ root ],
