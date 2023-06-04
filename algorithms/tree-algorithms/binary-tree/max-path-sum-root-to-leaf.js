@@ -1,21 +1,5 @@
 const { TreeNode } = require('../../tree-node');
 
-// using bfs
-const treeMinValue = (root) => {
-    const queue = [ root ];
-    let smallest = Infinity;
-
-    while(queue.length) {
-        let curr = queue.shift();
-        smallest = Math.min(smallest, curr.val);
-
-        if(curr.left) queue.push(curr.left);
-        if(curr.right) queue.push(curr.right);
-    }
-    return smallest;
-}
-
-// using dfs
 const treeMinValueDfs = (root) => {
     if(!root) return Infinity;
     const leftMin = treeMinValueDfs(root.left);
