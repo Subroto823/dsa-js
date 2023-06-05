@@ -4,7 +4,7 @@ class BinaryTreeTraversal {
     preOrder(root, traversal = []) {
         if (root === null) return;
 
-        traversal.push(root.value);
+        traversal.push(root.val);
         this.preOrder(root.left, traversal);
         this.preOrder(root.right, traversal);
 
@@ -15,7 +15,7 @@ class BinaryTreeTraversal {
         if (root === null) return;
 
         this.inOrder(root.left, traversal);
-        traversal.push(root.value);
+        traversal.push(root.val);
         this.inOrder(root.right, traversal);
 
         return traversal;
@@ -26,11 +26,19 @@ class BinaryTreeTraversal {
 
         this.postOrder(root.left, traversal);
         this.postOrder(root.right, traversal);
-        traversal.push(root.value);
+        traversal.push(root.val);
 
         return traversal;
     }
 }
+
+/*
+      1
+    /   \
+   2      3
+  / \    /  \
+ 4   5  6    7
+*/
 
 const traversal = new BinaryTreeTraversal();
 
