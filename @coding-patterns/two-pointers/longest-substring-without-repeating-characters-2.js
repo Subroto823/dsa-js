@@ -12,5 +12,5 @@ var lengthOfLongestSubstring = function(s) {
     return maxLength;
 };
 
-let s = "abcabcbb";;
+let s = "abcabcbb";
 console.log(lengthOfLongestSubstring(s));
