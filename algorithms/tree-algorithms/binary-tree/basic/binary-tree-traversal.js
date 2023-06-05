@@ -34,6 +34,6 @@ class BinaryTreeTraversal {
 
 const traversal = new BinaryTreeTraversal();
 
-console.log(tree.postOrder(tree.root));
-console.log(tree.inOrder(tree.root));
-console.log(tree.preOrder(tree.root));
+console.log("preorder traversal :", traversal.preOrder(tree1));
+console.log("inorder traversal :", traversal.inOrder(tree1));
+console.log("postorder treversal :", traversal.postOrder(tree1));

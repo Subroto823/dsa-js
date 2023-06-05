@@ -1,4 +1,4 @@
-const { Node } = require('../tree-node')
+const { Node } = require('./tree-node')
 
 /*
 Binary Tree
