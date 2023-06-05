@@ -1,3 +1,5 @@
+const { tree1 } = require('../binary-tree-example');
+
 class BinaryTreeTraversal {
     preOrder(root, traversal = []) {
         if (root === null) return;

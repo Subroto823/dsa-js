@@ -1,13 +1,16 @@
 const { Node } = require('../tree-node')
 
 /*
+Binary Tree
+is a tree data structure in which each parent node can have at most two children.
+
 Example 1:
 
       1
-   /    \
-  2      3
- / \    /  \
-4   5  6    7
+    /    \
+   2      3
+  / \    /  \
+ 4   5  6    7
 
 */
 
@@ -26,11 +29,11 @@ tree1.right.right = new Node(7);
 /*
 Example 2:
 
-     5
-   /   \
-  4      3
- /  \     \
-1    2     1
+      5
+    /   \
+   4     3
+  /  \     \
+ 1    2     1
 
 */
 
