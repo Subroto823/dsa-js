@@ -65,7 +65,7 @@ tree3.right = new TreeNode(3);
 
 tree3.left.left = new TreeNode(1);
 tree3.left.right = new TreeNode(2);
-tree3.right.left = new Node(7)
+tree3.right.left = new TreeNode(7)
 tree3.right.right = new TreeNode(1);
 
 tree3.right.right.left= new TreeNode(8);

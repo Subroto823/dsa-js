@@ -18,44 +18,29 @@ Full Binary Tree theorem:
     6. The number of internal nodes is l – 1.
     7. The number of leaves is at most 2λ - 1.
 */
+const { tree1, tree2, tree3 } = require('../binary-tree-example');
 
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
+function isFullBinaryTree(node) {
+    if (node === null) return true;
+
+    if (node.left === null && node.right === null) return true;
+
+    if ((node.left !== null) && (node.right !== null)) {
+        return (this.isFullBinaryTree(node.left))
+            && (this.isFullBinaryTree(node.right));
     }
+
+    return false;
 }
 
-class BinaryTree {
-    constructor() {
-        this.root = null;
-    }
+isFullBinaryTree(tree1) ?
+    console.log("The tree is a full binary tree")
+    : console.log("The tree is not a full binary tree");
 
-    isFullBinaryTree(node) {
-        if(node === null) return true;
+isFullBinaryTree(tree2) ?
+    console.log("The tree is a full binary tree")
+    : console.log("The tree is not a full binary tree");
 
-        if(node.left === null && node.right === null) return true;
-
-        if((node.left !== null) && (node.right !== null)) {
-            return (this.isFullBinaryTree(node.left)) 
-                &&  (this.isFullBinaryTree(node.right));
-        }
-
-        return false;
-    }
-}
-
-const tree = new BinaryTree();
-tree.root = new Node(1);
-tree.root.left = new Node(2);
-tree.root.right = new Node(3);
-tree.root.left.left = new Node(4);
-tree.root.left.right = new Node(5);
-tree.root.right.left = new Node(6);
-tree.root.right.right = new Node(7);
-
-if (tree.isFullBinaryTree(tree.root))
-    console.log("The tree is a full binary tree");
-else
-    console.log("The tree is not a full binary tree");
+isFullBinaryTree(tree3) ?
+    console.log("The tree is a full binary tree")
+    : console.log("The tree is not a full binary tree")
