@@ -26,8 +26,8 @@ function isFullBinaryTree(node) {
     if (node.left === null && node.right === null) return true;
 
     if ((node.left !== null) && (node.right !== null)) {
-        return (this.isFullBinaryTree(node.left))
-            && (this.isFullBinaryTree(node.right));
+        return (isFullBinaryTree(node.left))
+            && (isFullBinaryTree(node.right));
     }
 
     return false;
@@ -43,4 +43,4 @@ isFullBinaryTree(tree2) ?
 
 isFullBinaryTree(tree3) ?
     console.log("The tree is a full binary tree")
-    : console.log("The tree is not a full binary tree")
+    : console.log("The tree is not a full binary tree");
