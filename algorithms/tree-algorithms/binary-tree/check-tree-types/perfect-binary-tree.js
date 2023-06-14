@@ -8,63 +8,48 @@ A perfect binary tree is a type of binary tree in which every internal node has 
         * If a single node has no children, it is a perfect binary tree of height h = 0,
         * If a node has h > 0, it is a perfect binary tree if both of its subtrees are of height h - 1 and are non-overlapping.
 */
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
+
+const { tree1, tree2 } = require('../binary-tree-example');
+
+function isPerfectBinaryTree(node) {
+    let d = depth(node);
+    return checkPerfect(node, d, 0);
 }
 
-class BinaryTree {
-    constructor() {
-        this.root = null;
+function depth(node) {
+    let d = 0;
+    while (node != null) {
+        d++;
+        node = node.left;
     }
-
-    // calculate the depth
-    depth(node) {
-        let d = 0;
-        while (node != null) {
-            d++;
-            node = node.left;
-        }
-        return d;
-    }
-
-    // check if the tree is perfect binary
-    isPerfect(node, depth, level) {
-        if (node === null) return true;
-
-        if (node.left === null && node.right === null) return depth === level + 1;
-
-        if (node.left === null || node.right === null) {
-            return false;
-        }
-
-        return this.isPerfect(node.left, depth, level + 1)
-            && this.isPerfect(node.right, depth, level + 1);
-    }
-
-    // wrapper method
-    isPerfectTree(node) {
-        let d = this.depth(node);
-        return this.isPerfect(node, d, 0);
-    }
+    return d;
 }
 
-const tree = new BinaryTree();
-tree.root = new Node(1);
-tree.root.left = new Node(2);
-tree.root.right = new Node(3);
-tree.root.left.left = new Node(4);
-tree.root.left.right = new Node(5);
-tree.root.right.left = new Node(6);
-tree.root.right.right = new Node(7);
+// check if the tree is perfect binary
+function checkPerfect(node, depth, level) {
+    if (node === null) return true;
 
-if (tree.isPerfectTree(tree.root))
-    console.log("The tree is a perfect binary tree");
-else
-    console.log("The tree is not a perfect binary tree");
+    if (node.left === null && node.right === null) return depth === level + 1;
+
+    if (node.left === null || node.right === null) {
+        return false;
+    }
+
+    return (
+        checkPerfect(node.left, depth, level + 1) &&
+        checkPerfect(node.right, depth, level + 1)
+    );
+}
+
+
+isPerfectBinaryTree(tree1) ?
+    console.log("The tree is a perfect binary tree")
+    : console.log("The tree is not a perfect binary tree");
+
+isPerfectBinaryTree(tree2) ?
+    console.log("The tree is a perfect binary tree")
+    : console.log("The tree is not a perfect binary tree");
+
 
 /*
 Perfect Binary Tree Theorems
