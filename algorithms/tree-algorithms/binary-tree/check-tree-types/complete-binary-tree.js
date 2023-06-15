@@ -6,72 +6,52 @@ A complete binary tree is just like a full binary tree, but with two major diffe
     * All the leaf elements must lean towards the left.
     * The last leaf element might not have a right sibling i.e. a complete binary tree doesn't have to be a full binary tree.
 */
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
+const { tree1, tree2, tree3, tree4 } = require('../binary-tree-example');
+
+function isCompleteTree(node) {
+    const numOfNodes = countNodes(node);
+    return checkComplete(node, 0, numOfNodes);
 }
 
-class BinaryTree {
-    constructor() {
-        this.root = null;
-    }
+// count the number of nodes
+function countNodes(node) {
+    if (node === null) return 0;
+    return (1 + countNodes(node.left) + countNodes(node.right));
+}
 
-    isCompleteTree(node) {
-        const numOfNodes = this.countNumNodes(node);
-        return this.isComplete(node, 0, numOfNodes);
-    }
+function checkComplete(node, index, numOfNodes) {
+    if (node === null) return true;
+    if (index >= numOfNodes) return false;
 
-    // count the number of nodes
-    countNumNodes(node) {
-        if (node === null) return 0;
-
-        return (1 + this.countNumNodes(node.left) + this.countNumNodes(node.right));
-    }
-
-    isComplete(node, indx, numOfNodes) {
-        if (node === null) return true;
-
-        if (indx >= numOfNodes) return false;
-
-        return this.isComplete(node.left, 2 * indx + 1, numOfNodes)
-            && this.isComplete(node.right, 2 * indx + 2, numOfNodes)
-    }
+    return (
+        checkComplete(node.left, 2 * index + 1, numOfNodes) &&
+        checkComplete(node.right, 2 * index + 2, numOfNodes)
+    );
+}
 
 
-    // iterative
-    isCompleteTreeII(root) {
-        const queue = [root];
-        let nullFound, node;
+// iterative implementation
+function isCompleteTreeII(root) {
+    const queue = [ root ];
+    let nullFound, node;
 
-        while (queue.length) {
-            node = queue.shift();
+    while (queue.length) {
+        node = queue.shift();
 
-            if (nullFound && node) return false;
-            if (!node) nullFound = true;
+        if (nullFound && node) return false;
+        if (!node) nullFound = true;
 
-            if (node) {
-                queue.push(node.left, node.right);
-            }
+        if (node) {
+            queue.push(node.left, node.right);
         }
-        return true;
     }
+    return true;
 }
 
-const tree = new BinaryTree();
-tree.root = new Node(1);
-tree.root.left = new Node(2);
-tree.root.right = new Node(3);
-tree.root.left.right = new Node(5);
-tree.root.left.left = new Node(4);
-tree.root.right.left = new Node(6);
-
-if (tree.isCompleteTree(tree.root))
-    console.log("The tree is a complete binary tree");
-else
-    console.log("The tree is not a complete binary tree");
+console.log(isCompleteTree(tree1))
+console.log(isCompleteTree(tree2))
+console.log(isCompleteTree(tree3))
+console.log(isCompleteTree(tree4))
 
 
 /*
