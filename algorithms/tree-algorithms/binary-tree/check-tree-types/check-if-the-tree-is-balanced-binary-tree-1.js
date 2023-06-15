@@ -1,5 +1,3 @@
-// ??????????????
-
 /*
 Balanced binary tree, also referred to as a height-balanced binary tree, is defined as a binary tree in which the height of the left and right subtree of any node differ by not more than 1.
 

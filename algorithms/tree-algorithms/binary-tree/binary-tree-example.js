@@ -92,9 +92,34 @@ tree4.left.right = new TreeNode(2);
 tree4.right.left = new TreeNode(7)
 
 
+/*
+Example 5:
+
+      5
+    /    \
+   4       3
+ /  \
+1    2
+    / \
+   7   6
+*/
+
+let tree5 = new TreeNode(5);
+
+tree5.left = new TreeNode(4);
+tree5.right = new TreeNode(3);
+
+tree5.left.left = new TreeNode(1);
+tree5.left.right = new TreeNode(2);
+
+tree5.left.right.left = new TreeNode(7);
+tree5.left.right.right = new TreeNode(6);
+
+
 module.exports = {
     tree1,
     tree2,
     tree3,
-    tree4
+    tree4,
+    tree5
 }
