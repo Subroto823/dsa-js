@@ -1,4 +1,4 @@
-const { TreeNode } = require('../helper/tree');
+const { TreeNode } = require('../tree-node');
 
 var maxPathSum = function (root) {
     let maxSum = -Infinity;
@@ -6,15 +6,15 @@ var maxPathSum = function (root) {
     const helper = (node) => {
         if (!node) return 0;
 
-        let leftSum = Math.max(0, maxPathSum(node.left)),
-            rightSum = Math.max(0, maxPathSum(node.right));
+        const leftSum = Math.max(0, helper(node.left)),
+            rightSum = Math.max(0, helper(node.right));
 
         maxSum = Math.max(
             maxSum,
             node.val + leftSum + rightSum
         );
 
-        return node.val + Math.max(leftSum, rightSum);;
+        return node.val + Math.max(leftSum, rightSum);
     }
 
     helper(root);
