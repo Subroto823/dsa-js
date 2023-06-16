@@ -35,4 +35,3 @@ tree.right.right = new TreeNode(1);
 
 let p = tree.left.left, q = tree.left.right;
 console.log(lowestCommonAncestor(tree, p, q));
-
