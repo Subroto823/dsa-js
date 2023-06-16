@@ -11,21 +11,19 @@ Balanced binary tree, also referred to as a height-balanced binary tree, is defi
 const { tree1, tree5 } = require('../binary-tree-example');
 
 function isBalancedTree(root) {
-    if (root === null) return 0;
+    if (!root) return { balanced: true, height: 0};
 
-    let leftHeight = isBalancedTree(root.left);
-    if (leftHeight === -1) return -1;
+    let left = isBalancedTree(root.left),
+        right = isBalancedTree(root.right);
+    
+    const height = Math.max(left.height, right.height) + 1,
+        balanced = left.balanced && right.balanced && Math.abs(left.height - right.height) <= 1;
 
-    let rightHeight = isBalancedTree(root.right);
-    if (rightHeight === -1) return -1;
-
-    return Math.abs(leftHeight - rightHeight) > 1
-        ? -1
-        : Math.max(leftHeight, rightHeight) + 1;
+    return { balanced, height }
 }
 
 function isBalanced(root) {
-    return isBalancedTree(root) != -1;
+    return isBalancedTree(root).balanced;
 }
 
 console.log(isBalanced(tree1));

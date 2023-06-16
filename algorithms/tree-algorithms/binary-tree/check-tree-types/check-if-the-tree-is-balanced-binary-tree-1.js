@@ -6,62 +6,39 @@ Balanced binary tree, also referred to as a height-balanced binary tree, is defi
     # the right subtree is balanced
 
 */
+const { tree1, tree2, tree3, tree4, tree5 } = require('../binary-tree-example');
 
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
+function isBalanced(node) {
+    return isHeightBalanced(node);
 }
 
-class Height {
-    height = 0;
+function isHeightBalanced(node) {
+    if (node === null) return true;
+
+    let leftHeight = calculateHeight(node.left),
+        rightHeight = calculateHeight(node.right)
+        heightDiff = Math.abs(leftHeight - rightHeight);;
+
+    if (heightDiff > 1) return false;
+    return (
+        isHeightBalanced(node.left) &&
+        isHeightBalanced(node.right)
+    );
 }
 
-class BinaryTree {
-    constructor() {
-        this.root = null;
-    }
+function calculateHeight(node) {
+    if (!node) return 0;
 
-    isHeightBalanced(node, height) {
-        if (node === null) {
-            height.height = 0;
-            return true;
-        }
-
-        let leftHeight = new Height();
-        let rightHeight = new Height();
-
-        let lH = this.isHeightBalanced(node.left, leftHeight);
-        let rH = this.isHeightBalanced(node.right, rightHeight);
-
-        height.height = Math.max(leftHeight.height, rightHeight.height) + 1;
-
-        if (Math.abs(leftHeight.height - rightHeight.height >= 2))
-            return false;
-        else
-            return lH & rH;
-    }
-
-    isBalanced(node) {
-        const height = new Height();
-        return this.isHeightBalanced(node, height);
-    }
-
+    const leftHeight = calculateHeight(node.left);
+    const rightHeight = calculateHeight(node.right);
+    return Math.max(leftHeight, rightHeight) + 1;
 }
 
-const tree = new BinaryTree();
-tree.root = new Node(1);
-tree.root.left = new Node(2);
-tree.root.right = new Node(3);
-tree.root.left.left = new Node(4);
-tree.root.left.right = new Node(5);
-
-if (tree.isBalanced(tree.root))
-    console.log("The tree is balanced");
-else
-    console.log("The tree is not balanced");
+console.log(isBalanced(tree1))
+console.log(isBalanced(tree2))
+console.log(isBalanced(tree3))
+console.log(isBalanced(tree4))
+console.log(isBalanced(tree5))
 
 /*
 Balanced Binary Tree Applications
