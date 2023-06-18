@@ -1,4 +1,4 @@
-const { TreeNode } = require('../../tree-node');
+const { tree2, tree4 } = require('../binary-tree-example');
 
 // using bfs
 const treeMinValue = (root) => {
@@ -24,14 +24,25 @@ const treeMinValueDfs = (root) => {
 }
 
 
-let tree = new TreeNode(5);
+/*
+tree 2:
 
-tree.left = new TreeNode(3);
-tree.right = new TreeNode(6);
+      5
+    /   \
+   4     3
+  /  \     \
+ 1    2     1
 
-tree.left.left = new TreeNode(2);
-tree.left.right = new TreeNode(4);
-tree.right.right = new TreeNode(8);
+*/
+console.log(treeMinValue(tree2));
 
-console.log(treeMinValue(tree));
-console.log(treeMinValueDfs(tree));
+/*
+tree 4:
+
+      5
+    /    \
+   4       3
+ /  \     /
+1    2   7
+*/
+console.log(treeMinValueDfs(tree4));
