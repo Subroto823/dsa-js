@@ -1,4 +1,4 @@
-const { TreeNode } = require('../../tree-node');
+const { tree1 } = require('../binary-tree-example');
 
 // dfs
 const treeSum = (root) => {
@@ -7,13 +7,14 @@ const treeSum = (root) => {
 }
 
 
-let tree = new TreeNode(5);
+/*
+tree1:
 
-tree.left = new TreeNode(3);
-tree.right = new TreeNode(6);
+      1
+    /    \
+   2      3
+  / \    /  \
+ 4   5  6    7
 
-tree.left.left = new TreeNode(2);
-tree.left.right = new TreeNode(4);
-tree.right.right = new TreeNode(8);
-
-console.log(treeSum(tree));
+*/
+console.log(treeSum(tree1));
