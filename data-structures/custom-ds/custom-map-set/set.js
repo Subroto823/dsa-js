@@ -13,25 +13,25 @@ class MySet{
     }
 
     add(element) {
-        let succ = false;
+        let success = false;
 
         if(!this.has(element)) {
             this.dictionary[element] = element;
             this.#size++;
-            succ = true;
+            success = true;
         }
-        return succ;
+        return success;
     }
 
     remove(element) {
-        let succ = false;
+        let success = false;
 
         if(this.has(element)) {
             delete this.dictionary[element];
             this.#size--;
-            succ = true;
+            success = true;
         }
-        return succ;
+        return success;
     }
 
     values() {
