@@ -15,14 +15,7 @@ Time complexity:
         * space complexity O(n)
         * Swapping data can be costly compared to pointers if the size of the data item(s) is more
 */
-
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-        this.prev = null;
-    }
-}
+const { Node } = require('./d-node.js');
 
 class DoublyLinkedList {
     constructor() {
