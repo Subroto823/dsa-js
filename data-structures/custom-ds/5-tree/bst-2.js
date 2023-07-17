@@ -1,10 +1,4 @@
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
-}
+const { TreeNode: Node } = require('./tree-node.js');
 
 class BinarySearchTree {
     constructor() {
