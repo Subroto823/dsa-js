@@ -43,5 +43,6 @@ class MyMap{
 const map = new MyMap()
 map.add("a", "abc");
 map.add("b", "bcd");
+map.add("c", "cde");
 
 console.log(map);
