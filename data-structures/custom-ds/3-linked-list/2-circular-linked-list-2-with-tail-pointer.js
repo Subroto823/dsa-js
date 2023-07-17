@@ -8,8 +8,8 @@ Time complexity:
     # removeFromEnd O(n)
 */
 
-const { Node } = require('./Node');
-const { CircularLinkedList } = require('./CircularLinkedList');
+const { Node } = require('./node');
+const { CircularLinkedList } = require('./2-circular-linked-list-1');
 
 class LinkedList extends CircularLinkedList {
     constructor() {
