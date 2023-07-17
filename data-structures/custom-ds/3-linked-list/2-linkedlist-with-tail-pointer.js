@@ -8,13 +8,7 @@ Time complexity:
     # removeFromEnd O(n)
     
 */
-
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
+const { Node } = require('./node.js');
 
 class LinkedList {
     constructor() {
