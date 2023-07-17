@@ -1,4 +1,4 @@
-const { LinkedList } = require('../3-linked-list/linkedlist-with-tail-pointer');
+const { LinkedList } = require('../3-linked-list/1-linked-list-2-with-tail-pointer.js');
 
 class LinkedListStack {
     constructor() {
