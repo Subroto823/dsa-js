@@ -1,4 +1,3 @@
-
 const numberToText = (number) => {
 
     const twoDigits = (number) => {

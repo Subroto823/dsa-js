@@ -1,7 +1,7 @@
 const obj = {
     name: "Heisenberg",
     age: 25,
-    1: "whta!!",               // we can also use number as a key
+    1: "whta!!",
     sayMayName: function() {
         console.log(this.name);
     },
