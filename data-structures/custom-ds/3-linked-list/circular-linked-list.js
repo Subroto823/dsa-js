@@ -10,7 +10,7 @@ Time complexity:
         # it is possible to append or prepend a new node in constant time, but that involves maintaining a tail pointer that always point at the last node in the list
 
 */
-const { Node } = require('./Node')
+const { Node } = require('./node')
 
 class CircularLinkedList {
     constructor() {
