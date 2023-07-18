@@ -1,6 +1,8 @@
-// nth palindrome number of k digits - iterative solution
-// time: O(10^k)
-// space: O()
+/*
+# nth palindrome number of k digits - iterative solution
+time: O(10^k)
+space: O()
+*/
 
 const isPalindrome = (num) => {
     let tempNum = num;
