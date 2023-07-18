@@ -1,6 +1,5 @@
 function getMax(array) {
     let max = array[0];
-
     for (let i = 1; i < array.length; i++) {
         max = Math.max(max, array[i]);
     }
@@ -9,7 +8,6 @@ function getMax(array) {
 
 function getMin(array) {
     let min = array[0];
-
     for (let i = 1; i < array.length; i++) {
         min = Math.min(min, array[i]);
     }
