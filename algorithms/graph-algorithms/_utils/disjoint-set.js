@@ -23,7 +23,6 @@ class DisjointSet {
         return this.parent[r];
     }
 
-    // Union by size
     union(a, b) {
         let setOfA = this.find(a);
         let setOfB = this.find(b);
