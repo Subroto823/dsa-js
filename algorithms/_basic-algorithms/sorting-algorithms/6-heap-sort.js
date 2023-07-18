@@ -1,11 +1,21 @@
 /* 
-heapSort - descending order (using minHeap)
+ # Heap Sort - descending order (using minHeap)
 
     Time Complexity: O(nlogn)
     Space Complexity: O(1)
 
 */
-const { swap } = require("./swap");
+const { swap } = require("./_helper-functions/swap");
+
+function heapSort(arr) {
+    let len = arr.length;
+    buildMinHeap(arr, len); // build min heap
+
+    for(let i = len - 1; i >= 0; i--) {
+        swap(arr, i, 0);
+        heapify(arr, i, 0);
+    }
+}
 
 function buildMinHeap(arr, size) {
     for(let i = Math.floor(size/2) - 1; i >= 0; i--) {
@@ -29,19 +39,6 @@ function heapify(arr, size, i) {
     if(smallest != i) {
         swap(arr, i, smallest);
         heapify(arr, size, smallest);
-    }
-}
-
-function heapSort(arr) {
-    let len = arr.length;
-
-    // build MaxHeap
-    buildMinHeap(arr, len);
-
-    // heapSort
-    for(let i = len - 1; i >= 0; i--) {
-        swap(arr, i, 0);
-        heapify(arr, i, 0);
     }
 }
 
