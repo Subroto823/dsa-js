@@ -1,10 +1,12 @@
 /**
- * @Selection Sort
+ # Selection Sort
+ *
  * Time Complexity O(n^2)
- * @Unstable
+ * Unstable Algorithm
+ * 
  */
 
-const { swap } = require("./swap");
+const { swap } = require("./_helper-functions/swap");
 
 const selectionSort = (arr) => {
     for (let i = 0; i < arr.length; i++) {
