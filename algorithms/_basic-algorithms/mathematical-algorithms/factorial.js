@@ -1,6 +1,5 @@
 /*
- *
- * Factorial
+ # Factorial
  * Time Complexity O(n)
  * 
  */
