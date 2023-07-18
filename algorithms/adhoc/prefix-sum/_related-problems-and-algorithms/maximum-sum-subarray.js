@@ -1,9 +1,8 @@
 /**
- * 
- * @Maximum sum subarray
- * 
+ # Maximum sum subarray
+ *
  * Time Complexity : O(n)
- * Space Complexity : O(n) (We can also solve the problem with O(1) space complexity)
+ * Space Complexity : O(n) (We can also solve the problem with O(1) space complexity with kadane's algorithm)
  * 
  */
 

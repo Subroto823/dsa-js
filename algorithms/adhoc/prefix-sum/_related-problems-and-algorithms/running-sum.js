@@ -1,6 +1,5 @@
 /**
- * 
- * @Given an integer array 'a', return the prefix sum/running sum(cumulative sum), without creating a new array
+ # Given an integer array 'a', return the prefix sum/running sum(cumulative sum), without creating a new array
  * 
  */
 

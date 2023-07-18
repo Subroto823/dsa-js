@@ -1,6 +1,5 @@
 /**
- * 
- * @Check if we can partition the array into two sub-arrays with equal sum.
+ # Check if we can partition the array into two sub-arrays with equal sum.
  * 
  */
 
