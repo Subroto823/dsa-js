@@ -1,14 +1,11 @@
 /**
- @Merge Sort (bottom up)
+ # Merge Sort (bottom up)
 
     Time Complexity - O(nlogn)
-        # This is the best time complexity we can get while sorting
     Space Complexity - O(n)
-
-    # This implementation is more optimal than the previous two
- */
-
-const { randomArray } = require("./helper/randomNumbers");
+*/
+const { isSorted } = require("./_helper-functions/is-sorted");
+const { randomArray } = require("./_helper-functions/random-numbers-array");
 
 function mergeSort(nums) {
     const n = nums.length;
@@ -24,8 +21,8 @@ function mergeSort(nums) {
 }
 
 function merge(nums, merged, lo, mid, high) {
-
     let i = lo, j = mid + 1;
+
     for (let k = lo; k <= high; k++) {
         if (i > mid) merged[k] = nums[j++];
         else if (j > high) merged[k] = nums[i++];
@@ -38,6 +35,10 @@ function merge(nums, merged, lo, mid, high) {
     }
 }
 
-let arr = randomArray(20, 40);
+let arr = randomArray(1000000);
+
+console.time();
 mergeSort(arr);
-console.log(arr);
+console.timeEnd();
+
+console.log(isSorted(arr));

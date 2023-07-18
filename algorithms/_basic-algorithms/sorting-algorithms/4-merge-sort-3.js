@@ -1,13 +1,12 @@
 /**
- @Merge Sort
+ # Merge Sort
 
     Time Complexity - O(nlogn)
     Space Complexity - O(n)
  */
-const { randomArray } = require("./helper/randomNumbers");
+const { randomArray } = require("./_helper-functions/random-numbers-array");
 
 const merge = (arr, left, mid, right) => {
-
     let leftSize = mid - left + 1;
     let rightSize = right - mid;
 
@@ -25,7 +24,7 @@ const merge = (arr, left, mid, right) => {
     let indexL = 0, indexR = 0;
     
     for(let i = left; i <= right; i++) {
-        if(indexL + left > mid) {
+        if(mid < indexL + left) {
             arr[i] = R[indexR++];
         } 
         else if (indexR + mid === right) {
@@ -42,7 +41,6 @@ const merge = (arr, left, mid, right) => {
 
 const mergeSort = (arr, low = 0, high = arr.length - 1) => {
     if (low >= high) return;
-
     let mid = low + ((high - low) >> 1);
 
     mergeSort(arr, low, mid);
