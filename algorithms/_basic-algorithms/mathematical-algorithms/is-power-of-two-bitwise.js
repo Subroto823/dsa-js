@@ -1,5 +1,5 @@
 /*
- * using bitwise operator
+ # Is Power Of Two (Using bitwise operator)
  * Time Complexity O(1)
  * 
  */
