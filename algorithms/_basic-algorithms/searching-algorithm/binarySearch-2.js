@@ -1,8 +1,9 @@
 /**
- * @Binary Search
+ # Binary Search
  * Time complexity O(logn)
- * (only works for sorted array)
- * (This implementation uses fewer number of comparisons than the previous one)
+ * 
+ * Note: Only works for sorted array
+ * This implementation uses fewer number of comparisons than the previous one
  */ 
 
 const binarySearch = (arr, target) => {
