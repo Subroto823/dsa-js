@@ -1,7 +1,7 @@
-function swap (arr, index1, index2) {
-    let tmp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = tmp;
+function swap (array, index1, index2) {
+    let tmp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = tmp;
 }
 
 module.exports = {
