@@ -1,6 +1,5 @@
 /**
- * 
- * @Find length of the longest substring of k distinct characters
+ # Find length of the longest substring of k distinct characters
  * 
  */
 

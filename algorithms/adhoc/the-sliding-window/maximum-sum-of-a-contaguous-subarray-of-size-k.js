@@ -1,7 +1,6 @@
 /**
- * 
- * @Maximum sum of a contiguous subarray of size k
- * 
+ # Maximum sum of a contiguous subarray of size k
+ *
  */
 
 function findMaxSumSubarray(arr, k) {
