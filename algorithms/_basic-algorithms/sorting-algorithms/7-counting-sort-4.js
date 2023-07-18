@@ -1,5 +1,5 @@
 /**
-@Counting Sort (for both negative & positive number)
+# Counting Sort (for both negative & positive number)
 
     Time Complexity: O(N + k) 
     Space Complexity: O(N + N)
@@ -8,26 +8,24 @@
     k -> Range(Max - Min)
 */
 
-const { getMin } = require("./helper/maxMinInArray");
-const { randomNumbers } = require("./helper/randomNumbers");
+const { getMin } = require("./_helper-functions/max-and-min-in-a-array");
+const { randomNumbers } = require("./_helper-functions/random-numbers-array");
 
 function countingSort (nums) {
-    let count = {};
-    let sortedArray = [];
+    const count = {},
+        sortedArray = [],
+        min = getMin(nums);
     let n = nums.length;
-
-    let min = getMin(nums);
     
     for(let i = 0; i < n; i++) {
-        count[nums[i]] = ++count[nums[i]] || 1;
+        count[nums[i]] = (++count[nums[i]] || 1);
     }
 
     let i = min;
 
     while(n > 0) {
-        if(!count[i]) {
-            i++
-        } else {
+        if(!count[i]) i++;
+        else {
             sortedArray.push(i);
             count[i]--;
             n--;
