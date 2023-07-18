@@ -1,3 +1,4 @@
+// undirected
 class AdjacencyList {
     constructor() {
         this.adjacencyList = {};
@@ -13,7 +14,6 @@ class AdjacencyList {
         }
     }
 
-    // undirected
     addEdge(source, destination) {
         if(!this.adjacencyList[source]) {
             this.addVertex(source);
@@ -65,8 +65,4 @@ class AdjacencyList {
 
 module.exports = {
     AdjacencyList
-}
-
-let obj = {
-    a: "hello"
 }
