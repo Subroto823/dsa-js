@@ -1,5 +1,5 @@
 /*
- * Fibonacci iterative implementation
+ # Fibonacci Sequence (iterative implementation)
  * Time Complexity: O(n)
  */
 
