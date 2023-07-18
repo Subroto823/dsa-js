@@ -1,6 +1,7 @@
 /*
+ # Binary Search (Recursive)
  * Time complexity O(logn)
- * only works for sorted array
+ * Note: Only works for sorted array
  */ 
 
 const recursiveBinarySearch = (arr, target) => {
