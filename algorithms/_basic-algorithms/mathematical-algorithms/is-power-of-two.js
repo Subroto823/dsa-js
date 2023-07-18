@@ -1,4 +1,5 @@
 /*
+ # Is Power Of Two
  * Time Complexity O(O(logn))
  * By using bitwise operator, we can solve the problem in a Constant complexity of 1
  */
@@ -15,11 +16,10 @@ const isPowerOfTwo = (number) => {
 
 console.log(isPowerOfTwo(2097152));
 
+
 /*
- *
  * Time Complexity O(sqrt(n))
  */
-
 const isPowerOf2 = (number) => {
     if(number > 1 && number % 2 !== 0) return false;
 
