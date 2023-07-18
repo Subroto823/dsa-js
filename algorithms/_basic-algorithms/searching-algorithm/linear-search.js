@@ -1,5 +1,7 @@
-/* 
+/*
+ # Linear Search 
  * Time complexity O(n)
+ *
  */
 
 const linearSearch = (arr, n) => {
