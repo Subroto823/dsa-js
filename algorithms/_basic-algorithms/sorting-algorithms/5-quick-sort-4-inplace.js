@@ -1,11 +1,11 @@
 /**
- * @Quick Sort (with 3-way partitioning)
- * @inplace implementation - without taking extra space
+ # Quick Sort (with 3-way partitioning)
+ * Inplace implementation - without taking extra space
  * 
  * */
 
-const { swap } = require("./helper/swap");
-const { randomArray } = require("./helper/randomNumbers");
+const { swap } = require("./_helper-functions/swap");
+const { randomArray } = require("./_helper-functions/random-numbers-array");
 
 function quickSort(nums, left = 0, right = nums.length - 1) {
     if (right <= left) return;
