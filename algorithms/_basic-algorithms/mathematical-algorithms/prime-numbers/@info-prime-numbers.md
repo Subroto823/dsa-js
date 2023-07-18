@@ -1,6 +1,5 @@
-Prime number
-
+# Prime number
 A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.
 
-isPrime(5) = true(1*5)
-isPrime(4) = false(1*4 or 2*2);
+isPrime(5) = true (1*5)
+isPrime(4) = false (1*4 or 2*2);

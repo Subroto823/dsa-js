@@ -1,6 +1,6 @@
 /*
- * a little optimized
- * Time Complexity O(n/2)
+ # Prime Number (a little optimized)
+ * Time Complexity O(n/2) or O(n)
  */
 
 const isPrime = (number) => {

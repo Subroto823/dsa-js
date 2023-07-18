@@ -1,5 +1,5 @@
 /*
- * optimized primality test
+ # Prime Number (optimized primality test)
  * Time Complexity O(sqrt(n))
  *
  * Integers larger than the square root do not need to be checked because, whenever "number = a*b", one of the two factors "a" and "b" is less than or equal to the square root of "n"

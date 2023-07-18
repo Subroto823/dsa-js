@@ -1,8 +1,9 @@
 /*
+ # Prime Number
  * Time Complexity O(n)
  */
 
-const isPrimeBasic = (number) => {
+const isPrime = (number) => {
     if(number < 2) return false;
 
     for(let i = 2; i <= number; i++) {
