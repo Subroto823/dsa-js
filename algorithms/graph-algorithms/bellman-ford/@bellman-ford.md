@@ -14,7 +14,6 @@
 
 
 # Notes:
-
 * Negative Cycle: A negative cycle is a cycle whose edges are such that the sum of their weights is a negative value.
 
     * Negative weights are found in various applications of graphs. For example, instead of paying the cost for a path, we may get some advantage if we follow the path.
