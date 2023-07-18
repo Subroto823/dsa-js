@@ -1,6 +1,6 @@
 /**
- * @Factorial - Recursive Approach
- * @Time Complexity O(n)
+ # Factorial - Recursive Approach
+ * Time Complexity O(n)
  *
  */
 
