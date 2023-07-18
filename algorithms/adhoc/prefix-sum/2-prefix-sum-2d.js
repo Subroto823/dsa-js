@@ -1,6 +1,5 @@
 /**
- * 
- * @prefixSum2D
+ # Prefix Sum 2D
  * 
  */
 
