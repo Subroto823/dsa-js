@@ -42,3 +42,34 @@ Auxiliary Space: O(V+E)
     * For every node u, find out the earliest visited vertex (the vertex with minimum discovery time) that can be reached from the subtree rooted with u. So we maintain an additional array low[] such that: 
     
     * low[u] = min(disc[u], disc[w]) , Here w is an ancestor of u and there is a back edge from some descendant of u to w.
+
+
+# Bridge
+An edge in an undirected connected graph is a bridge if removing it disconnects the graph. 
+
+* For a disconnected undirected graph, definition is similar, a bridge is an edge removing which increases number of disconnected components.
+
+
+# Naive Approach:
+* One by one remove all edges and see if removal of an edge causes disconnected graph. 
+
+# Following the below steps to Implement the idea:
+* 
+    # For every edge (u, v), do the following:
+    * Remove (u, v) from the graph 
+    * See if the graph remains connected (either use * BFS or DFS) 
+    * Add (u, v) back to the graph.
+
+* Time Complexity: O(E*(V+E)) for a graph represented by adjacency list.
+* Auxiliary Space: O(V+E)
+
+
+# Tarjan's Algorithm
+* The idea is similar to O(V+E) algorithm for Articulation Points. Do DFS traversal of the given graph. In DFS tree an edge (u, v) (u is parent of v in DFS tree) is bridge if there does not exist any other alternative edge to reach u or an ancestor of u from subtree rooted with v.
+
+* Time Complexity: O(V+E), 
+
+    * The approach uses simple DFS with additional arrays. 
+    So time complexity is the same as DFS which is O(V+E) for adjacency list representation of the graph.
+
+* Auxiliary Space: O(BM) where B is the maximum branching factor of the search tree and M is the maximum depth of the state space.
