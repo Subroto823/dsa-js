@@ -1,11 +1,13 @@
 /**
+ # Bubble Sort
+ *
+ * Time Complexity - O(n^2)
+ * Little optimized than the previous implementation but still the time complexity is quadratic
  * 
- * @Time Complexity - O(n^2)
- * @little optimized than the previous implementation but still the time complexity is quadratic
- * @stable
+ * Stable Algorithm
  */
 
-const { swap } = require("./swap");
+const { swap } = require("./_helper-functions/swap");
 
 const bubbleSort = (arr) => {
     let swapped;

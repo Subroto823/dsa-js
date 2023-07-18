@@ -1,11 +1,13 @@
 /**
- * @BubbleSort
- * @Time Complexity - O(n^2)
- * @Quadratic time complexity isn't great for sorting
- * @Stable algorithm
+ # BubbleSort
+ * 
+ * Time Complexity - O(n^2)
+ * Quadratic time complexity isn't great for sorting
+ * 
+ * Stable algorithm
  */
 
-const { swap } = require("./swap");
+const { swap } = require("./_helper-functions/swap");
 
 const bubbleSort = (arr) => {
     for (let i = 0; i < arr.length; i++) {
@@ -24,5 +26,4 @@ console.log(arr);
 
 /*
 The above function always runs O(n^2) time, even if the array is sorted.
-
-We can optimize this by stopping the algorithm, if inner loop didn't cause any swap */
+We can optimize this by stopping the algorithm, if inner loop didn't cause any swap. */
