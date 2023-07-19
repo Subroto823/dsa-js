@@ -1,9 +1,9 @@
-function permutations(elements) {
-    let n = elements.length;
-    const result = [];
-    const visited = new Array(n);
+const permutations = (elements) => {
+    const n = elements.length,
+        result = [],
+        visited = new Array(n);
 
-    function permute(perm = []) {
+    const permute = (perm = []) => {
         if(perm.length === n) {
             result.push([...perm]);
             return;
