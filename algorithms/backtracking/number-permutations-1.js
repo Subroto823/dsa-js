@@ -1,5 +1,5 @@
-// permutation from 0 to n
-function permutation(n) {
+// permutations from 0 to n
+const permutations = n => {
     const visited = new Array(n).fill(false);
     const number = new Array(n).fill(0);
 
@@ -13,13 +13,12 @@ function generate(idx, n, number, visited) {
     }
 
     for (let i = 0; i <= n; i++) {
-        if (!visited[i]) {
-            visited[i] = true;
-            number[idx] = i;
-            generate(idx + 1, n, number, visited);
-            visited[i] = false;
-        }
+        if (visited[i]) continue;
+        visited[i] = true;
+        number[idx] = i;
+        generate(idx + 1, n, number, visited);
+        visited[i] = false;
     }
 }
 
-permutation(2);
+permutations(2);
