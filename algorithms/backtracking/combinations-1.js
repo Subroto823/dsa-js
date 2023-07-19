@@ -1,9 +1,9 @@
 // Given two integers n and k, return all possible combinations of k numbers out of 1 … n.
 
-function combinations(n, k) {
+const combinations = (n, k) => {
     const result = [];
 
-    function generate(start, k, comb = []) {
+    const generate = (start, k, comb = []) => {
         if(k === 0) {
             result.push([...comb]);
             return;

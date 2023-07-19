@@ -1,18 +1,19 @@
-function combine(n, k) {
+const combinations = (n, k) => {
     let number = new Array(k).fill(0);
 
-    function combination(at, end) {
-        if(at === k + 1) {
+    const generate = (at, end) => {
+        if (at === k + 1) {
             console.log(...number);
             return;
         }
 
-        for(let i = end + 1; i <= n - k + at; i++) {
+        for (let i = end + 1; i <= n - k + at; i++) {
             number[at - 1] = i;
-            combination(at + 1, i);
+            generate(at + 1, i);
         }
     }
-    combination(1, 0);
+    
+    generate(1, 0);
 }
 
-combine(4, 2);
+combinations(4, 2);
