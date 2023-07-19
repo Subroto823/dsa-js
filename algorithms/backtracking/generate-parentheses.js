@@ -1,13 +1,9 @@
 /* 
- * stack, backtracking
- * Given n pairs of parentheses, write a function to generate all combinations of well formed parentheses
+ # Given n pairs of parentheses, write a function to generate all combinations of well formed parentheses
  * 
- */
-
-/*
  * only add open parentheses if open < n
  * only add close parentheses if closed < open
- * valied IIF open == closed == n
+ * valid IF open == closed == n
  */
 
 const generateParentheses = (n) => {
@@ -15,7 +11,6 @@ const generateParentheses = (n) => {
     const res = [];
 
     const backtrack = (openN, closedN) => {
-
         if((openN === closedN) && (openN === n)) {
             res.push(stack.join(""));
             return
