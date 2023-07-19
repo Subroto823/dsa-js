@@ -1,7 +1,7 @@
 const permutations = (elements) => {
     const n = elements.length,
         result = [],
-        visited = new Array(n);
+        visited = new Array(n).fill(false);
 
     const permute = (perm = []) => {
         if(perm.length === n) {

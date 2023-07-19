@@ -1,13 +1,11 @@
-const { swap } = require('../../helpers/array-swap');
+const { swap } = require('../../__helper-functions/swap');
 
-function permutation(arr) {
-    const res = [];
-    let start = 0;
-    let end = arr.length - 1;
+const permutations = (arr) => {
+    const result = [];
 
-    function generate(array, start, end) {
+    const generate = (array, start, end) => {
         if(start === end) {
-            res.push([...array]);
+            result.push([...array]);
         }
 
         for(let i = start; i <= end; i++) {
@@ -17,9 +15,9 @@ function permutation(arr) {
         }
     }
 
-    generate(arr, start, end);
-    return res;
+    generate(arr, 0, arr.length - 1);
+    return result;
 }
 
-console.log(permutation([5, 8]));
-console.log(permutation(["a", "b"]));
+console.log(permutations([1, 2]));
+console.log(permutations(["a", "b"]));
