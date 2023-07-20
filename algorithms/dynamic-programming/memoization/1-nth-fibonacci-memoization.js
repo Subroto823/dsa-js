@@ -7,8 +7,6 @@ fib(n): 1, 1, 2, 3, 5, 8, 13 ... n
 */
 
 // memoization
-// JS object, keys will be arg to fn, value will be ther return value
-
 const fib = (n, memo = {}) => {
     if(n in memo) return memo[n];
     if(n <= 2) return 1;
