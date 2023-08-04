@@ -1,6 +1,6 @@
 /*
 # Prime Numbers in range from one to n (Basic implementation)
-    Time Complexity: O()
+    Time Complexity:  O(n * sqrt(n))
 */
 function isPrime(number) {
     if (number <= 1) return false;
@@ -23,3 +23,7 @@ function findPrimesInRange(n) {
 
     return primes;
 }
+
+let n = 100;
+let primesInRange = findPrimesInRange(n);
+console.log(primesInRange)
