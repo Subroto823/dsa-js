@@ -1,3 +1,4 @@
+// Time Complexity: O(n(sqrt(n)))
 function countDivisorsInRange(n) {
     let divisors = []
     for (let i = 1; i <= n; i++) {

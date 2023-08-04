@@ -1,4 +1,5 @@
-// Efficient approach
+// Efficient Approach
+// Time Complexity: O(nlogn)
 
 function countDivisorsInRange(n) {
     const divisorsCount = new Array(n + 1).fill(0);
