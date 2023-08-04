@@ -53,3 +53,11 @@ Lucas Theorem and Binomial Coefficients:
 Combinatorial properties and their applications.
 
 Mastering these topics will provide you with a strong foundation in number theory for competitive programming. Along with understanding the concepts, be sure to practice solving number theory problems on coding platforms to improve your problem-solving skill
+
+import math
+
+a = 48
+b = 18
+
+result = math.gcd(a, b)
+print(result)  # Output: 6
