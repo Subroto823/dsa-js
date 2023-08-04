@@ -1,0 +1,55 @@
+Prime Numbers and Primality Testing:
+Sieve of Eratosthenes for prime generation.
+Primality testing algorithms like Miller-Rabin, Fermat, etc.
+
+GCD (Greatest Common Divisor) and LCM (Least Common Multiple):
+Euclidean algorithm for GCD calculation.
+Properties of GCD and LCM.
+
+Modular Arithmetic:
+Modular addition, subtraction, and multiplication.
+Modular exponentiation (Fast exponentiation).
+Modular inverses and division.
+
+Euler's Totient Function and Euler's Theorem:
+Euler's phi function and its properties.
+Euler's theorem and its applications.
+
+Chinese Remainder Theorem (CRT):
+Solving systems of linear congruences using CRT.
+
+Divisibility and Factorization:
+Divisibility rules and properties.
+Prime factorization and its applications.
+
+Modular Inverse:
+Extended Euclidean algorithm to find modular inverses.
+Solving linear congruences.
+
+Diophantine Equations:
+Solving linear and quadratic Diophantine equations.
+
+Modular Exponentiation:
+Efficient algorithms like Binary Exponentiation (Exponentiation by Squaring).
+
+Arithmetic Functions:
+
+Mobius Function, Sum of Divisors, Number of Divisors, etc.
+
+Fibonacci Numbers:
+
+Properties and calculating Fibonacci numbers efficiently.
+
+Wilson's Theorem and Fermat's Little Theorem:
+
+Understanding and applying these theorems.
+
+Continued Fractions:
+
+Conversion of fractions to continued fractions and vice versa.
+
+Lucas Theorem and Binomial Coefficients:
+
+Combinatorial properties and their applications.
+
+Mastering these topics will provide you with a strong foundation in number theory for competitive programming. Along with understanding the concepts, be sure to practice solving number theory problems on coding platforms to improve your problem-solving skill
