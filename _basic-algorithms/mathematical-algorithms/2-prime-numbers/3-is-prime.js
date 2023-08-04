@@ -20,4 +20,6 @@ const isPrime = (number) => {
 console.log(isPrime(2504987));
 console.log(isPrime(17));
 
+/*
+This method works well for small to moderately large numbers, but it may become inefficient for very large numbers, and more advanced primality testing algorithms would be needed in such cases. */
 
