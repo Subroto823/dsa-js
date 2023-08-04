@@ -26,4 +26,4 @@ function findPrimesInRange(n) {
 
 let n = 100;
 let primesInRange = findPrimesInRange(n);
-console.log(primesInRange)
+console.log(primesInRange);
