@@ -37,4 +37,4 @@ function eulerTotientFunction(n) {
 
 const n = 60;
 const phiOfN = eulerTotientFunction(n);
-console.log(`φ(${n}) = ${phiOfN}`);
+console.log(`φ(${n}) = ${phiOfN}`); 

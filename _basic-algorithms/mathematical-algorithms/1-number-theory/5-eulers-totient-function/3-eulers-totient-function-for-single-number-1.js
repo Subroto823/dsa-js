@@ -37,4 +37,4 @@ console.log(`φ(${n}) = ${phiOfN}`);
 /*
 In the basic implementation, we have a loop that iterates from 1 to n, and inside the loop, we calculate the greatest common divisor (GCD) using the gcd function. The time complexity of the gcd function using the Euclidean algorithm is approximately O(log(min(a, b))) for two numbers a and b.
 
-The outer loop runs n times, and for each iteration, the gcd function is called. Therefore, the overall time complexity of the basic implementation is approximately O(n * log(min(a, b))). */
+The outer loop runs n times, and for each iteration, the gcd function is called. Therefore, the overall time complexity of the basic implementation is approximately O(n * log(min(a, b))). */ 

@@ -1,7 +1,7 @@
 /*
 # Euler's Totient Function (φ function) for a single number
     # Efficient Approach
-    # Time Complexity: O()
+    # Time Complexity: O(sqrt(n))
 */
 
 function eulerTotientFunction(n) {
