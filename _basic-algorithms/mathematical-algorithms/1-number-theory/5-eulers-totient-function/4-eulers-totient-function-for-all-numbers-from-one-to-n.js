@@ -28,4 +28,4 @@ console.log(phiValues);
 /*
 In this implementation, the computePhiSieve(n) function creates an array phi of size(n + 1) to store the φ values.It initializes the array with the value of each index(φ(i) = i).Then, it uses the Sieve of Eratosthenes algorithm to compute the φ values for each number.If the value of phi[i] remains equal to i, it means i is a prime number, and the φ function formula is used to update the φ values for its multiples.
 
-The resulting phi array will contain the φ values for all numbers from 1 to n.You can access the φ value for a specific number k by using phi[k].For example, in the test section, the φ values for numbers from 1 to 12 are printed. */
+The resulting phi array will contain the φ values for all numbers from 1 to n. We can access the φ value for a specific number k by using phi[k].For example, in the test section, the φ values for numbers from 1 to 12 are printed. */
