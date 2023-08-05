@@ -2,12 +2,12 @@
 # binary exponentiation with modular arithmetic
     # (a^b) % m = ((a % m)^b) % m
 */
-function binpow(a, b, m) {
+function modularExponentiation(a, b, m) {
     return ((a % m) ** b) % m;
 }
 
-console.log(binpow(10, 2, 7));
-console.log(binpow(2, 7, 10));
+console.log(modularExponentiation(10, 2, 7));
+console.log(modularExponentiation(2, 7, 10));
 
 /*
 Downsides of this one-liner implementation:
