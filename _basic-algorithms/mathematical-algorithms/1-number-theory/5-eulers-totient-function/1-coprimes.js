@@ -33,4 +33,4 @@ const number2 = 28;
 console.log(areCoprimes(number1, number2));
 
 /*
-When two numbers are coprime, it means they share no common factors other than 1, and as a result, their fraction cannot be further simplified. The concept of coprime numbers is essential in number theory, particularly when dealing with Euler's Totient Function, modular arithmetic, and RSA encryption algorithms, among other applications. */
+When two numbers are coprime, it means they share no common factors other than 1, and as a result, their fraction cannot be further simplified. The concept of coprime numbers is essential in number theory, particularly when dealing with Euler's Totient Function, modular arithmetic, and RSA encryption algorithms, among other applications. */ 
