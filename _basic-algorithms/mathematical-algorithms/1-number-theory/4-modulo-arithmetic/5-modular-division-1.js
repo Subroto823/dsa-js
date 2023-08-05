@@ -1,9 +1,8 @@
-    Modular Inverses and Division:
-    Modular inverse of a modulo m is a number x such that (a * x) % m = 1. Modular division involves dividing a by b modulo m.
+/*
+# Modular Inverses and Division:
 
-javascript
+    # Modular inverse of a modulo m is a number x such that(a * x) % m = 1. Modular division involves dividing a by b modulo m. */
 
-// Function to calculate the modular inverse using Extended Euclidean Algorithm
 function extendedGCD(a, b) {
     if (a === 0) {
         return [b, 0, 1];

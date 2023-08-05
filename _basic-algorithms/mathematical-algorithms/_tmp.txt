@@ -61,3 +61,57 @@ b = 18
 
 result = math.gcd(a, b)
 print(result)  # Output: 6
+
+
+
+To do well in competitive programming (CP), you should have a good understanding of several mathematical topics. Here are some essential math topics that are commonly encountered in CP:
+
+    Number Theory:
+        Prime numbers: Sieve of Eratosthenes, Primality testing.
+        GCD (Greatest Common Divisor) and LCM (Least Common Multiple).
+        Modular arithmetic: Modular addition, subtraction, multiplication, and exponentiation.
+        Euler's Totient function and Euler's Theorem.
+        Chinese Remainder Theorem.
+        Fermat's Little Theorem and Wilson's Theorem.
+        Divisibility rules and properties of numbers.
+
+    Combinatorics:
+        Counting principles: Permutations and combinations.
+        Binomial Coefficients and Pascal's Triangle.
+        Inclusion-Exclusion principle.
+        Catalan numbers.
+        Generating functions.
+
+    Discrete Mathematics:
+        Set theory and Venn diagrams.
+        Graph theory: Graph representations, traversal, and algorithms (DFS, BFS).
+        Trees: Binary Trees, Binary Search Trees, Balanced Trees, etc.
+        Dynamic Programming with recursion and memoization.
+
+    Probability and Expected Value:
+        Basic probability concepts.
+        Expected value and linearity of expectation.
+        Probability distributions.
+
+    Geometry:
+        Basic geometric formulas.
+        Area and perimeter of shapes: triangles, circles, polygons.
+        Coordinate geometry: Distance between points, equations of lines.
+
+    Algebra:
+        Equations and inequalities.
+        System of linear equations.
+        Polynomials and their properties.
+        Matrices and matrix operations.
+
+    Sorting and Searching:
+        Different sorting algorithms and their complexities (e.g., Merge Sort, Quick Sort).
+        Binary search and its applications.
+
+    Data Structures:
+        Arrays, Linked Lists, Stacks, Queues.
+        Hashing and Hash tables.
+        Heaps (Binary Heaps, Priority Queues).
+        Disjoint Set Union (DSU) / Union-Find.
+
+Remember that practice is essential in CP. Solving various problems related to these topics will help you gain confidence and proficiency in using mathematical concepts effectively to solve CP challenges. There are many online platforms and contests available for practicing CP problems, such as Codeforces, AtCoder, CodeChef, LeetCode, and HackerRank. Participating in contests and solving problems regularly will sharpen your problem-solving skills and help you excel in CP
