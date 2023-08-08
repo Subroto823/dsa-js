@@ -1,45 +1,36 @@
-Sure, here's an implementation of Floyd's Tortoise and Hare Algorithm in JavaScript to detect cycles in a linked list:
+/*
+# Detect Cycle in a LinkedList
 
-javascript
+# Implementation of Floyd's Tortoise and Hare Algorithm in JavaScript to detect cycles in a linked list.
+# Time Complexity: O(n)
+*/
 
-class ListNode {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
+const { ListNode } = require("./_node");
 
 function hasCycle(head) {
-    if (!head || !head.next) {
-        return false; // No cycle if there are 0 or 1 nodes
-    }
-    
+    if (!head || !head.next) return false;
+
     let tortoise = head;
-    let hare = head.next;
-    
-    while (tortoise !== hare) {
-        if (!hare || !hare.next) {
-            return false; // No cycle if hare reaches end of list
+    let hare = head;
+
+    while (hare && hare.next) {
+        tortoise = tortoise.next;         // Move tortoise by 1 step
+        hare = hare.next.next;           // Move hare by 2 steps
+
+        if (tortoise === hare) {
+            return true; // Cycle detected
         }
-        tortoise = tortoise.next;
-        hare = hare.next.next;
     }
-    
-    return true; // Cycle detected
+
+    return false;
 }
 
-To use this code, you would need to create a linked list of ListNode objects where each node's next points to the next node in the list. To test for a cycle, you can call the hasCycle function with the head of the linked list as an argument. If the function returns true, a cycle exists in the linked list; if it returns false, there is no cycle.
 
-Here's an example of how you might create a linked list and test for a cycle:
-
-javascript
-
-// Create nodes
-const node1 = new ListNode(1);
-const node2 = new ListNode(2);
-const node3 = new ListNode(3);
-const node4 = new ListNode(4);
-const node5 = new ListNode(5);
+const node1 = new Node(1),
+    node2 = new Node(2),
+    node3 = new Node(3),
+    node4 = new Node(4),
+    node5 = new Node(5);
 
 // Link nodes to form a cycle
 node1.next = node2;
@@ -48,7 +39,6 @@ node3.next = node4;
 node4.next = node5;
 node5.next = node2; // Creating a cycle
 
-// Test for cycle
-console.log(hasCycle(node1)); // Output: true
+console.log(hasCycle(node1));
 
-In this example, the linked list formed by node1, node2, node3, node4, and node5 contains a cycle, so the hasCycle function will return true. If you remove the line node5.next = node2;, the linked list will not contain a cycle, and the function will return false.
+// In this example, the linked list formed by node1, node2, node3, node4, and node5 contains a cycle, so the hasCycle function will return true. If you remove the line node5.next = node2;, the linked list will not contain a cycle, and the function will return false.
