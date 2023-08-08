@@ -5,7 +5,7 @@
 # Time Complexity: O(n)
 */
 
-const { ListNode } = require("./_node");
+const { ListNode } = require("../list-node");
 
 function hasCycle(head) {
     if (!head || !head.next) return false;
