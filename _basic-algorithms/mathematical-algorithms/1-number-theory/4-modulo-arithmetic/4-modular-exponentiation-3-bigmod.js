@@ -1,5 +1,8 @@
-// Iterative approach
-function modularExponentiation(a, b, m) {
+/*
+# BigMod (Iterative approach)
+*/
+
+function bigmod(a, b, m) {
     a = a % m;
     let result = 1;
 
@@ -15,5 +18,5 @@ function modularExponentiation(a, b, m) {
     return result;
 }
 
-const result = modularExponentiation(2, 7, 10);
+const result = bigmod(2, 7, 10);
 console.log(result); // Output: 8 (2^7 % 10 = 128 % 10 = 8)
