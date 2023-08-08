@@ -17,7 +17,6 @@ function bigmod(a, b, m) {
 
 console.log(bigmod(10, 2, 7));
 console.log(bigmod(2, 7, 10));
-console.log(bigmod(2, 50, 10000007));
 
 /*
 The "bigmod" technique, also known as modular exponentiation, is a mathematical algorithm used to efficiently compute the result of raising a number to a large power modulo another number. This technique is particularly useful in situations where the direct calculation of the exponentiation result could lead to overflow or consume a lot of computational resources.
