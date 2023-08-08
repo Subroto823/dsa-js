@@ -1,10 +1,3 @@
-class Node {
-    constructor(value) {
-        this.val = value;
-        this.next = null;
-    }
-}
-
 const printList = (list) => {
     let curr = list;
     let listValues = '';
@@ -28,18 +21,23 @@ const mergeTwoLists = (list1, list2) => {
     }
 };
 
-let listOne = new Node(1);
-listOne.next = new Node(2);
-listOne.next.next = new Node(4);
+// list1 : 1 -> 2 -> 4
+let node1 = new ListNode(1),
+    node2 = new ListNode(2),
+    node3 = new ListNode(4);
 
-let listTwo = new Node(1);
-listTwo.next = new Node(3);
-listTwo.next.next = new Node(5);
+const list1 = node1
+node1.next = node2
+node2.next = node3
 
-printList(mergeTwoLists(listOne, listTwo));
+// list2 : 1 -> 3 -> 5
+let node4 = new ListNode(1),
+    node5 = new ListNode(3),
+    node6 = new ListNode(5);
 
-listOne = new Node();
-listTwo = new Node(0);
+const list2 = node4
+node4.next = node5
+node5.next = node6
 
-printList(mergeTwoLists(listOne, listTwo));
+printList(mergeTwoLists(list1, list2));
 
