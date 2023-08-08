@@ -14,11 +14,11 @@ function hasCycle(head) {
     let hare = head;
 
     while (hare && hare.next) {
-        tortoise = tortoise.next;         // Move tortoise by 1 step
-        hare = hare.next.next;           // Move hare by 2 steps
+        tortoise = tortoise.next;
+        hare = hare.next.next;
 
         if (tortoise === hare) {
-            return true; // Cycle detected
+            return true;
         }
     }
 
@@ -26,13 +26,12 @@ function hasCycle(head) {
 }
 
 
-const node1 = new Node(1),
-    node2 = new Node(2),
-    node3 = new Node(3),
-    node4 = new Node(4),
-    node5 = new Node(5);
+const node1 = new ListNode(1),
+    node2 = new ListNode(2),
+    node3 = new ListNode(3),
+    node4 = new ListNode(4),
+    node5 = new ListNode(5);
 
-// Link nodes to form a cycle
 node1.next = node2;
 node2.next = node3;
 node3.next = node4;
@@ -41,4 +40,4 @@ node5.next = node2; // Creating a cycle
 
 console.log(hasCycle(node1));
 
-// In this example, the linked list formed by node1, node2, node3, node4, and node5 contains a cycle, so the hasCycle function will return true. If you remove the line node5.next = node2;, the linked list will not contain a cycle, and the function will return false.
+// In this example, the linked list formed by node1, node2, node3, node4, and node5 contains a cycle, so the hasCycle function will return true. If se remove the line node5.next = node2;, the linked list will not contain a cycle, and the function will return false.
