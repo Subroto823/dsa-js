@@ -1,4 +1,3 @@
-const { ListNode } = require("../list-node");
 const { LinkedList } = require("../linkedlist");
 
 const mergeTwoLists = (list1, list2) => {
