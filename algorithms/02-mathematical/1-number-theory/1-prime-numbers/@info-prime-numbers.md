@@ -34,3 +34,32 @@
 
 * Remember that prime numbers are a rich and complex area of study, and while this overview covers the essentials, there's always more to explore and discover about them.
 
+
+## Prime Factorization
+Prime factorization is the process of expressing a positive integer greater than 1 as a product of prime numbers. It's the decomposition of a number into its prime factors, where each prime factor appears with a certain exponent.
+
+
+* For example, let's consider the number 60:
+
+    * Step 1: Begin with the number we want to factorize (60 in this case).
+
+    * Step 2: Find the smallest prime number that divides the given number evenly. In this case, it's 2, because 60 is divisible by 2 without a remainder.
+
+    * Step 3: Divide the number by the prime factor you found in Step 2. In this case, 60 ÷ 2 = 30.
+
+    * Step 4: Repeat Steps 2 and 3 until you can no longer divide the number evenly by the smallest prime factor. In the case of 30, the smallest prime factor is 2, so we divide again: 30 ÷ 2 = 15.
+
+    * Step 5: Continue this process until the number becomes 1. The prime factors you've been using along the way are the prime factors of the original number.
+
+    For the number 60:
+
+        60 ÷ 2 = 30
+        30 ÷ 2 = 15
+        15 ÷ 3 = 5
+        5 is a prime number.
+
+* So, the prime factorization of 60 is: 2 × 2 × 3 × 5, or more concisely, 2^2 × 3 × 5.
+
+This means that 60 can be expressed as the product of these prime factors, and the exponents indicate how many times each prime factor appears in the product.
+
+Prime factorization is used in various mathematical and algorithmic applications, including finding divisors, simplifying fractions, and solving certain equations.
