@@ -1,5 +1,5 @@
 /*
-# Prime Numbers in range from one to n
+# Prime Numbers within a range from 1 to n
 # Sieve of eratosthenes
 
     # Time Complexity:  O(n * log(logn))
