@@ -1,29 +1,25 @@
 /*
- # Binary Search (Recursive)
- * Time complexity O(logn)
- * Note: Only works for sorted array
- */ 
+# Binary Search (Recursive)
+    # Time complexity O(logn)
+*/ 
 
 const recursiveBinarySearch = (arr, target) => {
-    return search(arr, target, 0, arr.length - 1);
+    const search = (start, end) => {
+        if(start > end) return -1;
+
+        let mid = Math.floor((start + end) / 2);  
+
+        if(target === arr[mid]) {
+            return mid;
+        }
+        else if(target < arr[mid]) {
+           return search(start, mid - 1);
+        } else {
+           return search(mid + 1, end);
+        }
+    }
+
+    return search(0, arr.length - 1);
 }
 
-const search = (arr, target, leftIndex, rightIndex) => {
-    if(leftIndex > rightIndex) {
-        return -1;
-    }
-
-    let middleIndex = Math.floor((leftIndex + rightIndex) / 2);  
-    if(target === arr[middleIndex]) {
-        return middleIndex;
-    }
-
-    if(target < arr[middleIndex]) {
-       return search(arr, target, leftIndex, middleIndex - 1);
-    } else {
-       return search(arr, target, middleIndex + 1, rightIndex);
-    }
-}
-
-
-console.log(recursiveBinarySearch([-5, 2, 4, 6, 10], 20));
+console.log(recursiveBinarySearch([-5, 2, 4, 6, 10], 4));
