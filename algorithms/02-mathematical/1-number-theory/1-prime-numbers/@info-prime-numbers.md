@@ -9,12 +9,13 @@
 
     * Prime Factorization: Every positive integer greater than 1 can be expressed as a product of prime numbers. This factorization is called the prime factorization. For example, the prime factorization of 12 is 2 × 2 × 3, where 2 and 3 are prime numbers.
 
+    * Prime Number Patterns: Prime numbers do not follow a regular pattern, and they become less frequent as we move further along the number line. However, there are interesting patterns like twin primes (pairs of prime numbers that differ by 2, like 3 and 5, or 11 and 13).
+
     ### Properties of Prime Numbers:
         * Prime numbers are divisible only by 1 and themselves.
         * There are infinitely many prime numbers.
         * Every integer greater than 1 can be uniquely represented as a product of prime numbers, up to the order of factors.
 
-    * Prime Number Patterns: Prime numbers do not follow a regular pattern, and they become less frequent as we move further along the number line. However, there are interesting patterns like twin primes (pairs of prime numbers that differ by 2, like 3 and 5, or 11 and 13).
 
 ### Applications:
 * 
