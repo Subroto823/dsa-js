@@ -1,32 +1,27 @@
 /*
-# Sieve of eratosthenes
 # Prime Numbers in range from one to n
-    Time Complexity:  O(n * log(logn))
+# Sieve of eratosthenes
+
+    # Time Complexity:  O(n * log(logn))
 */
 
 function sieveOfEratosthenes(n) {
-    let sieve = new Array(n + 1).fill(true);
-    sieve[0] = false;
-    sieve[1] = false;
+    const primes = [];
+    const isPrime = new Array(n + 1).fill(true);
 
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (!sieve[i]) continue
-        for (let j = i * i; j <= n; j += i) {
-            sieve[j] = false;
-        }
-    }
-
-    let primes = [];
-    for (let i = 0; i <= n; i++) {
-        if (sieve[i]) {
+    for (let i = 2; i <= n; i++) {
+        if (isPrime[i]) {
             primes.push(i);
+            for (let j = i * i; j <= n; j += i) {
+                isPrime[j] = false;
+            }
         }
     }
 
     return primes;
 }
 
-let n = 100;
+let n = 10;
 let primesInRange = sieveOfEratosthenes(n);
 console.log(primesInRange);
 
