@@ -1,7 +1,5 @@
 /*
-# Prime Number
-    # A prime number is a positive integer greater than 1 that has no positive divisors other than 1 and itself. In other words, a prime number is only divisible by 1 and itself, and it has no other factors. 
-
+# Primality Check
     Time Complexity O(n)
 */
 
