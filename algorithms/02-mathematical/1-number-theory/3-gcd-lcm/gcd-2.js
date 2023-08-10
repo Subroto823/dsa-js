@@ -1,5 +1,7 @@
 /*
-GCD (Greatest Common Divisor) function in JavaScript using the iterative Euclidean algorithm. */
+# GCD (Greatest Common Divisor) - Euclidean Algorithm
+    # Iterative approach
+    # Time Complexity: O(log(min(a, b))) */
 
 function gcd(a, b) {
     while (b !== 0) {
