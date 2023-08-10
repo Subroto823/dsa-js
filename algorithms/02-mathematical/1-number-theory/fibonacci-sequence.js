@@ -1,17 +1,16 @@
 /*
  # Fibonacci Sequence 
-    # Iterative approach
     # Time Complexity: O(n)
  */
 
 const fibonacciSequence = (number) => {
-    const fib = [0, 1];
+    const sequence = [0, 1];
 
     for(let i = 2; i < number; i++) {
-        next = fib[i - 2] + fib[i - 1];
-        fib.push(next);
+        next = sequence[i - 2] + sequence[i - 1];
+        sequence.push(next);
     }
-    return fib;
+    return sequence;
 }
 
 console.log(fibonacciSequence(6));
