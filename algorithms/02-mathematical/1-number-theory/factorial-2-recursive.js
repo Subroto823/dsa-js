@@ -1,8 +1,7 @@
 /**
- # Factorial - Recursive Approach
- * Time Complexity O(n)
- *
- */
+# Factorial - Recursive Approach
+    # Time Complexity O(n)
+*/
 
 const recursiveFactorial = (number) => {
     if(number === 0) return 1;

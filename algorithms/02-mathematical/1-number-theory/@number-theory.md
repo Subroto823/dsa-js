@@ -10,17 +10,23 @@
         Fibonacci(6) = [0, 1, 1, 2, 3, 5]
         Fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]
 
-    # fib(n) = fib[n - 2] + fib[n - 1]
+    ### fib(n) = fib[n - 2] + fib[n - 1]
 
 
 # Factorial!
-* 
-  * The factorial of a non-negative integer 'n', denoted n!, is the product of positive integers less than or equal to 'n'
+Factorial is a mathematical function that is used to calculate the product of all positive integers from 1 to a given non-negative integer n. 
+* It is denoted by the symbol n!. For example:
 
-    factorial of 0 is 1
-    factorial(4) = 4 * 3 * 2 * 1 = 24
-    factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
+    0! = 1 (by convention)
+    1! = 1
+    2! = 2 * 1 = 2
+    3! = 3 * 2 * 1 = 6
+    4! = 4 * 3 * 2 * 1 = 24
+    ...
 
+* In general, n! = n * (n-1) * (n-2) * ... * 2 * 1.
+
+Factorials have applications in various areas of mathematics, especially in combinatorics, where they are used to count permutations and combinations. In competitive programming and problem-solving, factorials are frequently used to efficiently calculate the number of permutations or combinations of elements. 
 
 # Power of Two:
 * determine if the number is power of two:
@@ -56,9 +62,3 @@
        # for 4
          4 & (4 - 1) = (4 & 3) = 0
          In binary, (1000 & 0100) = 0
-
-
-
-
-
-
