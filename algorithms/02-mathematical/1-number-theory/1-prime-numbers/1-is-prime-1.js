@@ -1,5 +1,5 @@
 /*
-# Primality Check
+# Primality Test
     Time Complexity O(n)
 */
 
@@ -15,5 +15,5 @@ const isPrime = (number) => {
 }
 
 console.log(isPrime(2504987));
-console.log(isPrime(15));
+console.log(isPrime(15)); 
 
