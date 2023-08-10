@@ -18,7 +18,7 @@ function countDivisors(number) {
     return count;
 }
 
-console.log(countDivisors(10));
+console.log(countDivisors(4));
 console.log(countDivisors(24));
 
 /*
