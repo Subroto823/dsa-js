@@ -3,23 +3,23 @@
     * In mathematics, the Fibonacci sequence is a sequence in which each number is the sum of two preceding ones
     * The first two numbers in the sequence are 0 and 1
     
-    * Fibonacci(2) = [0, 1]
-    * Fibonacci(3) = [0, 1, 1]
-    * Fibonacci(4) = [0, 1, 1, 2]
-    * Fibonacci(5) = [0, 1, 1, 2, 3]
-    * Fibonacci(6) = [0, 1, 1, 2, 3, 5]
-    * Fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]
+        Fibonacci(2) = [0, 1]
+        Fibonacci(3) = [0, 1, 1]
+        Fibonacci(4) = [0, 1, 1, 2]
+        Fibonacci(5) = [0, 1, 1, 2, 3]
+        Fibonacci(6) = [0, 1, 1, 2, 3, 5]
+        Fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]
 
     # fib(n) = fib[n - 2] + fib[n - 1]
 
 
-# Factorial!!!!!!!!!
+# Factorial!
 * 
-    * In mathematics, the factorial of a non-negative integer 'n', denoted n!, is the product of positive integers less than or equal to 'n'
+  * The factorial of a non-negative integer 'n', denoted n!, is the product of positive integers less than or equal to 'n'
 
-    * factorial of 0 is 1
-    * factorial(4) = 4 * 3 * 2 * 1 = 24
-    * factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
+    factorial of 0 is 1
+    factorial(4) = 4 * 3 * 2 * 1 = 24
+    factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
 
 
 # Power of Two:
@@ -30,16 +30,16 @@
     isPowerOfTwo(2) = true(2^1)
     isPowerOfTwo(3) = false
 
-    ### using bitwise operator we can solve the problem with constant complexity of O(1)
+    ## using bitwise operator we can solve the problem with constant complexity of O(1)
 
-       * n & (n - 1) === 0
-       * & -> bitwise and operator
+       * using bitwise and operator(&)
+           n & (n - 1) === 0
        
-       # number   binary
-          1         1
-          2         10
-          3         100
-          4         1000
+       # decimal   binary
+        1         1
+        2         10
+        3         100
+        4         1000
 
        # for 1
          1 & (1 - 1) = (1 & 0) = 0

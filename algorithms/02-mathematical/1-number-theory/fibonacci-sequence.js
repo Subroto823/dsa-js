@@ -1,6 +1,7 @@
 /*
- # Fibonacci Sequence (iterative implementation)
- * Time Complexity: O(n)
+ # Fibonacci Sequence 
+    # Iterative approach
+    # Time Complexity: O(n)
  */
 
 const fibonacciSequence = (number) => {
