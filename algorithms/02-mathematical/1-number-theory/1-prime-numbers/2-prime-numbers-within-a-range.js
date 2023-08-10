@@ -1,5 +1,5 @@
 /*
-# Prime Numbers in range from 1 to n (Basic implementation)
+# Prime Numbers within a range from 1 to n (Basic implementation)
     Time Complexity:  O(n * sqrt(n))
 */
 function isPrime(number) {
