@@ -1,12 +1,11 @@
 /*
  # Linear Search 
- * Time complexity O(n)
- *
- */
+    # Time complexity O(n)
+*/
 
 const linearSearch = (arr, n) => {
     for(let i = 0; i < arr.length; i++) {
-        if(arr[i] === n) return 1;
+        if(arr[i] === n) return i;
     }
     return -1;
 }
