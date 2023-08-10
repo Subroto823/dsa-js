@@ -72,4 +72,4 @@ The line k = k % n is used to ensure that the value of k (the number of position
     For example, if we have an array [1, 2, 3, 4, 5] with a length of 5 and we want to rotate it by 7 positions to the right, we can actually rotate it by 7 % 5 = 2 positions to achieve the same result. This is because after rotating by 5 positions, the array will be back to its original position, so we only need to rotate by the remaining 2 positions.
 
 So, k = k % n calculates the remainder of dividing k by n, ensuring that k is within the valid range of array length. This is particularly useful when k is larger than the length of the array, as it brings the rotation value within a suitable range for the array's size.
-*/ 
+*/
