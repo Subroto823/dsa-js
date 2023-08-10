@@ -44,4 +44,4 @@ let nums = [4, 2, 7, 5, 1];
 console.log(findSecondLargest(nums));
 
 nums = [9, 9, 9, 8, 8];
-console.log(findSecondLargest(nums)); 
+console.log(findSecondLargest(nums));
