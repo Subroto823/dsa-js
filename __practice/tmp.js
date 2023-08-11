@@ -1,9 +1,10 @@
 /*
 Problem Statement:
+Given an integer array nums and an integer k, modify the array in the following way:
 
-Given an array of integers nums and an integer k, you are allowed to negate (change the sign of) exactly k elements in the array. Your task is to find the maximum possible sum of the array after performing these negations.
-    
-    # Choose an index i and replace nums[i] with -nums[i]
+    choose an index i and replace nums[i] with -nums[i].
+
+You should apply this process exactly k times. You may choose the same index i multiple times. Return the largest possible sum of the array after modifying it in this way.
 
 
 Example:
@@ -30,8 +31,24 @@ Constraints:
 
 */
 
-function maxSumAfterKNegations(arr, k) {
-    
+function maxSumAfterKNegations(nums, k) {
+    nums.sort((a, b) => a - b);
+
+    let i = 0;
+    while(k !== 0 && nums[i] < 0) {
+        nums[i] = -nums[i];
+        k--, i++;
+    }
+
+    if (k % 2 === 1) {
+        let minIndex = nums.reduce((index, cur, curIndex, arr) => {
+            return cur < arr[index] ? curIndex : index;
+        }, 0);
+
+        nums[minIndex] = -nums[minIndex];
+    }
+    return nums.reduce((acc, num) => acc + num, 0);
 }
 
-console.log(maxSumAfterKNegations([2,-3,-1,5,-4], 2));
+console.log(maxSumAfterKNegations([2, -3, -1, 5, -4], 2));
+console.log(maxSumAfterKNegations([2, -3, -2, 1, 5, -4], 4));

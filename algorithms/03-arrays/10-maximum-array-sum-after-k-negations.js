@@ -30,28 +30,23 @@ Constraints:
 
 */
 
-function maxSumAfterKNegations(arr, k) {
-    arr.sort((a, b) => a - b);
-    let n = arr.length;
+function maxSumAfterKNegations(nums, k) {
+    nums.sort((a, b) => a - b);
 
-    for(let i = 0; i < n; i++) {
-        if(k === 0 || arr[i] > 0) break;
-        arr[i] = -arr[i]
-        k--;
+    let i = 0;
+    while(k !== 0 && nums[i] < 0) {
+        nums[i] = -nums[i];
+        k--, i++;
     }
 
-    // If k is odd then we have to done single operation and it must be done on the smallest positive element
-    if(k & 1) {
-        let minIndx = 0;
+    if (k % 2 === 1) {
+        let minIndex = nums.reduce((index, cur, curIndex, arr) => {
+            return cur < arr[index] ? curIndex : index;
+        }, 0);
 
-        for(let i = 1; i < n; i++) {
-            if(arr[i] < arr[minIndx]) {
-                minIndx = i;
-            }
-        }
-        arr[minIndx] = -arr[minIndx];
+        nums[minIndex] = -nums[minIndex];
     }
-    return sumOfArray(arr);
+    return nums.reduce((acc, num) => acc + num, 0);
 }
 
-console.log(maxSumAfterKNegations([2,-3,-1,5,-4], 2));
+console.log(maxSumAfterKNegations([2, -3, -1, 5, -4], 2));
