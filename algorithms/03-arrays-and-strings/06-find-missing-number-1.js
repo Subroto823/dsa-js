@@ -10,7 +10,6 @@ Example:
     Input: nums = [0, 1, 3]
     Output: 2
 
-
     Input: nums = [6, 3, 2, 9, 4, 5, 0, 7, 1]
     Output: 8
 
