@@ -11,11 +11,12 @@ Example:
 
     Input: s = "aba"
     Output: false
-
-# Solution
-    # Naive approach
 */
 
+/*
+# Naive approach 
+    * Time Complexity: O(n^2)
+    * Space Complexity: O(n) */
 function repeatedSubstringPattern(s) {
     let n = s.length
 

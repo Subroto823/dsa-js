@@ -41,18 +41,20 @@ console.log(areAnagrams(str1, str2));
     Space Complexity: O(n) 
 */
 function areAnagramsII(s1, s2) {
-    s1 = s1.replace(/\s/g, '').toLowerCase();
-    s2 = s2.replace(/\s/g, '').toLowerCase();
-
     if (s1.length !== s2.length) return false;
+
+    s1 = s1.toLowerCase();
+    s2 = s2.toLowerCase();
 
     const charCount = {};
     
     for (let char of s1) {
+        if (char == ' ') continue
         charCount[char] = (charCount[char] || 0) + 1;
     }
     
     for (let char of s2) {
+        if (char == ' ') continue
         if (!charCount[char]) return false;
         charCount[char]--;
     }

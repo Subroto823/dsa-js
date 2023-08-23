@@ -13,8 +13,8 @@ Example:
     Output: false
 
 
-# Solution
-    # Using string rotation or concatenation approach
+/*
+# Using string rotation or concatenation approach
 */
 
 function repeatedSubstringPattern(s) {
