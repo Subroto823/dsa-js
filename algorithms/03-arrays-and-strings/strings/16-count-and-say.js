@@ -2,7 +2,7 @@ var countAndSay = function(n) {
     let result = '1';
 
     while(n - 1 > 0) {
-        let countDigit = generateFrequencyArray(result)
+        let countDigit = generateFrequencyArray(result);
         result = convertToString(countDigit);
         n--;
     }
