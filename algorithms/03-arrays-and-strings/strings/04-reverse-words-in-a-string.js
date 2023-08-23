@@ -11,19 +11,6 @@ Example:
 
 // Approach 1
 var reverseWords = function(s) {
-    let words = s.trim().split(/\s+/);
-    return words.reverse().join(" ");
-};
-
-let s = "  a good   example  "
-console.log(reverseWords(s));
-
-s = "Hello World, how are you?"
-console.log(reverseWords(s));
-
-
-// Approach 2
-var reverseWordsII = function(s) {
     let reversed = '';
     let word = '';
 
@@ -38,6 +25,19 @@ var reverseWordsII = function(s) {
 
     reversed += word;
     return reversed.trimEnd();
+};
+
+let s = "  a good   example  "
+console.log(reverseWords(s));
+
+s = "Hello World, how are you?"
+console.log(reverseWords(s));
+
+
+// Approach 2
+var reverseWordsII = function(s) {
+    let words = s.trim().split(/\s+/);
+    return words.reverse().join(" ");
 };
 
 s = "  a good   example  "

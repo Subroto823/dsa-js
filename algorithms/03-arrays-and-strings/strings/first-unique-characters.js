@@ -22,18 +22,16 @@ Constraints:
     * Space Complexity: O(n) */
    
 const firstUniqChar = (s) => {
-    let uniqueIndex = -1;
-
     for (let i = 0; i < s.length; i++) {
         let firstIndex = s.indexOf(s[i]);
+        let lastIndex = s.lastIndexOf(s[i]);
 
-        if (firstIndex === s.lastIndexOf(s[i])) {
-            uniqueIndex = firstIndex;
-            break;
+        if (firstIndex === lastIndex) {
+            return i;
         }
     }
 
-    return uniqueIndex;
+    return -1;
 }
 
 let s = "leetcode";
