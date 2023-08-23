@@ -37,3 +37,19 @@ let s = "abab"
 console.log(repeatedSubstringPattern(s));
 s = "aba"
 console.log(repeatedSubstringPattern(s));
+
+
+
+/*
+# Using string rotation or concatenation approach
+*/
+
+function repeatedSubstringPattern(s) {
+    let ss = s + s;
+    return ss.slice(1,  ss.length - 1).includes(s);
+}
+
+s = "abab"
+console.log(repeatedSubstringPattern(s));
+s = "aba"
+console.log(repeatedSubstringPattern(s));

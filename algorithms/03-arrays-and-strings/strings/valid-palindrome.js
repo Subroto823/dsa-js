@@ -21,32 +21,9 @@ Note:
 
 /*
 Time Complexity: O(n)
-Space Complexity: O(n) */
-
-const isPalindrome = (s) => {
-    // Remove non-alphanumeric characters and convert to lowercase
-    const cleanedString = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-    return cleanedString === cleanedString.split('').reverse().join('');
-}
-
-let s = "civic";
-console.log(isPalindrome(s));
-
-s = "Was it a car or a cat I saw?";
-console.log(isPalindrome(s));
-
-
-
-/*
-Time Complexity: O(n)
 Space Complexity: O(1) */
 
-const isAlphanumeric = c => {
-    return (c.charCodeAt(0) > 96 && c.charCodeAt(0) < 123) || 
-        (c.charCodeAt(0) > 47 && c.charCodeAt(0) < 58);
-}
-
-const isPalindromeII = (s) => {
+var isPalindrome = function (s) {
     let start = 0, end = s.length - 1;
 
     while (start < end) {
@@ -62,8 +39,30 @@ const isPalindromeII = (s) => {
     return true;
 }
 
+var isAlphanumeric = function(c) {
+    return (c.charCodeAt(0) > 96 && c.charCodeAt(0) < 123) || 
+        (c.charCodeAt(0) > 47 && c.charCodeAt(0) < 58);
+}
+
 s = "civic";
-console.log(isPalindromeII(s));
+console.log(isPalindrome(s));
 
 s = "A man, a plan, a canal: Panama"
+console.log(isPalindrome(s));
+
+
+/*
+Time Complexity: O(n)
+Space Complexity: O(n) */
+
+var isPalindromeII = function (s) {
+    // Remove non-alphanumeric characters and convert to lowercase
+    const cleanedString = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    return cleanedString === cleanedString.split('').reverse().join('');
+}
+
+let s = "civic";
+console.log(isPalindromeII(s));
+
+s = "Was it a car or a cat I saw?";
 console.log(isPalindromeII(s));
