@@ -1,35 +1,21 @@
 /**
-@Dijkstra (Adjacency Matrix)
-
-    Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a weighted graph, which may represent, for example, road networks. (from Wikipedia)
-
-    It's a Greedy algorithm and doesn’t work for Graphs with negative weights.
-
-    Time Complexity: O(V^2)
-    Space Complexity: O(V)
-
-
-    Dijkstra's Algorithm Applications
-
-        To find the shortest path
-        In social networking applications
-        In a telephone network
-        To find the locations in the map
-
+ * Dijkstra (On Adjacency Matrix)
+ * Single source shortest path algorithm
+ * Time Complexity: O(N^2)
+ * Space Complexity: O(N)
+ * 
  */
 
-// Implement of Dijkstra's single source shortest path algorithm
-function dijkstra(graph, source) {
-    const V = graph.length;
-
-    const distance = new Array(V).fill(Infinity);
+var dijkstra = function (graph, source) {
+    const N = graph.length;
+    const distance = new Array(N).fill(Infinity);
     const queue = [source];
     distance[source] = 0;
 
     while (queue.length) {
         let currentVertex = queue.shift();
 
-        for (let i = 0; i < V; i++) {
+        for (let i = 0; i < N; i++) {
             let neighbors = graph[currentVertex];
             if (neighbors[i] === 0) continue;
 
@@ -39,6 +25,7 @@ function dijkstra(graph, source) {
             }
         }
     }
+    
     return distance;
 }
 
