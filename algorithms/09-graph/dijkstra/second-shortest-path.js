@@ -1,6 +1,7 @@
 /**
- # Second Shortest Path From Source to target
-*/
+ * Second Shortest Path From Source to Target
+ * 
+ * */
 const { PriorityQueue } = require('../../../__helpers/priority-queue-simple');
 
 var secondShortestPath = function (graph, source, target) {
