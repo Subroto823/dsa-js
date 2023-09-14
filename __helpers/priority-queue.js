@@ -1,8 +1,7 @@
 /* Priority Queue(Min Heap Implementation) */
-
 class priorityNode {
-    constructor(node, priority) {
-        this.node = node;
+    constructor(element, priority) {
+        this.element = element;
         this.priority = priority;
     }
 }
@@ -55,8 +54,8 @@ class PriorityQueue {
         if (this.isFull()) {
             process.stdout.write("Queue is full!\n");
         } else {
-            const newNode = new priorityNode(element, priority);
-            this.heap.push(newNode);
+            const newElement = new priorityNode(element, priority);
+            this.heap.push(newElement);
             this.heapifyUp(this.length - 1);
         }
     }
@@ -85,12 +84,12 @@ class PriorityQueue {
 
         let heap = this.heap;
 
-        let deleteNode = heap[0];
+        let deleteEle = heap[0];
         heap[0] = heap[this.length - 1];
         heap.pop();
         this.heapifyDown(0);
 
-        return deleteNode;
+        return deleteEle;
     }
 }
 

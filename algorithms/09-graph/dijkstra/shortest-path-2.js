@@ -1,11 +1,11 @@
 /**
- @Dijkstra (Adjacency List)
-
-    Time Complexity: O(ElogV)
-    Space Complexity: O(V)
+ * Dijkstra (Adjacency List)
+ * Time Complexity: O(V + E)
+ * Space Complexity: O(V)
+ * 
 */
 
-function dijkstra(graph, source) {
+var dijkstra = function (graph, source) {
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
 
@@ -24,6 +24,7 @@ function dijkstra(graph, source) {
             }
         }
     }
+
     return distance;
 }
 

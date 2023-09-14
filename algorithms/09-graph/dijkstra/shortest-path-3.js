@@ -1,16 +1,16 @@
 /**
- @Dijkstra (Priority Queue)
-
-    Time Complexity:  O(VlogV)
-    Space Complexity: O(V)
+ * Dijkstra (Priority Queue)
+ * Time Complexity:  O((V + E) * log(V))
+ * Space Complexity: O(V)
+ * 
 */
-const { PriorityQueue } = require('../_/priority-queue');
+const { PriorityQueue } = require('../../../__helpers/Prio');
 
-function dijkstra(graph, source) {
+var dijkstra = function (graph, source) {
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
-
     const Queue = new PriorityQueue();
+
     Queue.enQueue(source, 0);
     distance[source] = 0;
 

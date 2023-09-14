@@ -5,28 +5,45 @@
  * Space Complexity: O(N)
  * 
  */
-
 var dijkstra = function (graph, source) {
     const N = graph.length;
     const distance = new Array(N).fill(Infinity);
-    const queue = [source];
+    const seen = new Array(N).fill(false);
+
     distance[source] = 0;
 
-    while (queue.length) {
-        let currentVertex = queue.shift();
+    for (let i = 0; i < N - 1; i++) {
+        let u = findMinDistanceNode(distance, seen);
 
-        for (let i = 0; i < N; i++) {
-            let neighbors = graph[currentVertex];
-            if (neighbors[i] === 0) continue;
+        if (u === -1 || distance[u] === Infinity) continue;
+        seen[u] = true;
 
-            if ((distance[currentVertex] + neighbors[i]) < distance[i]) {
-                distance[i] = distance[currentVertex] + neighbors[i];
-                queue.push(i);
+        for (let v = 0; v < N; v++) {
+            if (graph[u][v] === 0 || seen[v]) continue;
+
+            let newDistance = distance[u] + graph[u][v];
+
+            if (newDistance < distance[v]) {
+                distance[v] = newDistance;
             }
         }
     }
-    
+
     return distance;
+}
+
+var findMinDistanceNode = function (distances, visited) {
+    let minDistance = Infinity;
+    let minDistanceNode = -1;
+
+    for (let i = 0; i < distances.length; i++) {
+        if (!visited[i] && distances[i] < minDistance) {
+            minDistance = distances[i];
+            minDistanceNode = i;
+        }
+    }
+
+    return minDistanceNode;
 }
 
 let graph = [
@@ -38,20 +55,6 @@ let graph = [
 console.log(dijkstra(graph, 2));
 
 graph = [
-    [0, 4, 0, 0, 0, 0, 0, 8, 0],
-    [4, 0, 8, 0, 0, 0, 0, 11, 0],
-    [0, 8, 0, 7, 0, 4, 0, 0, 2],
-    [0, 0, 7, 0, 9, 14, 0, 0, 0],
-    [0, 0, 0, 9, 0, 10, 0, 0, 0],
-    [0, 0, 4, 14, 10, 0, 2, 0, 0],
-    [0, 0, 0, 0, 0, 2, 0, 1, 6],
-    [8, 11, 0, 0, 0, 0, 1, 0, 7],
-    [0, 0, 2, 0, 0, 0, 6, 7, 0]
-];
-
-console.log(dijkstra(graph, 0));
-
-graph = [
     [0, 1, 2, 3],
     [1, 0, 5, 0],
     [2, 3, 0, 4],
@@ -59,4 +62,3 @@ graph = [
 ];
 
 console.log(dijkstra(graph, 1));
-
