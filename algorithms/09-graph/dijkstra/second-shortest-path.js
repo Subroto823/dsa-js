@@ -1,30 +1,17 @@
 /**
- @Dijkstra (Adjacency List)
-
-    Time Complexity: O(ElogV)
-    Space Complexity: O(V)
+ # Second Shortest Path From Source to Destination
 */
+const { PriorityQueue } = require('../../../__helpers/priority-queue-simple');
 
-function dijkstra(graph, source) {
-    const V = graph.length;
-    const distance = new Array(V).fill(Infinity);
+var dijkstra = function(graph, source) {
+    const N = graph.length;
+    const distances = new Array(N).fill(Infinity);
+    const pq = PriorityQueue();
 
-    const Queue = [ source ];
-    distance[source] = 0;
+    pq.enqueue(source, 0);
+    distances[source] = 0;
 
-    while(Queue.length) {
-        let currentVertex = Queue.shift();
-
-        for(let [neighbor, weight] of graph[currentVertex]) {
-            let newDistance = (distance[currentVertex] + weight);
-
-            if(newDistance < distance[neighbor]) {
-                distance[neighbor] = newDistance
-                Queue.push(neighbor);
-            }
-        }
-    }
-    return distance;
+    while
 }
 
 // adjacent node of vertex i -> [[node, weight], ...]
