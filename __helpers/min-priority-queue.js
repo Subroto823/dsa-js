@@ -6,28 +6,30 @@ class MinPriorityQueue {
         this.heap = [];
     }
 
-    isEmpty() {
-        return this.length === 0;
-    }
-
     get length() {
         return this.heap.length;
+    }
+
+    size() {
+        return this.heap.length;
+    }
+
+    isEmpty() {
+        return this.length === 0;
     }
 
     isFull() {
         return this.length === this.capacity;
     }
 
-    parentIndex(index) {
-        return Math.floor((index - 1) / 2);
-    }
-
-    swap(index1, index2) {
-        let heap = this.heap;
-
-        let task = heap[index1];
-        heap[index1] = heap[index2];
-        heap[index2] = task;
+    enQueue(element, priority = element) {
+        if (this.isFull()) {
+            process.stdout.write("Queue is full!\n");
+        } else {
+            const newElement = { element, priority };
+            this.heap.push(newElement);
+            this.heapifyUp(this.length - 1);
+        }
     }
 
     heapifyUp(index) {
@@ -44,14 +46,29 @@ class MinPriorityQueue {
         }
     }
 
-    enQueue(element, priority = element) {
-        if (this.isFull()) {
-            process.stdout.write("Queue is full!\n");
-        } else {
-            const newElement = {element, priority};
-            this.heap.push(newElement);
-            this.heapifyUp(this.length - 1);
-        }
+    parentIndex(index) {
+        return Math.floor((index - 1) / 2);
+    }
+
+    swap(index1, index2) {
+        let heap = this.heap;
+
+        let task = heap[index1];
+        heap[index1] = heap[index2];
+        heap[index2] = task;
+    }
+
+    deQueue() {
+        if (this.isEmpty()) return null;
+
+        let heap = this.heap;
+
+        let deleteEle = heap[0];
+        heap[0] = heap[this.length - 1];
+        heap.pop();
+        this.heapifyDown(0);
+
+        return deleteEle.element;
     }
 
     heapifyDown(i) {
@@ -71,19 +88,6 @@ class MinPriorityQueue {
             this.swap(i, smallest);
             this.heapifyDown(smallest);
         }
-    }
-
-    deQueue() {
-        if (this.isEmpty()) return null;
-
-        let heap = this.heap;
-
-        let deleteEle = heap[0];
-        heap[0] = heap[this.length - 1];
-        heap.pop();
-        this.heapifyDown(0);
-
-        return deleteEle.element;
     }
 }
 
