@@ -1,4 +1,5 @@
 /* Priority Queue(Min Heap Implementation) */
+
 class priorityNode {
     constructor(element, priority) {
         this.element = element;
