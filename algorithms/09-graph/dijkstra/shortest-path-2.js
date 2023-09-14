@@ -9,18 +9,18 @@ var dijkstra = function (graph, source) {
     const V = graph.length;
     const distance = new Array(V).fill(Infinity);
 
-    const Queue = [ source ];
+    const queue = [ source ];
     distance[source] = 0;
 
-    while(Queue.length) {
-        let currentVertex = Queue.shift();
+    while(queue.length) {
+        let currentVertex = queue.shift();
 
         for(let [neighbor, weight] of graph[currentVertex]) {
             let newDistance = (distance[currentVertex] + weight);
 
             if(newDistance < distance[neighbor]) {
                 distance[neighbor] = newDistance
-                Queue.push(neighbor);
+                queue.push(neighbor);
             }
         }
     }

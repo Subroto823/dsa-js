@@ -7,26 +7,27 @@
 const { MinPriorityQueue } = require('../../../__helpers/min-priority-queue');
 
 var dijkstra = function (graph, source) {
-    const V = graph.length;
-    const distance = new Array(V).fill(Infinity);
-    const Queue = new MinPriorityQueue();
+    const N = graph.length;
+    const distances = new Array(N).fill(Infinity);
+    const pq = new MinPriorityQueue();
 
-    Queue.enQueue(source, 0);
-    distance[source] = 0;
+    pq.enQueue(source, 0);
+    distances[source] = 0;
 
-    while (Queue.length) {
-        let currentVertex = Queue.deQueue();
+    while (pq.size()) {
+        const u = pq.deQueue();
 
-        for (let [neighbor, weight] of graph[currentVertex]) {
-            let newDistance = distance[currentVertex] + weight;
+        for (const [v, w] of graph[u]) {
+            const nw = distances[u] + w;
 
-            if (newDistance < distance[neighbor]) {
-                distance[neighbor] = newDistance;
-                Queue.enQueue(neighbor, distance[neighbor]);
+            if (nw < distances[v]) {
+                distances[v] = nw;
+                pq.enQueue(v, nw)
             }
         }
     }
-    return distance;
+
+    return distances;
 }
 
 // adjacent node of vertex i -> [[node, weight], ...]
