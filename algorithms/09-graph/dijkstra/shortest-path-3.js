@@ -4,7 +4,7 @@
  * Space Complexity: O(V)
  * 
 */
-const { MinPriorityQueue } = require('../../../__helpers/min-priority-queue')
+const { MinPriorityQueue } = require('../../../__helpers/min-priority-queue');
 
 var dijkstra = function (graph, source) {
     const V = graph.length;
