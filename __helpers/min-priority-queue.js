@@ -1,13 +1,6 @@
 /* Priority Queue(Min Heap Implementation) */
 
-class priorityNode {
-    constructor(element, priority) {
-        this.element = element;
-        this.priority = priority;
-    }
-}
-
-class PriorityQueue {
+class MinPriorityQueue {
     constructor(capacity) {
         this.capacity = capacity ? capacity : Infinity;
         this.heap = [];
@@ -51,11 +44,11 @@ class PriorityQueue {
         }
     }
 
-    enQueue(element, priority) {
+    enQueue(element, priority = element) {
         if (this.isFull()) {
             process.stdout.write("Queue is full!\n");
         } else {
-            const newElement = new priorityNode(element, priority);
+            const newElement = {element, priority};
             this.heap.push(newElement);
             this.heapifyUp(this.length - 1);
         }
@@ -90,10 +83,10 @@ class PriorityQueue {
         heap.pop();
         this.heapifyDown(0);
 
-        return deleteEle;
+        return deleteEle.element;
     }
 }
 
 module.exports = {
-    PriorityQueue
+    MinPriorityQueue
 }
