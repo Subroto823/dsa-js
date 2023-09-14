@@ -4,7 +4,7 @@
  * Space Complexity: O(V)
  * 
 */
-const { PriorityQueue } = require('../../../__helpers/Prio');
+const { PriorityQueue } = require('../../../__helpers/priority-queue');
 
 var dijkstra = function (graph, source) {
     const V = graph.length;
@@ -15,7 +15,7 @@ var dijkstra = function (graph, source) {
     distance[source] = 0;
 
     while (Queue.length) {
-        let currentVertex = Queue.deQueue().node;
+        let currentVertex = Queue.deQueue().element;
 
         for (let [neighbor, weight] of graph[currentVertex]) {
             let newDistance = distance[currentVertex] + weight;
