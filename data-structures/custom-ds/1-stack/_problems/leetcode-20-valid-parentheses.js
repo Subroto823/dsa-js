@@ -1,47 +1,58 @@
+/*
+Problem Statement:
+Given a string containing just the characters '(', ')', '{', '}', '[', and ']', determine if the input string is valid.
+
+An input string is considered valid if:
+    * Open brackets must be closed by the same type of brackets.
+    * Open brackets must be closed in the correct order.
+
+Note that an empty string is also considered valid.
+
+Examples:
+
+    Input: "()", Output: true
+    Input: "()[]{}", Output: true
+    Input: "(]", Output: false
+    Input: "([)]", Output: false
+    Input: "{[]}", Output: true
+*/
 const Stack = require('../stack');
 
-const validParentheses = (str) => {
+const validParentheses = function (s) {
     const stack = new Stack();
 
-    for (let i = 0; i < str.length; i++) {
-        let ob = str[i];
-
-        if (ob === '(' || ob === '{' || ob === '[') {
-            stack.push(ob);
+    for (let c of s) {
+        if (c === '(' || c === '{' || c === '[') {
+            stack.push(c);
             continue;
         }
 
         if (stack.isEmpty()) return false;
 
-        let check;
+        let check_start = stack.pop();
 
-        switch (ob) {
+        switch (c) {
             case ')':
-                check = stack.pop();
-                if (check == '{' || check == '[') {
+                if (check_start !== '(') {
                     return false;
                 }
-                break;
 
             case '}':
-                check = stack.pop();
-                if (check == '(' || check == '[') {
+                if (check_start !== '{') {
                     return false;
                 }
-                break;
 
             case ']':
-                check = stack.pop();
-                if (check == '{' || check == '(') {
+                if (check_start !== '[') {
                     return false;
                 }
-                break;
         }
     }
 
     return true;
 }
 
+console.log(validParentheses("()[]{}"))
 console.log(validParentheses(""));
 console.log(validParentheses("[({})]"));
 console.log(validParentheses("[][[]](){}"));
