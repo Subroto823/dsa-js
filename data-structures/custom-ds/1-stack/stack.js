@@ -22,10 +22,6 @@ class Stack {
     size() {
         return this.items.length;
     }
-
-    join(item) {
-        return this.items.join(item);
-    }
     
     print() {
         console.log(this.items.toString());
@@ -34,14 +30,13 @@ class Stack {
 
 module.exports = Stack;
 
-// const stack = new Stack();
-// console.log(stack.isEmpty());
+const stack = new Stack();
 
-// stack.push(20);
-// stack.push(10);
-// stack.push(30);
-// console.log(stack.size());
-// stack.print();
+stack.push(20);
+stack.push(10);
+stack.push(30);
+stack.print();
 
-// console.log(stack.pop());
-// console.log(stack.peek());
+console.log(stack.pop());
+console.log(stack.peek());
+console.log(stack)
