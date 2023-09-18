@@ -36,23 +36,27 @@ const validParentheses = function (s) {
                 if (check_start !== '(') {
                     return false;
                 }
+                break
 
             case '}':
                 if (check_start !== '{') {
                     return false;
                 }
+                break
 
             case ']':
                 if (check_start !== '[') {
                     return false;
                 }
+                break
         }
     }
 
+    if (!stack.isEmpty()) return false;
     return true;
 }
 
-console.log(validParentheses("()[]{}"))
+console.log(validParentheses("()[]{"))
 console.log(validParentheses(""));
 console.log(validParentheses("[({})]"));
 console.log(validParentheses("[][[]](){}"));
