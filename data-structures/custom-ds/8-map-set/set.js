@@ -9,7 +9,7 @@ class MySet{
     }
 
     has(key) {
-        return this.dictionary[key] !== undefined;
+        return this.dictionary.hasOwnProperty(key);
     }
 
     add(element) {
@@ -20,6 +20,7 @@ class MySet{
             this.#size++;
             success = true;
         }
+
         return success;
     }
 
@@ -31,6 +32,7 @@ class MySet{
             this.#size--;
             success = true;
         }
+
         return success;
     }
 
@@ -53,6 +55,7 @@ class MySet{
         set.values().forEach(element => {
             newSet.add(element);
         });
+
         return newSet;
     }
 
@@ -64,6 +67,7 @@ class MySet{
                 newSet.add(element);
             }
         });
+
         return newSet;
     }
 
@@ -75,6 +79,7 @@ class MySet{
                 newSet.add(element);
             }
         });
+
         return newSet;
     }
 
@@ -84,6 +89,7 @@ class MySet{
                 return false;
             }
         }
+        
         return true;
     }
 }

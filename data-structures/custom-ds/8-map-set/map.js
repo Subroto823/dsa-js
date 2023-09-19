@@ -21,13 +21,15 @@ class MyMap{
     }
 
     has(key) {
-        return this.collection[key] !== undefined;
+        return this.collection.hasOwnProperty(key);
     }
 
     get(key) {
         if(this.has(key)) {
             return this.collection[key];
         }
+
+        return null;
     }
 
     values() {
