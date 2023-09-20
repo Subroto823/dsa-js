@@ -1,20 +1,18 @@
 # Trie
-* Tries are an extremely special and useful data-structure that are based on the prefix of a string. They are used to represent the “reTRIEval” of data and thus the name Trie. 
+Tries are an extremely special and useful data-structure that are based on the prefix of a string. They are used to represent the “reTRIEval” of data and thus the name Trie. 
 
 * It is an advanced data structure that is sometimes also known as prefix tree or digital tree.
 
 * A trie is an ordered search tree commonly used to hold strings, or more generically associative arrays or dynamic datasets in which the keys are strings. 
- 
 
 
-# Properties of a Trie Data Structure
+
+## Properties of a Trie Data Structure
 
 * Every node (except root) will store a letter in the alphabet
 
-* Each node of a Trie represents a string and each edge represents a character. Unlike a binary tree, nodes are not associated with actual values. 
-
-Instead, the path to a node represents a specific key. For instance, if we wanted to store the string code in a trie, we would have four nodes, one for each letter: c — o — d — e. 
-Following that path through all these nodes will then create code as a string — that path is the key we stored.
+* In a Trie, each node represents a character, and the path from the root to a node forms a string. Unlike a binary tree, Trie nodes do not store values directly; instead, the structure of the tree itself encodes the keys. 
+    - For example, storing the word "code" in a Trie results in a path of nodes: "c" → "o" → "d" → "e," representing the key "code."
     
 * Every node consists of hashmaps or an array of pointers, with each index representing a character and a flag to indicate if any string ends at the current node.
 
@@ -25,14 +23,13 @@ Following that path through all these nodes will then create code as a string �
 * They are very good at storing sets of data when many keys will have overlapping prefixes, for example, all the words in a dictionary. 
 
 
-
 #  Strengths
 
 * Sometimes Space-Efficient. If you're storing lots of words that start with similar patterns, tries may reduce the overall storage cost by storing shared prefixes once.
 
 * Efficient Prefix Queries. Tries can quickly answer queries about words with shared prefixes, like:
-    * How many words start with "choco"?
-    * What's the most likely next letter in a word that starts with "strawber"?
+    - How many words start with "choco"?
+    - What's the most likely next letter in a word that starts with "strawber"?
 
 
 # Weaknesses

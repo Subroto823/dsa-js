@@ -1,4 +1,4 @@
-class Node {
+class TrieNode {
     constructor() {
         this.children = {};
         this.isWordEnd = false;
@@ -7,36 +7,38 @@ class Node {
 
 class Trie {
     constructor() {
-        this.root = new Node();
+        this.root = new TrieNode();
     }
 
     add(word) {
         let curr = this.root;
-        for(let charToInsert of word) {
 
-            // check if the letter is already available in the current node or not
-            //if not available
-            if(!(charToInsert in curr.children)) {
-                curr.children[charToInsert] = new Node();
+        for(let charToInsert of word) {
+            // If the letter is not already available in the current node 
+            if(!(curr.children.hasOwnProperty(charToInsert))) {
+                curr.children[charToInsert] = new TrieNode();
             }
 
-            // if available
             curr = curr.children[charToInsert];
         }
+
         curr.isWordEnd = true;
     }
 
     contains(word) {
         let curr = this.root;
+
         for(let charToFind of word) {
-            if(!(charToFind in curr.children)) {
+            if(!(curr.children.hasOwnProperty(charToFind))) {
                 return false;
             }
+
             curr = curr.children[charToFind];
         }
+
         return curr.isWordEnd;
     }
-
+    
     startsWith(prefix) {
         let curr = this.root;
 
@@ -44,8 +46,10 @@ class Trie {
             if(!(charToFind in curr.children)) {
                 return false;
             }
+
             curr = curr.children[charToFind];
         }
+
         return true;
     }
 
@@ -53,9 +57,11 @@ class Trie {
         if(node.isWordEnd) {
             wordList.push(word);
         }
+
         for (let char in node.children) {
             this.reTRIEve(node.children[char], word.concat(char), wordList);
         }
+
         return wordList;
     }
     
