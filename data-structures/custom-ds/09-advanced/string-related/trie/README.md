@@ -23,7 +23,7 @@ Tries are an extremely special and useful data-structure that are based on the p
 * They are very good at storing sets of data when many keys will have overlapping prefixes, for example, all the words in a dictionary. 
 
 
-#  Strengths
+## Strengths
 
 * Sometimes Space-Efficient. If you're storing lots of words that start with similar patterns, tries may reduce the overall storage cost by storing shared prefixes once.
 
@@ -32,7 +32,7 @@ Tries are an extremely special and useful data-structure that are based on the p
     - What's the most likely next letter in a word that starts with "strawber"?
 
 
-# Weaknesses
+## Weaknesses
 
 * Usually Space-Inefficient. Tries rarely save space when compared to storing strings in a set.
 
@@ -42,7 +42,7 @@ So, the overhead of linking nodes together often outweighs the savings from stor
 * Not Standard. Most languages don't come with a built-in trie implementation. You'll need to implement one yourself.
 
 
-# Advantages of Trie Data Structure over a Hash Table:
+## Advantages of Trie Data Structure over a Hash Table:
 
 * We can efficiently do prefix search (or autocomplete) with Trie.
 
@@ -54,4 +54,4 @@ So, the overhead of linking nodes together often outweighs the savings from stor
 
 
 
-#  Some other variations of Tries are ternary search trees, HAT-tries, and burst tries.
+###  Some other variations of Tries are ternary search trees, HAT-tries, and burst tries.
