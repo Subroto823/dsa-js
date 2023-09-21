@@ -27,11 +27,12 @@ class DisjointSet {
 
         if(a !== b) {
             if (this.size[a] < this.size[b]) {
-                [a, b] = [b, a];
+                this.parent[a] = b;
+                this.size[b] += this.size[a];
+            } else {
+                this.parent[b] = a;
+                this.size[a] += this.size[b];
             }
-
-            this.parent[b] = a;
-            this.size[a] += this.size[b];
         }
     }
 
