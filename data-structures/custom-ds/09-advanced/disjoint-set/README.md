@@ -26,4 +26,4 @@ Disjoint-set data structures are commonly used in various algorithms and applica
 
 Disjoint-set data structures can be implemented in various ways, with different optimizations for the union and find operations. One common optimization is path compression, which flattens the tree structure during the "find" operation, reducing the height of the trees and improving overall performance.
 
-Overall, disjoint-set data structures are a versatile tool for solving a wide range of problems related to partitioning and connectivity in various algorithms and applications.*
+Overall, disjoint-set data structures are a versatile tool for solving a wide range of problems related to partitioning and connectivity in various algorithms and applications.

@@ -9,18 +9,18 @@ class DisjointSet {
     constructor(n) {
         this.parent = Array.from({ length: n }, (_, i) => i);
     }
-  
+
     find(x) {
         if (this.parent[x] === x) {
             return x;
         }
         return this.find(this.parent[x]);
     }
-  
+
     union(x, y) {
         const rootX = this.find(x);
         const rootY = this.find(y);
-  
+
         if (rootX !== rootY) {
             this.parent[rootX] = rootY;
         }
@@ -41,32 +41,18 @@ console.log(ds.find(2) === ds.find(3));
 /*
 Optimization: Path Compression
     
-Path compression is an optimization technique used in disjoint-set data structures to improve the efficiency of the "find" operation. T
-he primary goal of path compression is to reduce the height of the trees or sets in the disjoint-set forest, making future "find" operations faster.
+Path compression is an optimization technique used in disjoint-set data structures to improve the efficiency of the "find" operation.
+The primary goal of path compression is to reduce the height of the trees or sets in the disjoint-set forest, making future "find" operations faster.
 
 Time Complexity: 
     find: O(logn)
 */
-class DisjointSet {
-    constructor(n) {
-        this.parent = Array.from({ length: n }, (_, i) => i);
-    }
-  
-    find(x) {
-        if (this.parent[x] === x) {
-            return x;
-        }
 
-        // path compression
-        return this.parent[x] = this.find(this.parent[x]);
+const find = function(x, parent) {
+    if (parent[x] === x) {
+        return x;
     }
-  
-    union(x, y) {
-        const rootX = this.find(x);
-        const rootY = this.find(y);
-  
-        if (rootX !== rootY) {
-            this.parent[rootX] = rootY;
-        }
-    }
+
+    // path compression
+    return parent[x] = find(parent[x], parent);
 }
