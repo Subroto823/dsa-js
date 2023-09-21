@@ -41,7 +41,7 @@ class DisjointSet {
 }
 
 
-ds = new DisjointSet(5)
+ds = new DisjointSet(5);
 
 ds.union(0, 2);
 ds.union(0, 4);
