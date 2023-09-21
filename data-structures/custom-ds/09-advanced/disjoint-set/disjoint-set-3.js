@@ -12,32 +12,36 @@ class DisjointSet {
         this.parent = Array.from({ length: N + 1 }, (_, i) => i);
     }
 
-    find(r) {
-        if(this.parent[r] !== r) {
-            this.parent[r] = this.find(this.parent[r]);
+    find(x) {
+        if(this.parent[x] !== x) {
+            this.parent[x] = this.find(this.parent[x]);
         }
 
-        return this.parent[r];
+        return this.parent[x];
     }
 
-    // Union by size
     union(a, b) {
-        a = this.find(a);
-        b = this.find(b);
+        const rootA = this.find(a);
+        const rootB = this.find(b);
 
-        if(a !== b) {
-            if (this.size[a] < this.size[b]) {
-                this.parent[a] = b;
-                this.size[b] += this.size[a];
+        if(rootA !== rootB) {
+            if (this.size[rootA] < this.size[rootB]) {
+                this.parent[rootA] = rootB;
+                this.size[rootB] += this.size[rootA];
             } else {
-                this.parent[b] = a;
-                this.size[a] += this.size[b];
+                this.parent[rootB] = rootA;
+                this.size[rootA] += this.size[rootB];
             }
         }
     }
 
     isConnected(x, y) {
         return this.find(x) === this.find(y);
+    }
+
+    getSetSize(x) {
+        const parent = this.find(x);
+        return this.size[parent];
     }
 }
 
@@ -47,6 +51,7 @@ ds = new DisjointSet(5);
 ds.union(0, 2);
 ds.union(0, 4);
 ds.union(2, 5);
+
 console.log(ds.isConnected(2, 4));
 console.log(ds.isConnected(0, 5));
 

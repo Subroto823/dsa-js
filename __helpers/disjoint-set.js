@@ -32,6 +32,11 @@ class DisjointSet {
     isConnected(x, y) {
         return this.find(x) === this.find(y);
     }
+
+    getSetSize(x) {
+        const parent = this.find(x);
+        return this.size[parent];
+    }
 }
 
 module.exports = {
