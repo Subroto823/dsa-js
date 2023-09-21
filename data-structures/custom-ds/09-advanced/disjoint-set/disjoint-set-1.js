@@ -1,44 +1,72 @@
-/*
-Disjoint Set (Without path compression)
-
-    Without path compression, the time complexity of findRepresentative will be O(n), depending on the depth.
+/* 
+Disjoint Set (basic implementation) 
+    
+Time Complexity:
+    find: O(n)
 */
 
 class DisjointSet {
-    constructor(N) {
-        this.parent = new Array(N).fill(0);
-        this.init(N);
+    constructor(n) {
+        this.parent = Array.from({ length: n }, (_, i) => i);
     }
-
-    init(N) {
-        for(let i = 0; i < N; i++) {
-            // In the beginning everyone is their own representative
-            this.parent[i] = i;
+  
+    find(x) {
+        if (this.parent[x] === x) {
+            return x;
         }
+        return this.find(this.parent[x]);
     }
-
+  
     union(x, y) {
-        let xRoot = this.findRepresentative(x);
-        let yRoot = this.findRepresentative(y);
-
-        if(xRoot !== yRoot) this.parent[xRoot] = yRoot;
-    }
-
-    // Finds the representative of the set that x is an element of (Without path compression)
-    findRepresentative(r) {
-        if(this.parent[r] === r) {
-            return r;
+        const rootX = this.find(x);
+        const rootY = this.find(y);
+  
+        if (rootX !== rootY) {
+            this.parent[rootX] = rootY;
         }
-        return this.findRepresentative(this.parent[r]);
     }
 }
 
-// let there be 5 persons with ids as 0, 1, 2, 3, 4
 const ds = new DisjointSet(5);
 
-ds.union(0, 2); // now, 0 and 2 belongs to same parent/representative
+ds.union(0, 2);
 ds.union(0, 4);
-console.log(ds.findRepresentative(4) === ds.findRepresentative(0));
+
+console.log(ds.find(4) === ds.find(0));
 
 ds.union(1, 3);
-console.log(ds.findRepresentative(2) === ds.findRepresentative(3));
+console.log(ds.find(2) === ds.find(3));
+
+
+/*
+Optimization: Path Compression
+    
+Path compression is an optimization technique used in disjoint-set data structures to improve the efficiency of the "find" operation. T
+he primary goal of path compression is to reduce the height of the trees or sets in the disjoint-set forest, making future "find" operations faster.
+
+Time Complexity: 
+    find: O(logn)
+*/
+class DisjointSet {
+    constructor(n) {
+        this.parent = Array.from({ length: n }, (_, i) => i);
+    }
+  
+    find(x) {
+        if (this.parent[x] === x) {
+            return x;
+        }
+
+        // path compression
+        return this.parent[x] = this.find(this.parent[x]);
+    }
+  
+    union(x, y) {
+        const rootX = this.find(x);
+        const rootY = this.find(y);
+  
+        if (rootX !== rootY) {
+            this.parent[rootX] = rootY;
+        }
+    }
+}
