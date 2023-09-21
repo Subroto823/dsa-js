@@ -9,7 +9,8 @@ Imagine you have a bunch of elements, and you want to organize them into separat
 * Find: You can quickly find out which group an element belongs to. For example, you can ask, "Which group does element X belong to?" And it will tell you that it's in group AB.
 
 
-## Disjoint-set data structures are commonly used in various algorithms and applications, including:
+# Uses
+Disjoint-set data structures are commonly used in various algorithms and applications, including:
 
 * Kruskal's algorithm for finding the minimum spanning tree of a graph.
 * Connected component labeling in image processing.
