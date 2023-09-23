@@ -37,6 +37,7 @@ var primsMST = function(graph) {
 
 
 /*
+
 Input: 
     Weighted adjacency list
 
