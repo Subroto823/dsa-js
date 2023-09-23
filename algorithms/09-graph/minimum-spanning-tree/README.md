@@ -21,6 +21,12 @@ The Minimum Spanning Tree is valuable in optimization problems, where you want t
 
 
 ## Prim's Algorithm
+1. Begin with any vertex as the initial MST.
+2. Add the lowest-weight edge connecting the MST to an unvisited vertex.
+3. Continue adding edges until all vertices are included, maintaining connectivity and no cycles.
+4. The result is the Minimum Spanning Tree (MST) with the least total edge weight.
+
+To find the lowest-weight edge, we can use min priority queue.
 
 ## Kruskal's Algorithm
 1. Start with an empty set as the MST.
@@ -32,6 +38,5 @@ The Minimum Spanning Tree is valuable in optimization problems, where you want t
 
 To check for cycles, you can use a data structure like a disjoint-set (union-find) to keep track of the components and check if the endpoints of the edge belong to the same component
 
-* Prim's algorithm works comparetively faster than Kruskal's, if the graph is a dense graph. Otherwise Kruskal's algorithm works faster.
 
-* Another important difference is, if the graph contains more than one component, then Kruskal's algorithm discover's minimum spanning tree for all componenent. But Prim's algorithm works only for the One component (first / source node belongs to ).
+*Prim's algorithm works comparetively faster than Kruskal's, if the graph is a dense graph. Otherwise Kruskal's algorithm works faster.*
