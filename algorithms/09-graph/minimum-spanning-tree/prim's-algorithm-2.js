@@ -3,20 +3,20 @@ Minimum Spanning Tree
     Prim's Algorithm (With priority queue)
 
 */
-const { PriorityQueue } = require('../../_/priority-queue');
+const { MinPriorityQueue } = require('../../../__helpers/min-priority-queue');
 
 function primsMST(graph, source) {
     const N = graph.length,
         cost = new Array(N).fill(Infinity),
         parent = new Array(N).fill(-1),
         visited = new Array(N).fill(false),
-        queue = new PriorityQueue();
+        queue = new MinPriorityQueue();
 
     queue.enQueue(source, 0);
     cost[source] = 0;
 
     while(queue.length) {
-        let { node: currentNode } = queue.deQueue();
+        let { element: currentNode } = queue.deQueue();
 
         if(visited[currentNode]) continue;
         visited[currentNode] = true;

@@ -5,23 +5,21 @@ Minimum Spanning Tree
 */
 const { MinPriorityQueue,} = require('../../../__helpers/min-priority-queue');
 
-var primsMST = function(graph, source) {
-    const N = graph.length;
+var primsMST = function(graph) {
+    let N = graph.length;
     const seen = new Array(N).fill(false);
-    const cost = new Array(N).fill(Infinity);
     const queue = new MinPriorityQueue();
 
-    cost[source] = 0;
-    queue.enQueue(source, 0);
+    queue.enqueue(0, 0);
     let ans = 0;
 
-    for (let i = 0; i < N; i++) {
+    while(N--) {
         if (queue.isEmpty()) {
             console.log("No MST :(");
             return 0;
         }
 
-        let current = queue.deQueue();
+        let current = queue.dequeue();
         let {element: node, priority: cost} = current;
 
         seen[node] = true;
@@ -29,11 +27,7 @@ var primsMST = function(graph, source) {
 
         for(let [neighbor, weight] of graph[node]) {
             if(seen[neighbor]) continue;
-
-            if(weight < cost[neighbor]) {
-                queue.enQueue(neighbor, weight);
-                cost[neighbor] = weight;
-            }
+            queue.enqueue(neighbor, weight);
         }
     }
     
@@ -46,7 +40,7 @@ let graph = [
     [[0, 4], [1, 1], [3, 2]],
     [[1, 3], [2, 2]]
 ];
-console.log(primsMST(graph, 0));
+console.log(primsMST(graph));
 
 graph = [
     [[1, 4], [2, 2]],
@@ -54,7 +48,7 @@ graph = [
     [[0, 2], [1, 1], [3, 2]],
     [[1, 3], [2, 2]]
 ];
-console.log(primsMST(graph, 0));
+console.log(primsMST(graph));
 
 graph = [
     [[1, 2], [2, 3]],
@@ -63,4 +57,12 @@ graph = [
     [[1, 4], [2, 1], [4, 2]],
     [[3, 2], [2, 3]]
 ]
-console.log(primsMST(graph, 0));
+console.log(primsMST(graph));
+
+graph = [
+    [[1, 2]],
+    [[0, 2]],
+    [[3, 4]],
+    [[2, 4]]
+]
+console.log(primsMST(graph));

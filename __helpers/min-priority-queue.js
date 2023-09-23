@@ -22,7 +22,7 @@ class MinPriorityQueue {
         return this.length === this.capacity;
     }
 
-    enQueue(element, priority = element) {
+    enqueue(element, priority = element) {
         if (this.isFull()) {
             process.stdout.write("Queue is full!\n");
         } else {
@@ -58,7 +58,7 @@ class MinPriorityQueue {
         heap[index2] = task;
     }
 
-    deQueue() {
+    dequeue() {
         if (this.isEmpty()) return null;
 
         let heap = this.heap;
