@@ -3,29 +3,32 @@ Minimum Spanning Tree
     Prim's Algorithm (With priority queue)
 
 */
-const { PriorityQueue } = require('../../_/priority-queue');
+const { MinPriorityQueue,} = require('../../../__helpers/min-priority-queue');
 
-function primsMST(graph, source) {
+var primsMST = function(graph, source) {
     const N = graph.length;
+    const seen = new Array(N).fill(false);
     const cost = new Array(N).fill(Infinity);
-    const visited = new Array(N).fill(false);
-    const queue = new PriorityQueue();
+    const queue = new MinPriorityQueue();
 
     cost[source] = 0;
     queue.enQueue(source, 0);
     let ans = 0;
 
-    while(queue.length) {
+    for (let i = 0; i < N; i++) {
+        if (queue.isEmpty()) {
+            console.log("No MST :(");
+            return 0;
+        }
+
         let current = queue.deQueue();
-        let {node: currentNode, priority: currentNodeCost} = current;
+        let {element: node, priority: cost} = current;
 
-        if(visited[currentNode]) continue;
-        
-        visited[currentNode] = true;
-        ans += currentNodeCost;
+        seen[node] = true;
+        ans += cost;
 
-        for(let [neighbor, weight] of graph[currentNode]) {
-            if(visited[neighbor]) continue;
+        for(let [neighbor, weight] of graph[node]) {
+            if(seen[neighbor]) continue;
 
             if(weight < cost[neighbor]) {
                 queue.enQueue(neighbor, weight);
@@ -33,6 +36,7 @@ function primsMST(graph, source) {
             }
         }
     }
+    
     return ans;
 }
 

@@ -68,7 +68,7 @@ class MinPriorityQueue {
         heap.pop();
         this.heapifyDown(0);
 
-        return deleteEle.element;
+        return deleteEle;
     }
 
     heapifyDown(i) {
