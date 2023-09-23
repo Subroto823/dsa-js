@@ -1,44 +1,41 @@
 /*
 Minimum Spanning Tree
     Prim's Algorithm (With priority queue)
-
 */
 const { MinPriorityQueue } = require('../../../__helpers/min-priority-queue');
 
-function primsMST(graph, source) {
-    const N = graph.length,
-        cost = new Array(N).fill(Infinity),
-        parent = new Array(N).fill(-1),
-        visited = new Array(N).fill(false),
-        queue = new MinPriorityQueue();
 
-    queue.enQueue(source, 0);
-    cost[source] = 0;
+var primsMST = function(graph) {
+    const N = graph.length;
+    const parent = new Array(N).fill(-1);
+    const seen = new Array(N).fill(false);
+    const queue = new MinPriorityQueue();
 
-    while(queue.length) {
-        let { element: currentNode } = queue.deQueue();
+    queue.enqueue(0, 0);
+    parent[0] = 0;
 
-        if(visited[currentNode]) continue;
-        visited[currentNode] = true;
+    while(queue.size()) {
+        const { element: node } = queue.dequeue();
+        seen[node] = true;
 
-        for(let [neighbor, weight] of graph[currentNode]) {
-            if(visited[neighbor]) continue;
-
-            if(weight < cost[neighbor]) {
-                cost[neighbor] = weight;
-                parent[neighbor] = currentNode;
-                queue.enQueue(neighbor, weight);
-            }
+        for(let [neighbor, weight] of graph[node]) {
+            if(seen[neighbor]) continue;
+            parent[neighbor] = node;
+            queue.enqueue(neighbor, weight);
         }
     }
 
     const mst = [];
     
     for(let i = 0; i < N; i++) {
-        if(parent[i] === -1) continue;
+        if (parent[i] === -1) {
+            console.log("No MST :(");
+            return [];
+        }
         mst.push([parent[i], i]);
     }
-    return mst;
+
+   return mst;
 }
 
 let graph = [
@@ -47,7 +44,7 @@ let graph = [
     [[0, 4], [1, 1], [3, 2]],
     [[1, 3], [2, 2]]
 ];
-console.log(primsMST(graph, 0));
+console.log(primsMST(graph));
 
 graph = [
     [[1, 4], [2, 2]],
@@ -55,7 +52,7 @@ graph = [
     [[0, 2], [1, 1], [3, 2]],
     [[1, 3], [2, 2]]
 ];
-console.log(primsMST(graph, 0));
+console.log(primsMST(graph));
 
 graph = [
     [[1, 2], [2, 3]],
@@ -64,4 +61,13 @@ graph = [
     [[1, 4], [2, 1], [4, 2]],
     [[3, 2], [2, 3]]
 ]
-console.log(primsMST(graph, 0));
+console.log(primsMST(graph));
+
+graph = [
+    [[1, 2]],
+    [[0, 2]],
+    [[3, 4]],
+    [[2, 4]]
+]
+console.log(primsMST(graph));
+console.log();
