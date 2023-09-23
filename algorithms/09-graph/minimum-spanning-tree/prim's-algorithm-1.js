@@ -1,38 +1,62 @@
-/*
-Minimum Spanning Tree
-    Prim's Algorithm (With priority queue)
-
+/* 
+Prim's Algorithm (basic implementation)
+Time Complexity: O(V^2)
 */
-const { MinPriorityQueue,} = require('../../../__helpers/min-priority-queue');
 
 var primsMST = function(graph) {
-    let N = graph.length;
+    const N = graph.length;
+    const cost = new Array(N).fill(Infinity);
     const seen = new Array(N).fill(false);
-    const queue = new MinPriorityQueue();
 
-    queue.enqueue(0, 0);
-    let ans = 0;
+    cost[0] = 0;
 
-    while(N--) {
-        if (queue.isEmpty()) {
+    for (let count = 0; count < N - 1; count++) {
+        const node = minVertex(N, seen, cost);
+
+        if (node === -1) {
             console.log("No MST :(");
             return 0;
         }
 
-        let current = queue.dequeue();
-        let {element: node, priority: cost} = current;
-
         seen[node] = true;
-        ans += cost;
 
-        for(let [neighbor, weight] of graph[node]) {
+        for (const [neighbor, weight] of graph[node]) {
             if(seen[neighbor]) continue;
-            queue.enqueue(neighbor, weight);
+            if (weight < cost[neighbor]) {
+                cost[neighbor] = weight;
+            }
         }
     }
-    
-    return ans;
+
+    const mstWeight = cost.reduce((sum, weight) => sum + weight, 0);
+    return mstWeight;
 }
+
+
+var minVertex = function(N, seen, cost) {
+    let minCost = Infinity;
+    let vertex = -1;
+
+    for (let v = 0; v < N; v++) {
+        if (!seen[v] && cost[v] < minCost) {
+            minCost = cost[v];
+            vertex = v;
+        }
+    }
+
+    return vertex;
+}
+
+/*
+Input: 
+    Weighted adjacency list
+
+    [
+        [[neighbor(index), weight], ...],
+        [[neighbor, weight], ...]
+        ...
+    ]
+*/
 
 let graph = [
     [[1, 2], [2, 4]],
