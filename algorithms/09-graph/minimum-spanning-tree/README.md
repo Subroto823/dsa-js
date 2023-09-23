@@ -13,9 +13,9 @@ A Minimum Spanning Tree (MST) of a connected, undirected graph is a spanning tre
 
 Minimum Spanning Trees are commonly encountered in various applications and algorithms, including network design, circuit design, transportation, and more. Two well-known algorithms for finding the Minimum Spanning Tree are:
 
-    * Prim's Algorithm: Prim's algorithm begins with an initial vertex and incrementally builds a minimum spanning tree by selecting the smallest-weight edge that connects a tree vertex to a non-tree vertex, ensuring connectivity and avoiding cycles, until all vertices are included.
+* Prim's Algorithm: Prim's algorithm begins with an initial vertex and incrementally builds a minimum spanning tree by selecting the smallest-weight edge that connects a tree vertex to a non-tree vertex, ensuring connectivity and avoiding cycles, until all vertices are included.
 
-    * Kruskal's Algorithm: Kruskal's algorithm considers all edges in the graph and sorts them by weight. It then adds edges to the tree one at a time in ascending order of weight, avoiding the creation of cycles. It continues until the MST is formed.
+* Kruskal's Algorithm: Kruskal's algorithm considers all edges in the graph and sorts them by weight. It then adds edges to the tree one at a time in ascending order of weight, avoiding the creation of cycles. It continues until the MST is formed.
 
 The Minimum Spanning Tree is valuable in optimization problems, where you want to minimize the cost or weight while ensuring connectivity. It helps in designing efficient and cost-effective networks and structures.
 
