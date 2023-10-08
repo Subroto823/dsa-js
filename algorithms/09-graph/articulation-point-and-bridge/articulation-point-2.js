@@ -50,11 +50,13 @@ var articulationPoint = function(G) {
     }
     
     for (let i = 0; i < N; i++) {
-        dfs(i, -1);
+        if (discoveryTime[i] === -1) {
+            dfs(i, -1);
+        }
     }
 
-    return isArticulation.reduce((acc, element, i) => {
-        if (element) acc.push(i);
+    return isArticulation.reduce((acc, elem, i) => {
+        if (elem) acc.push(i);
         return acc;
     }, []);
 }
