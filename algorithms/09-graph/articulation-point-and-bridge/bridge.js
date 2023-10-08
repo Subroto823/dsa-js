@@ -1,43 +1,41 @@
-/*
-Tarjan's algorithm (dfs) 
-
+/**
+ * Bridge
+ * Tarjan's Algorithm
+ * Time Complexity: O(V + E)
  */
 
-function bridge(G) {
-    const N = G.length,
-        visited = new Array(N).fill(false),
-        disc = new Array(N).fill(0),
-        low = new Array(N).fill(0),
-        parent = new Array(N).fill(-1),
-        bridges = [];
+var bridge = function (G) {
+    const N = G.length;
+    const disc = new Array(N).fill(-1);
+    const low = new Array(N).fill(0);
+    const bridges = [];
     let time = 0;
 
 
-    function dfs(G, node) {
-        visited[node] = true;
-        disc[node] = low[node] = ++time;
-    
-        for (let neighbor of G[node]) {    
-            if (!visited[neighbor]) {
-                parent[neighbor] = node;
-                dfs(G, neighbor);
-                // check if the subtree rooted with v has a connection with one of the ancestors of u
-                low[node] = Math.min(low[node], low[neighbor]);
-    
-                // If the lowest vertex reachable from subtree under 'neighbor' is below 'node' in DFS tree, then node-neighbor is a bridge
-                if (disc[node] < low[neighbor]) {
-                    bridges.push([node, neighbor]);
+    var dfs = function (u, parent) {
+        disc[u] = low[u] = time++;
+
+        for (let v of G[u]) {
+            if (disc[v] == -1) {
+                dfs(v, u);
+                low[u] = Math.min(low[u], low[v]);
+
+                if (disc[u] < low[v]) {
+                    bridges.push([u, v]);
                 }
-            }
-            
-            else if (neighbor !== parent[node]) {
-                low[node] = Math.min(low[node], disc[neighbor])
+            } else if (v !== parent) {
+                low[u] = Math.min(low[u], disc[v])
             }
         }
     }
 
-    dfs(G, 0);
-    return bridges
+    for (let i = 0; i < N; i++) {
+        if (disc[i] === -1) {
+            dfs(i, -1);
+        }
+    }
+
+    return bridges;
 }
 
 let graph = [

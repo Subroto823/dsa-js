@@ -7,10 +7,8 @@ In simple terms, removing an articulation point would disconnect the graph or sp
 
 ### Naive Approach 
 One by one remove all nodes and see if removal of an node causes disconnected graph.
-- Time Complexity O(V * (V + E))
 
-### Tarjan's Algorithm
-
+### Efficient Approach - Tarjan's Algorithm
 #### Idea
 Tarjan's algorithm for finding articulation points in a graph uses Depth First Search (DFS) to build a DFS tree. In this tree, a vertex 'u' is considered an articulation point if either of the following conditions is true:
 
@@ -21,5 +19,6 @@ Tarjan's algorithm for finding articulation points in a graph uses Depth First S
 
 # Bridge
 
+Also know as Cut Edge or Critical Edge.
 A bridge in a graph is an edge whose removal increases the number of connected components in the graph. 
 In other words, if you remove a bridge from a graph, it will disconnect two previously connected components. Bridges are also known as "cut edges" because they cut the graph into two or more disconnected parts.
