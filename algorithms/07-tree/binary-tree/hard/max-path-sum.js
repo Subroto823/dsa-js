@@ -17,7 +17,7 @@ var maxPathSum = function (root) {
         return node.val + Math.max(leftSum, rightSum);
     }
 
-    helper(root);
+    dfs(root);
     return maxSum;
 };
 
