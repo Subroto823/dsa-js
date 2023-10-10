@@ -6,8 +6,9 @@ var lowestCommonAncestor = function(root, p, q) {
     const left = lowestCommonAncestor(root.left, p, q);
     const right = lowestCommonAncestor(root.right, p, q);
 
-    if(left !== null && right !== null) return root;
-    return left !== null ? left : right;
+    if (!left) return right;
+    if (!right) return left;
+    return root;
 };
 
 /*
@@ -22,7 +23,6 @@ Input:
  p = 1, q = 2
 
  Output: 4
- 
 */
 
 let node1 = new TreeNode(1);
