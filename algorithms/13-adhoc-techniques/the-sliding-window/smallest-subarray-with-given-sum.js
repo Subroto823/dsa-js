@@ -1,23 +1,26 @@
 /**
- # Smallest subarray size
- * 
+ * Smallest Subarray Size With Given Sum
  */
 
-function smallestSubarray(arr, targetSum) {
-    let minWindowSize = Infinity;
+var smallestSubarray = function(nums, targetSum) {
+    let result = Infinity;
     let currWindowSum = 0;
     let windowStart = 0;
 
-    for(let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
-        currWindowSum += arr[windowEnd];
+    for(let i = 0; i < nums.length; i++) {
+        currWindowSum += nums[i];
 
         while(currWindowSum >= targetSum) {
-            minWindowSize = Math.min(minWindowSize, windowEnd - windowStart + 1);
-            currWindowSum -= arr[windowStart];
-            windowStart++;
+            result = Math.min(result, i - windowStart + 1);
+            currWindowSum -= nums[windowStart++];
         }
     }
-    return minWindowSize;
+
+    return result;
 }
 
-console.log(smallestSubarray([4, 2, 2, 7, 8, 1, 2, 8, 1, 0], 8));
+let nums = [4, 2, 2, 7, 8, 1, 2, 8, 1, 0], targetSum = 8;
+console.log(smallestSubarray(nums, targetSum));
+
+nums = [4, 2, 2, 7, 1, 8, 1, 2, 8, 1, 0], targetSum = 16;
+console.log(smallestSubarray(nums, targetSum));
