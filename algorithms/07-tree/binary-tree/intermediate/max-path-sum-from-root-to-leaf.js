@@ -1,9 +1,10 @@
 const { tree2 } = require('../binary-tree-example');
 
-const maxPathSum = (root) => {
+const maxPathSum = function (root) {
     if (!root) return -Infinity;
 
-    if (root.left === null && root.right === null) return root.val;
+    if (root.left === null && root.right === null)
+        return root.val;
 
     const maxChild = Math.max(
         maxPathSum(root.left),
