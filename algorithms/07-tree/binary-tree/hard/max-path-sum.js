@@ -3,11 +3,11 @@ const { TreeNode } = require('../tree-node');
 var maxPathSum = function (root) {
     let maxSum = -Infinity;
 
-    const helper = (node) => {
+    const dfs = (node) => {
         if (!node) return 0;
 
-        const leftSum = Math.max(0, helper(node.left)),
-            rightSum = Math.max(0, helper(node.right));
+        const leftSum = Math.max(0, dfs(node.left));
+        const rightSum = Math.max(0, dfs(node.right));
 
         maxSum = Math.max(
             maxSum,
