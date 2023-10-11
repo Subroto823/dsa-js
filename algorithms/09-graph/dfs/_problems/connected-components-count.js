@@ -2,28 +2,30 @@
 Problem Statement
 
 Write a function, connectedComponentCount, that takes in the adjacency list of an undirected graph. 
-The function should return the number of connected components within the graph. */
+The function should return the number of connected components within the graph. 
+*/
 
-function connectedComponentsCount(graph) {
-    const visited = new Set();
+const connectedComponentsCount = function(graph) {
+    const seen = new Set();
     let count = 0;
 
-    for(let node in graph) {
-        if(dfs(graph, node, visited)) {
+    for (let node in graph) {
+        if (dfs(graph, node, seen)) {
             count++;
         }
     }
+
     return count;
 }
 
-function dfs (graph, source, visited) {
-    if(visited.has(String(source))) return false;
-    
-    visited.add(String(source));
+const dfs = function(graph, source, seen) {
+    if (seen.has(String(source))) return false;
+    seen.add(String(source));
 
-    for(let neighbor of graph[source]) {
-        dfs(graph, neighbor, visited);
+    for (let neighbor of graph[source]) {
+        dfs(graph, neighbor, seen);
     }
+
     return true;
 }
 
