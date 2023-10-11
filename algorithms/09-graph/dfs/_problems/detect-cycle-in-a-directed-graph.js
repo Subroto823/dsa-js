@@ -1,48 +1,58 @@
-const hasCycle = (G) => {
-    const N = G.length,
-        visited = new Array(N).fill(false),
-        dfsVisited = new Array(N).fill(false);
+const hasCycle = function (G) {
+    const N = G.length;
+    const seen = new Array(N).fill(false);
+    const recStack = new Array(N).fill(false);
 
-    for(let i = 0; i < N; i++) {
-        if(!visited[i]) {
-            if(detectCycle(G, i, visited, dfsVisited)) {
+    for (let i = 0; i < N; i++) {
+        if (!seen[i]) {
+            if (detectCycle(G, i, seen, recStack)) {
                 return true;
             }
         }
     }
+
     return false;
 }
 
-function detectCycle(G, node, visited, inStack) {
-    visited[node] = true;
-    inStack[node] = true;
+const detectCycle = function (G, node, seen, recStack) {
+    seen[node] = true;
+    recStack[node] = true;
 
-    for(let neighbor of G[node]) {
-        if(!visited[neighbor]) {
-            if(detectCycle(G, neighbor, visited, inStack)) return true;
-        } else if (inStack[neighbor]) {
+    for (let neighbor of G[node]) {
+        if (!seen[neighbor]) {
+            if (detectCycle(G, neighbor, seen, recStack)) return true;
+        } else if (recStack[neighbor]) {
             return true;
         }
     }
-    inStack[node] = false;
+
+    recStack[node] = false;
     return false;
 }
 
-let graph = [
-    [1],
-    [2],
-    [3, 4],
-    [5],
-    [5],
-    []
-];
-console.log(hasCycle(graph)); // false
 
-graph = [
-    [1],
-    [2],
-    [3],
-    [1, 4],
-    []
-]
-console.log(hasCycle(graph)); // true
+function main() {
+    let graph = [
+        [1],
+        [2],
+        [3, 4],
+        [5],
+        [5],
+        []
+    ];
+    console.log(hasCycle(graph)); // false
+
+    graph = [
+        [1],
+        [2],
+        [3],
+        [1, 4],
+        []
+    ]
+    console.log(hasCycle(graph)); // true
+}
+
+if (require.main === moudle) {
+    main();
+}
+
