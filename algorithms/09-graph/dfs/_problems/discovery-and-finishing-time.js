@@ -1,43 +1,46 @@
 /*
-# Discovery time
-# Finishing time
+Discovery and Finishing time
 
+In DFS (Depth-First Search), "discovery time" is when a node is first encountered during the traversal, and "finishing time" is when the traversal process for that node is complete. 
 */
 
 const COLOR = {
     WHITE: 0,
-    GREY: -1,
+    GRAY: -1,
     BLACK: 1
 }
 
-function discAndFinish(G, source) {
-    const N = G.length,
-       color = new Array(N).fill(COLOR.WHITE);
-       disc = new Array(N).fill(0),
-       fin = new Array(N).fill(0),
-       topOrder = [];
-
+const discAndFinish = function (Graph) {
+    const N = Graph.length;
+    const colors = new Array(N).fill(COLOR.WHITE);
+    const discovery = new Array(N).fill(0);
+    const finish = new Array(N).fill(0);
     let time = 0;
 
-    function dfs(G, source) {
-        time++;
-        disc[source] = time;
-        color[source] = COLOR.GREY;
+    const dfs = function (u) {
+        discovery[u] = ++time;
+        colors[u] = COLOR.GRAY;
 
-        for(let neighbor of G[source]) {
-            if(color[neighbor] === COLOR.WHITE) {
-                dfs(G, neighbor);
+        for (let neighbor of Graph[u]) {
+            if (colors[neighbor] === COLOR.WHITE) {
+                dfs(neighbor);
             }
         }
-        
-        color[source] = COLOR.BLACK;
-        time++;
-        fin[source] = time;
+
+        colors[u] = COLOR.BLACK;
+        finish[u] = ++time;
+    }
+
+    for (let u = 0; u < N; u++) {
+        if (colors[u] === COLOR.WHITE) {
+            dfs(u);
+        }
     }
     
-    dfs(G, source);
-    console.log(disc)
-    console.log(fin)
+    return {
+        'discovery time': discovery,
+        'finishing time': finish
+    }
 }
 
 let graph = [
@@ -46,4 +49,4 @@ let graph = [
     [3],
     []
 ];
-console.log(discAndFinish(graph, 1));
+console.log(discAndFinish(graph));
