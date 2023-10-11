@@ -1,67 +1,83 @@
 /**
- @Deadlock Detection (Cycle in directed graph)
+Detect Cycle (in a directed graph)
 
-    Problem Statement
+Node Coloring Approach:
 
-    One deadlock detection algorithm makes use of a “wait-for” graph to track which other processes a process is currently blocking on. In a wait-for graph, processes are represented as nodes, and an edge from process P to 0 implies 0 is holding a resource that P needs and thus P is waiting for 0 to release its lock on that resource. A cycle in this graph implies the possibility of a deadlock. This motivates the following problem.
-    
-    Write a program that takes as input a directed graph and checks if the graph contains a cycle.
+    The node coloring approach used in cycle detection is a technique that assigns colors to vertices during a Depth First Search (DFS) traversal of a graph.
 
+        - White (Unvisited): Initially, all vertices are colored white, indicating that they have not been visited.
+        - Gray (Being Processed): When a vertex is being processed during the DFS traversal, it is colored gray. This means it is currently under examination.
+        - Black (Processed): After a vertex and all its descendants have been fully processed, it is colored black, indicating that it has been visited and processed.
 
-    @Solution :
+    When during the DFS traversal, you encounter an edge from a "gray" vertex (currently being processed) to another "gray" vertex, it implies that you've found a backedge, and thus, a cycle.
 
-    # Every vertex will be assigned 3 different colors: white, gray and black. Initially all vertices will be colored white. When a vertex is being processed, it will be colored gray and after processing black.
+    In a directed graph, a backedge is an edge that connects a vertex to one of its ancestors in the DFS traversal tree. 
+    It essentially forms a cycle within the graph because it allows you to return to a previously visited vertex, creating a loop.
 
-    # Use Depth First Search to traverse the graph.
-    # If there is an edge from a gray vertex to another gray vertex, we’ve discovered a back edge (a self-loop or an edge that connects to one of its ancestors), hence a cycle is detected.
-    
-    # Time Complexity: O(V+E)
+    Time Complexity: O(V+E)
 */
 
-const { Graph } = require("./helper/Graph");
 
-const COLORS = {
-    WHITE: "white",
-    GRAY: "gray",
-    BLACK: "black"
+const COLOR = {
+    WHITE: 0,
+    GRAY: -1,
+    BLACK: 1
 }
 
-Object.freeze(COLORS);
 
-function isDeadLocked(graph) {
-    let color = new Array(graph.vertices).fill(COLORS.WHITE);
+const hasCycle = function(graph) {
+    const N = graph.length;
+    let colors = new Array(N).fill(COLOR.WHITE);
 
-    for(let i = 0; i < graph.vertices; i++) {
-        if(color[i] === COLORS.WHITE) {
-            if(detectCycle(graph, i, color)) {
+    for(let u = 0; u < N; u++) {
+        if(colors[u] === COLOR.WHITE) {
+            if(detectCycle(graph, u, colors)) {
                 return true;
             }
         }
     }
+
     return false;
 }
 
-function detectCycle(graph, vertex, color) {
-    color[vertex] = COLORS.GRAY;
-    let nextNode = graph.list[vertex].getHead();
-    let neighbor;
+const detectCycle = function(graph, u, colors) {
+    colors[u] = COLOR.GRAY;
 
-    while(nextNode) {
-        neighbor = nextNode.data;
-        if(color[neighbor] === COLORS.GRAY) {
+    for (const v of graph[u]) {
+        if(colors[v] === COLOR.WHITE && detectCycle(graph, v, colors)) {
             return true;
         }
-        if(color[neighbor] === COLORS.WHITE && detectCycle(graph, neighbor, color)) {
+        if(colors[v] === COLOR.GRAY) {
             return true;
         }
-        nextNode = nextNode.next;
+        
     }
-    color[vertex] = COLORS.BLACK;
+
+    colors[u] = COLOR.BLACK;
     return false;
 }
 
-let graph = new Graph(3);
-graph.addEdge(0, 1);
-graph.addEdge(1, 2);
-graph.addEdge(2, 0);
-console.log(isDeadLocked(graph));
+function main() {
+    let graph = [
+        [1],
+        [2],
+        [3, 4],
+        [5],
+        [5],
+        []
+    ];
+    console.log(hasCycle(graph)); // false
+
+    graph = [
+        [1],
+        [2],
+        [3],
+        [1, 4],
+        []
+    ]
+    console.log(hasCycle(graph)); // true
+}
+
+if (require.main === module) {
+    main();
+}
