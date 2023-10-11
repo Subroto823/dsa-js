@@ -43,10 +43,18 @@ const discAndFinish = function (Graph) {
     }
 }
 
-let graph = [
-    [3],
-    [0, 2],
-    [3],
-    []
-];
-console.log(discAndFinish(graph));
+
+function main() {
+    let graph = [
+        [3],
+        [0, 2],
+        [3],
+        []
+    ];
+    console.log(discAndFinish(graph));
+}
+
+
+if (require.main === module) {
+    main();
+}
