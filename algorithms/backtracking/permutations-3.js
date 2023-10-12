@@ -1,8 +1,8 @@
-const permutations = (low, high) => {
+const permutations = function (low, high) {
     const visited = new Array(low + high + 1).fill(false),
         number = new Array(high - low + 1).fill(0);
 
-    const generate = (idx) => {
+    const generate = function (idx) {
         if (idx === high + 1) {
             console.log(...number);
             return;
@@ -21,4 +21,4 @@ const permutations = (low, high) => {
     generate(low);
 }
 
-permutations(1, 3);
+permutations(2, 4);
