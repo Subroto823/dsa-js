@@ -1,3 +1,6 @@
+# :(
+
+    
 # What is combinatorics?
 * Field of math concerned with counting things.
 
