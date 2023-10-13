@@ -5,12 +5,6 @@
     # Merge Sort
 
 # Bubble Sort
-    (We might never use this apart from interviews and as a stepping stone to other sorting algorithms.)
-
-    # Bubble sort idea
-        # Compare adjacent elements in the array and swap the positions if they are not intended order
-        # Repeat the instructions as you step through each element in the array
-        # Once you step through the whole array with no swaps, the array is sorted.
 
 # Insertion Sort
     # Insertion sort idea

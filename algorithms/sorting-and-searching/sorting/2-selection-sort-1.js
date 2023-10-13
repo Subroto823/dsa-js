@@ -6,7 +6,7 @@
  * 
  */
 
-const { swap } = require("./_helper-functions/swap");
+const { swap } = require("../04-sorting/_helper-functions/swap");
 
 const selectionSort = (arr) => {
     for (let i = 0; i < arr.length; i++) {
