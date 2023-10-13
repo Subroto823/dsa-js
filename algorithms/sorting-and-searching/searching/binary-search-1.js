@@ -19,5 +19,6 @@ const binarySearch = function (arr, target) {
     return -1;
 }
 
+
 let nums = [-5, 2, 4, 6, 20], target = 20;
 console.log(binarySearch(nums, target));
