@@ -1,13 +1,14 @@
 /**
 Consider a rat placed at (0, 0) in a square matrix of order N * N. It has to reach the destination at (N - 1, N - 1). 
-Find all possible paths that the rat can take to reach from source to destination. The directions in which the rat can move are 'D'(down) and 'R' (right). **/
+Find all possible paths that the rat can take to reach from source to destination. The directions in which the rat can move are 'D'(down) and 'R' (right). 
+*/
 
-function findPath(maze) {
-    let n = maze.length;
-    let possiblePaths = [];
+const findPath = function (maze) {
+    const n = maze.length;
+    const possiblePaths = [];
     let path = "";
 
-    function helper(row, col) {
+    const backtrack = function (row, col) {
         if (row === n - 1 && col === n - 1) {
             possiblePaths.push(path);
             return;
@@ -15,22 +16,23 @@ function findPath(maze) {
 
         if (isFeasible(row, col, maze, n)) {
             path += 'D';
-            helper(row + 1, col);
+            backtrack(row + 1, col);
             path = path.slice(0, path.length - 1);
 
             path += "R";
-            helper(row, col + 1);
+            backtrack(row, col + 1);
             path = path.slice(0, path.length - 1);
         }
     }
 
-    helper(0, 0);
+    backtrack(0, 0);
     return possiblePaths;
 }
 
-function isFeasible(row, col, maze, n) {
+const isFeasible = function (row, col, maze, n) {
     return (row > -1 && row < n && col > -1 && col < n && maze[row][col] === 1);
 }
+
 
 let maze = [
     [1, 0, 0, 0],
