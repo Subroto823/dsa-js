@@ -7,7 +7,7 @@
  * Stable Algorithm
  */
 
-const { swap } = require("./_helper-functions/swap");
+const { swap } = require("../04-sorting/_helper-functions/swap");
 
 const bubbleSort = (arr) => {
     let swapped;

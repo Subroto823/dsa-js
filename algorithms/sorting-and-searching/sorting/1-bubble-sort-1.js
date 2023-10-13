@@ -7,7 +7,7 @@
  * Stable algorithm
  */
 
-const { swap } = require("./_helper-functions/swap");
+const { swap } = require("../04-sorting/_helper-functions/swap");
 
 const bubbleSort = (arr) => {
     for (let i = 0; i < arr.length; i++) {
@@ -19,8 +19,7 @@ const bubbleSort = (arr) => {
     }
 }
 
-let arr = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92];
-
+let arr = [3, 1, 8, 7, 5, 9, 12, 10, 18, 15, 17];
 bubbleSort(arr);
 console.log(arr);
 
