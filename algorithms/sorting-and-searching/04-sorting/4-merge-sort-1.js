@@ -4,7 +4,7 @@
     Time Complexity - O(nlogn)
     Space Complexity - O(n)
 
-    # The best-case time complexity for comparison-based sorting algorithms, where elements are compared to determine their relative order, is O(n log n). This means that the fastest comparison-based sorting algorithms, such as Merge Sort, Quick Sort, and Heap Sort, have an average and worst-case time complexity of O(n log n).
+    # The best-case time complexity for comparison-based sorting algorithms, where elements are compared to determine their relative order, is O(n log n). 
  */
 
 const merge = (leftArr, rightArr) => {

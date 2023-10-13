@@ -22,6 +22,7 @@ function getMinMax(array) {
         min = Math.min(min, array[i]);
         max = Math.max(max, array[i]);
     }
+    
     return { min, max};
 }
 
