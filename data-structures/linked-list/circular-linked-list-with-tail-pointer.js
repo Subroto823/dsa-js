@@ -1,15 +1,15 @@
-/*
-Circular LinkedList - Optimized Implementation with tail pointer
-
-Time complexity: 
-    # prepend O(1)
-    # append O(1)
-    # removeFromFront O(1)
-    # removeFromEnd O(n)
-*/
+/**
+ * Circular LinkedList with Tail Pointer
+ *
+ * Time Complexity:
+ * - Prepend: O(1)
+ * - Append: O(1)
+ * - RemoveFromFront: O(1)
+ * - RemoveFromEnd: O(n)
+ */
 
 const { Node } = require('./node');
-const { CircularLinkedList } = require('./2-circular-linked-list-1');
+const { CircularLinkedList } = require('./circular-linked-list');
 
 class LinkedList extends CircularLinkedList {
     constructor() {
@@ -28,6 +28,7 @@ class LinkedList extends CircularLinkedList {
             node.next = this.tail.next;
             this.tail.next = node;
         }
+
         this.size++;
     }
 
@@ -45,7 +46,7 @@ class LinkedList extends CircularLinkedList {
         }
     }
 
-    insert(index, value) {
+    insertAt(index, value) {
         if (index < 0 || index > this.getSize() || value === undefined) return;
 
         if (index === 0) {
@@ -61,6 +62,7 @@ class LinkedList extends CircularLinkedList {
                 curr = curr.next;
                 count--;
             }
+
             node.next = curr.next;
             curr.next = node;
 
@@ -79,6 +81,7 @@ class LinkedList extends CircularLinkedList {
             this.head = removeNode.next;
             this.tail.next = this.head;
         }
+
         this.size--;
         return removeNode;
     }
@@ -86,25 +89,33 @@ class LinkedList extends CircularLinkedList {
     removeFromEnd() {
         if (!this.head) return null;
 
-        let removeNode = this.head;
+        let removeNode = null;
 
         if (this.getSize() === 1) {
+            removeNode = this.head
             this.head = null;
+            this.tail = null;
         } else {
             let curr = this.head;
 
             while (curr.next !== this.tail) {
                 curr = curr.next;
             }
-            curr.next = this.tail.next;
+
+            removeNode = this.tail;
+            curr.next = removeNode.next;
+            removeNode.next = null;
             this.tail = curr;
         }
+
         this.size--;
         return removeNode;
     }
 
     remove(value) {
-        if (!this.head || value === undefined) return null;
+        if (!this.head || value === undefined) {
+            return null;
+        }
 
         if (this.head.value === value) {
             return this.removeFromFront();
@@ -122,6 +133,7 @@ class LinkedList extends CircularLinkedList {
         if (curr.next.value === value) {
             removeNode = curr.next;
             curr.next = removeNode.next;
+            removeNode.next = null;
             this.size--;
         }
 
@@ -149,6 +161,7 @@ class LinkedList extends CircularLinkedList {
 
         removeNode = curr.next;
         curr.next = removeNode.next;
+        removeNode.next = null;
         this.size--;
 
         return removeNode;
@@ -169,23 +182,32 @@ class LinkedList extends CircularLinkedList {
             prev = cur;
             cur = next;
         }
+        
         cur.next = prev;
         this.tail.next = cur;
     }
 }
 
+
+function main() {
+    const list = new LinkedList();
+
+    list.append(5);
+    list.append(6);
+    list.append(7);
+    list.append(8);
+    list.printList();
+
+    list.removeFromEnd();
+    list.printList();
+
+    list.reverse();
+    list.printList();
+}
+
+if (require.main === module) main();
+
+
 module.exports = {
     LinkedList
 }
-
-// const list = new LinkedList();
-
-// list.append(5);
-// list.append(6);
-// list.append(7);
-// list.append(8);
-
-// list.printList();
-
-// list.reverse();
-// list.printList();
