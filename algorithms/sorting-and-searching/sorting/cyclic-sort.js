@@ -15,7 +15,7 @@ Time Complexity: O(n)
 
  */
 
-const { swap } = require('../../../../__helpers/swap')
+const { swap } = require('../../../__helpers/swap')
 
 const cyclicSort = function (nums) {
     for (let i = 0; i < nums.length;) {
