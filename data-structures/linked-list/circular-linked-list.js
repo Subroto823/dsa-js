@@ -26,9 +26,12 @@ class CircularLinkedList {
         return this.size === 0;
     }
 
-    append(value, prependFlag = false) {
+    append(value) {
         const node = new Node(value);
+        this.insertHelper(node);
+    }
 
+    insertHelper(node) {
         if (!this.head) {
             this.head = node;
             node.next = this.head;
@@ -38,21 +41,21 @@ class CircularLinkedList {
             while (curr.next.value !== this.head.value) {
                 curr = curr.next;
             }
+
             curr.next = node;
             node.next = this.head;
-
-            /* if the prepend flag is true, then make the new node as head node (to make the append method work as prepend)
-            */
-            if (prependFlag) this.head = node;
         }
+
         this.size++;
     }
 
     prepend(value) {
-        this.append(value, true);
+        const node = new Node(value);
+        this.insertHelper(node);
+        this.head = node;
     }
 
-    insert(index, value) {
+    insertAt(index, value) {
         if (index < 0 || index > this.size) return;
 
         if (index === 0) {
@@ -66,14 +69,18 @@ class CircularLinkedList {
                 curr = curr.next;
                 count--;
             }
+
             node.next = curr.next;
             curr.next = node;
         }
+
         this.size++;
     }
 
     remove(value) {
-        if (this.isEmpty() || value === undefined) return null;
+        if (this.isEmpty() || value === undefined) {
+            return null;
+        }
 
         let removeNode = null;
         let curr = this.head.next;
@@ -91,11 +98,14 @@ class CircularLinkedList {
         if (this.head.value === value) {
             this.head = this.getSize() !== 0 ? removeNode.next : null;
         }
+
         return removeNode;
     }
 
     removeFrom(index) {
-        if (this.isEmpty() || index < 0 || index >= this.getSize() || index === undefined) return null;
+        if (this.isEmpty() || index < 0 || index >= this.getSize() || index === undefined) {
+            return null;
+        }
 
         let removeNode = null;
 
@@ -114,6 +124,7 @@ class CircularLinkedList {
             curr.next = removeNode.next;
             this.size--;
         }
+
         return removeNode;
     }
 
@@ -127,6 +138,7 @@ class CircularLinkedList {
             curr = curr.next;
             count--;
         }
+
         return curr.value;
     }
 
@@ -138,12 +150,11 @@ class CircularLinkedList {
         let cur = this.head;
 
         while (i < len) {
-            if (cur.value === value) {
-                return i;
-            }
+            if (cur.value === value) return i;
             cur = cur.next;
             i++;
         }
+
         return -1;
     }
 
@@ -163,6 +174,7 @@ class CircularLinkedList {
                 break;
             }
         }
+
         cur.next = prev;
         this.head = prev;
     }
@@ -175,29 +187,37 @@ class CircularLinkedList {
 
         let curr = this.head;
         let data = '';
+
         while (curr.next.value !== this.head.value) {
             data += curr.value + " ";
             curr = curr.next;
         }
+        
         data += curr.value;
         process.stdout.write(data + "\n");
     }
 }
 
+
+function main() {
+    const list = new CircularLinkedList();
+
+    list.append(5);
+    list.append(8);
+    list.append(10);
+    list.printList();
+
+    list.prepend(3);
+    list.insertAt(2, 7);
+    list.printList();
+
+    list.reverse();
+    list.printList();
+}
+
+if (require.main === module) main();
+
+
 module.exports = {
     CircularLinkedList
 }
-
-// const list = new CircularLinkedList();
-
-// list.append(5);
-// list.append(8);
-// list.append(10);
-
-// list.prepend(3);
-// list.insert(2, 7);
-
-// list.printList();
-
-// list.reverse();
-// list.printList();
