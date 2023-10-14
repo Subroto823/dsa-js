@@ -1,40 +1,49 @@
-# Sorting Algorithms
-    # Bubble Sort
-    # Insertion Sort
-    # Quick Sort
-    # Merge Sort
+# Sorting
 
-# Bubble Sort
+## Sorting Algorithms
+There are various sorting algorithms in computer science, each with its own advantages, disadvantages, and use cases.
 
-# Insertion Sort
-    # Insertion sort idea
-        # Virtually split the array into a sorted and an unsorted part
+    Bubble Sort:
+        Simple and easy to understand.
+        Time complexity: O(n^2) in the worst and average cases.
+        Inefficient for large datasets.
 
-        # Assume that the first element is alread sorted and remaining element are unsorted
+    Selection Sort:
+        Simple and easy to implement.
+        Time complexity: O(n^2) in the worst and average cases.
+        Inefficient for large datasets.
 
-        # Select an unsorted element and compare with all elements in the sorted part
+    Insertion Sort:
+        Efficient for small datasets and partially sorted arrays.
+        Time complexity: O(n^2) in the worst and average cases.
 
-        # If the elements in the sorted part is smaller than the selected element, proceed to the next element in the unsorted part. Else, shift larger elements in the sorted part towards the right. 
-        
-        # Insert the selected element at the right index
+    Quick Sort:
+        Efficient and widely used.
+        Time complexity: O(n log n) in the average case, O(n^2) in the worst case.
+        Often faster than other sorting algorithms for large datasets.
 
-        # Repeat till all the unsorted elements are placed in the right order
+    Merge Sort:
+        Stable and efficient.
+        Time complexity: O(n log n) in all cases.
+        Guarantees worst-case performance.
 
-# Quick Sort
-    # Quick sort idea
-        (# Pick first element as pivot
-        # Pick last element as pivot(Our approach)
-        # Pick a random element as pivot
-        # Pick median as pivot)
+    Heap Sort:
+        Efficient and in-place sorting.
+        Time complexity: O(n log n) in all cases.
+        Not as widely used as Quick Sort or Merge Sort.
 
-        # Put everything that's smaller than the pivot into a 'left' array and everything that's greater than the pivot into a 'right' array
+    Shell Sort:
+        Variation of Insertion Sort with better performance.
+        Time complexity: Depends on the gap sequence used (can be better than O(n^2)).
 
-        # Repeat the process for the individual 'left' and 'right'arrays till we have an array of length 1 which is sorted by definition.
+    Counting Sort:
+        Ideal for sorting integers with a limited range.
+        Time complexity: O(n + k), where k is the range of integers.
 
-        # Repeatedly concatenate the left array, pivot and right array till one sorted array remains
+    Radix Sort:
+        Sorts numbers digit by digit.
+        Time complexity: O(n * k), where k is the number of digits.
 
-# Merge Sort
-    # Merge sort idea
-        # Divide the array into sub arrays, each containing only one element(An array with one element is considered sorted)
-
-        # Repeatedly merge the sub arrays to produce new sorted sub arrays until there is only one sub array remaining. That will be the sorted array.
+    Bucket Sort:
+        Distributes elements into buckets and sorts each bucket.
+        Time complexity: O(n^2) in the worst case, O(n + k) on average.
