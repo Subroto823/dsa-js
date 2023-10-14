@@ -79,7 +79,8 @@ class LinkedList {
             return null;
         }
 
-        let removeNode;
+        let removeNode = null;
+
         if (index === 0) {
             removeNode = this.head;
             this.head = this.head.next;
@@ -95,16 +96,22 @@ class LinkedList {
         }
 
         this.size--;
+        removeNode.next = null;
         return removeNode;
     }
 
     removeValue(value) {
         if (this.isEmpty()) return null;
 
+        let removeNode = null;
+
         if (this.head.value === value) {
+            removeNode = this.head;
             this.head = this.head.next;
+            removeNode.next = null;
+
             this.size--;
-            return value;
+            return removeNode;
         } else {
             let prev = this.head;
 
@@ -115,6 +122,7 @@ class LinkedList {
             if (prev.next) {
                 const removeNode = prev.next;
                 prev.next = removeNode.next;
+                removeNode.next = null;
                 this.size--;
                 return removeNode;
             }
@@ -191,7 +199,8 @@ function main() {
     list.insert(10, 0);
     list.insert(20, 1);
     list.insert(40, 2);
-
+    list.print();
+    
     list.reverse();
     list.print();
 }
