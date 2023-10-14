@@ -1,5 +1,5 @@
 /**
-Cycle Sort
+Cyclic Sort
 
 Cyclic sort is a simple and intuitive sorting algorithm that is particularly useful when you have an array containing a range of distinct integers. 
 It works by cycling or swapping elements to their correct positions within the array.
@@ -15,10 +15,12 @@ Time Complexity: O(n)
 
  */
 
+const { swap } = require('../../../../__helpers/swap')
+
 const cyclicSort = function (nums) {
     for (let i = 0; i < nums.length;) {
         if (nums[i] !== nums[nums[i] - 1]) {
-            [nums[nums[i] - 1], nums[i]] = [nums[i], nums[nums[i] - 1]]
+            swap(nums, i, nums[i] - 1)
         } else {
             i++;
         }
