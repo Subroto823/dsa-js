@@ -89,7 +89,7 @@ class LinkedList {
         return removeNode;
     }
 
-    insert(value, index) {
+    insertAt(index, value) {
         if (index < 0 || index > this.size) {
             return;
         }
@@ -102,7 +102,7 @@ class LinkedList {
             const node = new Node(value);
             let prev = this.head;
 
-            for (let i = 0; i < index - 1; i++) {
+            while(--index) {
                 prev = prev.next;
             }
 
@@ -120,8 +120,7 @@ class LinkedList {
         let removeNode = null;
 
         if (index === 0) {
-            removeNode = this.head;
-            this.head = this.head.next;
+            return this.removeFromFront();
         } else if (index === this.size - 1) {
             return this.removeFromEnd();
         } else {
@@ -142,13 +141,9 @@ class LinkedList {
 
     removeValue(value) {
         if (this.isEmpty()) return null;
-        let removeNode;
 
         if (this.head.value === value) {
-            removeNode = this.head
-            this.head = this.head.next;
-            this.size--;
-            return removeNode;
+            return this.removeFromFront();
         } else {
             let prev = this.head;
             let i = 1;
@@ -173,18 +168,14 @@ class LinkedList {
     }
 
     search(value) {
-        if (this.isEmpty()) return -1;
+        if (this.isEmpty()) return null;
 
-        let i = 0;
         let curr = this.head;
-
-        while (curr) {
-            if (curr.value === value) return i;
+        while (curr && curr.value !== value) {
             curr = curr.next;
-            i++;
         }
 
-        return -1;
+        return curr;
     }
 
     get(index) {
@@ -192,12 +183,10 @@ class LinkedList {
             return null;
         }
 
-        let i = 0;
         let curr = this.head;
 
-        while (i < index) {
+        while (index--) {
             curr = curr.next;
-            i++;
         }
 
         return curr;
@@ -246,12 +235,16 @@ function main() {
     list.append(40);
     list.append(50);
 
+    list.reverse();
+    list.print();
+
+    list.reverse();
     list.print();
 
     console.log(list.removeValue(40));
     list.print();
 
-    console.log(list.removeValue(50))
+    list.removeValue(50);
     list.print();
 }
 
