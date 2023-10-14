@@ -1,15 +1,13 @@
-/*
-Circular LinkedList - Basic Implementation
-
-Time complexity: 
-    # prepend O(n)
-    # append O(n)
-    # removeFromFront(n)
-    # removeFromEnd(n)
-
-        # it is possible to append or prepend a new node in constant time, but that involves maintaining a tail pointer that always point at the last node in the list
-
-*/
+/**
+ * Circular LinkedList - Basic Implementation
+ *
+ * Time Complexity:
+ * - Prepend: O(n)
+ * - Append: O(n)
+ * - RemoveFromFront: O(n)
+ * - RemoveFromEnd: O(n)
+ *
+ */
 const { Node } = require('./node')
 
 class CircularLinkedList {
