@@ -53,54 +53,7 @@ class LinkedList {
         this.size++
     }
 
-    insert(value, index) {
-        if (index < 0 || index > this.size) {
-            return;
-        }
-
-        if (index === 0) {
-            this.prepend(value);
-        } else {
-            const node = new Node(value);
-            let prev = this.head;
-
-            for (let i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-
-            node.next = prev.next;
-            prev.next = node;
-            this.size++;
-        }
-    }
-
-    removeFrom(index) {
-        if (index < 0 || index >= this.size) {
-            return null;
-        }
-
-        let removeNode = null;
-
-        if (index === 0) {
-            removeNode = this.head;
-            this.head = this.head.next;
-        } else {
-            let prev = this.head;
-
-            for (let i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-
-            removeNode = prev.next;
-            prev.next = removeNode.next;
-        }
-
-        this.size--;
-        removeNode.next = null;
-        return removeNode;
-    }
-
-    removeValue(value) {
+    remove(value) {
         if (this.isEmpty()) return null;
 
         let removeNode = null;
@@ -109,9 +62,7 @@ class LinkedList {
             removeNode = this.head;
             this.head = this.head.next;
             removeNode.next = null;
-
             this.size--;
-            return removeNode;
         } else {
             let prev = this.head;
 
@@ -120,46 +71,25 @@ class LinkedList {
             }
 
             if (prev.next) {
-                const removeNode = prev.next;
+                removeNode = prev.next;
                 prev.next = removeNode.next;
                 removeNode.next = null;
                 this.size--;
-                return removeNode;
             }
-
-            return null;
         }
+
+        return removeNode;
     }
 
     search(value) {
-        if (this.isEmpty()) return -1;
+        if (this.isEmpty()) return null;
 
-        let i = 0;
         let curr = this.head;
-
-        while (curr) {
-            if (curr.value === value) return i;
+        while (curr && curr.value !== value) {
             curr = curr.next;
-            i++;
         }
 
-        return -1;
-    }
-
-    get(index) {
-        if (this.isEmpty() || index < 0 || index >= this.size) {
-            return null;
-        }
-
-        let i = 0;
-        let curr = this.head;
-
-        while (i < index) {
-            curr = curr.next;
-            i++;
-        }
-
-        return curr.value;
+        return curr;
     }
 
     reverse() {
@@ -196,11 +126,11 @@ class LinkedList {
 
 function main() {
     const list = new LinkedList();
-    list.insert(10, 0);
-    list.insert(20, 1);
-    list.insert(40, 2);
+    list.append(20);
+    list.prepend(10);
+    list.insertAt(2, 30);
     list.print();
-    
+
     list.reverse();
     list.print();
 }

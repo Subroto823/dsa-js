@@ -61,8 +61,9 @@ class LinkedList {
         const removeNode = this.head;
         this.head = this.head.next;
         removeNode.next = null;
-        this.size--;
 
+        if (this.size === 1) this.tail = null;
+        this.size--;
         return removeNode;
     }
 
@@ -89,57 +90,7 @@ class LinkedList {
         return removeNode;
     }
 
-    insertAt(index, value) {
-        if (index < 0 || index > this.size) {
-            return;
-        }
-
-        if (index === 0) {
-            this.prepend(value);
-        } else if (index === this.size) {
-            this.append(value);
-        } else {
-            const node = new Node(value);
-            let prev = this.head;
-
-            while(--index) {
-                prev = prev.next;
-            }
-
-            node.next = prev.next;
-            prev.next = node;
-            this.size++;
-        }
-    }
-
-    removeFrom(index) {
-        if (index < 0 || index >= this.size) {
-            return null;
-        }
-
-        let removeNode = null;
-
-        if (index === 0) {
-            return this.removeFromFront();
-        } else if (index === this.size - 1) {
-            return this.removeFromEnd();
-        } else {
-            let prev = this.head;
-
-            for (let i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-
-            removeNode = prev.next;
-            prev.next = removeNode.next;
-            removeNode.next = null;
-        }
-
-        this.size--;
-        return removeNode;
-    }
-
-    removeValue(value) {
+    remove(value) {
         if (this.isEmpty()) return null;
 
         if (this.head.value === value) {
@@ -172,20 +123,6 @@ class LinkedList {
 
         let curr = this.head;
         while (curr && curr.value !== value) {
-            curr = curr.next;
-        }
-
-        return curr;
-    }
-
-    get(index) {
-        if (this.isEmpty() || index < 0 || index >= this.size) {
-            return null;
-        }
-
-        let curr = this.head;
-
-        while (index--) {
             curr = curr.next;
         }
 
@@ -235,16 +172,14 @@ function main() {
     list.append(40);
     list.append(50);
 
+    list.print();
     list.reverse();
     list.print();
 
     list.reverse();
     list.print();
 
-    console.log(list.removeValue(40));
-    list.print();
-
-    list.removeValue(50);
+    console.log(list.remove(40));
     list.print();
 }
 
