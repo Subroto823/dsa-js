@@ -31,7 +31,7 @@ var merge = function (left, right) {
         }
     }
 
-    return sortedArr.concat(left.slice(l), right.slice(r));
+    return [...sortedArr, ...left.slice(l), ...right.slice(r)];
 }
 
 let arr = [3, 1, 8, 7, 5, 9, 12, 10, 18, 15, 17];
