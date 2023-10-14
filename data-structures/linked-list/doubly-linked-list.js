@@ -1,21 +1,21 @@
-/*
-Doubly LinkedList Implementation (With Tail Pointer)
+/**
+ * Doubly LinkedList Implementation (With Tail Pointer)
+ *
+ * Time Complexity:
+ * - Prepend: O(1)
+ * - Append: O(1)
+ * - RemoveFromFront: O(1)
+ * - RemoveFromEnd: O(1)
+ * - Reverse:
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+ * - ReverseUsingStack:
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     * Additional Note: Swapping data can be costly compared to pointers if the size of the data item(s) is more.
+ */
 
-Time complexity: 
-    # prepend O(1)
-    # append O(1)
-    # removeFromFront O(1)
-    # removeFromEnd O(1)
-    # reverse
-        * time complexity O(n)
-        * space complexity O(1)
-    
-    # reverseUsingStack 
-        * time complexity O(n)
-        * space complexity O(n)
-        * Swapping data can be costly compared to pointers if the size of the data item(s) is more
-*/
-const { Node } = require('./d-node.js');
+const { Node } = require('./node-d.js');
 
 class DoublyLinkedList {
     constructor() {
@@ -43,6 +43,7 @@ class DoublyLinkedList {
             this.head.prev = node;
             this.head = node;
         }
+
         this.size++;
     }
     
@@ -57,26 +58,26 @@ class DoublyLinkedList {
             node.prev = this.tail;
             this.tail = node;
         }
+
         this.size++
     }
 
     removeFromFront() {
-        if(this.isEmpty()) {
-            return null;
-        }
-        const value = this.head.value;
+        if(this.isEmpty()) return null;
+
+        const removeNode = this.head;
         this.head = this.head.next;
         this.head.prev = null;
+        removeNode.next = null;
+
         this.size--;
-        return value;
+        return removeNode;
     }
 
     removeFromEnd() {
-        if(this.isEmpty()) {
-            return null;
-        }
+        if(this.isEmpty()) return null;
+        const removeNode = this.tail;
 
-        const value = this.tail.value;
         if(this.size === 1) {
             this.head = null;
             this.tail = null;
@@ -84,30 +85,32 @@ class DoublyLinkedList {
             this.tail = this.tail.prev;
             this.tail.next = null;   
         }
+
+        removeNode.prev = null
         this.size--;
-        return value;
+        return removeNode;
     }
 
-    insert(value, index) {
-        if(index < 0 || index > this.size) {
-            return;
-        }
+    insertAt(index, value) {
+        if(index < 0 || index > this.size) return;
+
         if(index === 0) {
             this.prepend(value);
-        } 
-        else if(index === this.size) {
+        } else if(index === this.size) {
             this.append(value);
-        }
-        else {
+        } else {
             const node = new Node(value);
             let prev = this.head;
-            for(let i = 0; i < index -1; i++) {
+
+            while(--index) {
                 prev = prev.next;
             }
+
             node.next = prev.next;
             prev.next = node;
             node.next.prev = node;
             node.prev = prev;
+
             this.size++;
         }
     }
@@ -116,43 +119,45 @@ class DoublyLinkedList {
         if(index < 0 || index >= this.size) {
             return null;
         }
-        let removeNode;
+
+        let removeNode = null;
+
         if(index === 0) {
             return this.removeFromFront();
-        }
-        else if(index === this.size - 1) {
+        } else if(index === this.size - 1) {
             return this.removeFromEnd();
-        }
-        else {
+        } else {
             let prev = this.head;
-            for(let i = 0; i < index - 1; i++) {
+
+            while(--index) {
                 prev = prev.next;
             }
+
             removeNode = prev.next;
             prev.next = removeNode.next;
             removeNode.next.prev = prev;
+            removeNode.next = null;
+            removeNode.prev = null;
         }
 
         this.size--;
-        return removeNode.value;
+        return removeNode;
     }
 
     removeValue(value) {
-        if(this.isEmpty()) {
-            return null;
-        }
+        if(this.isEmpty()) return null;
+
         if(this.head.value === value) {
-            this.head = this.head.next;
-            this.head.prev = null;
-            this.size--;
-            return value;
+            return this.removeFromFront()
         } else {
             let prev = this.head;
             let i = 1;
+
             while(prev.next && prev.next.value !== value) {
                 prev = prev.next;
                 i++;
-            }
+            } 
+            
             if(i === this.size - 1) {
                 return this.removeFromEnd();
             }
@@ -161,71 +166,75 @@ class DoublyLinkedList {
                 const removeNode = prev.next;
                 prev.next = removeNode.next;
                 removeNode.next.prev = prev;
+                removeNode.next = null;
+                removeNode.prev = null;
+
                 this.size--;
-                return value;
+                return removeNode;
             }
+
             return null;
         }
     }
 
     search(value) {
-        if(this.isEmpty()) {
-            return -1;
-        } 
+        if(this.isEmpty()) return -1;
+
         let i = 0;
         let curr = this.head;
+
         while(curr) {
-            if(curr.value === value) {
-                return i;
-            }
+            if(curr.value === value) return i;
             curr = curr.next;
             i++;
         }
+
         return -1;
     }
 
     get(index) {
         if(this.isEmpty() || index < 0 || index >= this.size) {
-            return;
+            return null;
         }
         
-        let i = 0;
         let curr = this.head;
-        while(i < index) {
+        while(index--) {
             curr = curr.next;
-            i++;
         }
-        return curr.value;
+        return curr;
     }
 
     reverse() {
         let prev = null;
         let curr = this.head;
         this.tail = curr;
+
         while(curr) {
             let next = curr.next;
-            console.log(next);
             curr.next = prev;
             curr.prev = next;
 
             prev = curr;
             curr = next;
         }
+
         this.head = prev;
     }
 
     reverseUsingStack() {
         const stack = [];
-        let curr = this.head;
-        while(curr) {
-            stack.push(curr.value);
-            curr = curr.next;  
+        let cur = this.head;
+
+        while(cur) {
+            stack.push(cur.value);
+            cur = cur.next;  
         }
     
-        curr = this.head;
-        while(curr !== null) {
-            curr.value = stack.pop();
-            curr = curr.next;
+        cur = this.head;
+
+        while(cur !== null) {
+            cur.value = stack.pop();
+            cur = cur.next;
         }
     }
 
@@ -235,37 +244,39 @@ class DoublyLinkedList {
         } else {
             let curr = this.head;
             let listValues = '';
+
             while(curr) {
                 listValues += `${curr.value} `;
                 curr = curr.next;
             }
-            console.log(listValues);
-        }
-    }
 
-    printReverse() {
-        if(this.isEmpty()) {
-            console.log("The list is empty!");
-        } else {
-            let curr = this.tail;
-            let listValues = '';
-            while(curr) {
-                listValues += `${curr.value} `;
-                curr = curr.prev;
-            }
             console.log(listValues);
         }
     }
 }
 
-const list = new DoublyLinkedList();
 
-console.log(list.isEmpty());
-list.append(10);
-list.append(20);
-list.insert(30, 2)
-list.append(40);
+function main() {
+    const list = new DoublyLinkedList();
 
-list.reverse();
-list.print();
-// list.printReverse();
+    list.append(10);
+    list.append(20);
+    list.print();
+
+    list.insertAt(2, 30)
+    list.print();
+
+    list.append(40);
+    list.reverse();
+    list.print();
+
+    list.reverse();
+    list.print();
+}
+
+if (require.main === module) main();
+
+
+module.exports = {
+    DoublyLinkedList
+}
