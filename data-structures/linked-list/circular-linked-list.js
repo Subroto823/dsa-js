@@ -4,8 +4,6 @@
  * Time Complexity:
  * - Prepend: O(n)
  * - Append: O(n)
- * - RemoveFromFront: O(n)
- * - RemoveFromEnd: O(n)
  *
  */
 const { Node } = require('./node')
@@ -52,29 +50,7 @@ class CircularLinkedList {
         this.insertHelper(node);
         this.head = node;
     }
-
-    insertAt(index, value) {
-        if (index < 0 || index > this.size) return;
-
-        if (index === 0) {
-            this.prepend(value);
-        } else {
-            const node = new Node(value);
-            let curr = this.head;
-            let count = index - 1;
-
-            while (count) {
-                curr = curr.next;
-                count--;
-            }
-
-            node.next = curr.next;
-            curr.next = node;
-        }
-
-        this.size++;
-    }
-
+    
     remove(value) {
         if (this.isEmpty() || value === undefined) {
             return null;
@@ -97,63 +73,9 @@ class CircularLinkedList {
             this.head = this.getSize() !== 0 ? removeNode.next : null;
         }
 
-        return removeNode;
-    }
-
-    removeFrom(index) {
-        if (this.isEmpty() || index < 0 || index >= this.getSize() || index === undefined) {
-            return null;
-        }
-
-        let removeNode = null;
-
-        if (index === 0) {
-            removeNode = this.remove(this.head.value);
-        } else {
-            let curr = this.head;
-            let count = index - 1;
-
-            while (curr.next.value !== this.head.value && count) {
-                curr = curr.next;
-                count--;
-            }
-
-            removeNode = curr.next;
-            curr.next = removeNode.next;
-            this.size--;
-        }
+        if (removeNode) removeNode.next = null;
 
         return removeNode;
-    }
-
-    get(index) {
-        if (this.isEmpty() || index < 0 || index >= this.getSize() || index === undefined) return;
-
-        let curr = this.head;
-        let count = index;
-
-        while (count) {
-            curr = curr.next;
-            count--;
-        }
-
-        return curr.value;
-    }
-
-    search(value) {
-        if (value === undefined || this.isEmpty()) return -1;
-
-        let i = 0;
-        let len = this.getSize();
-        let cur = this.head;
-
-        while (i < len) {
-            if (cur.value === value) return i;
-            cur = cur.next;
-            i++;
-        }
-
-        return -1;
     }
 
     reverse() {
@@ -203,10 +125,10 @@ function main() {
     list.append(5);
     list.append(8);
     list.append(10);
+    console.log(list.remove(5))
     list.printList();
 
     list.prepend(3);
-    list.insertAt(2, 7);
     list.printList();
 
     list.reverse();
