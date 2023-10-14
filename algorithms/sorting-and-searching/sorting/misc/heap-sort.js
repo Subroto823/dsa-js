@@ -10,7 +10,7 @@
  * Note: The min-heapify operation is used to maintain the min-heap property during the sorting process.
  */
 
-const { swap } = require("../../../__helpers/swap");
+const { swap } = require("../../../../__helpers/swap");
 
 const heapSort = function (arr) {
     buildMinHeap(arr);
