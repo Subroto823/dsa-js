@@ -2,8 +2,6 @@
 
 ## Sorting
 
-### What is Sorting?
-
 Sorting is the process of arranging a collection of data in a specific order, typically ascending or descending. It's a fundamental operation in computer science and is used in various applications, including data analysis, databases, and more.
 
 ### Importance of Sorting
@@ -24,8 +22,6 @@ Sorting is the process of arranging a collection of data in a specific order, ty
 - **Counting Sort**
 
 ## Searching
-
-### What is Searching?
 
 Searching is the process of finding a specific item within a collection of data. There are various searching algorithms designed for different data structures and search scenarios.
 
