@@ -1,4 +1,4 @@
-const { TreeNode: Node } = require('./tree-node.js');
+const { TreeNode: Node } = require('../../../data-structures/tree/tree-node.js');
 
 class BinarySearchTree {
     constructor() {
