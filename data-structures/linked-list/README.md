@@ -35,5 +35,5 @@ A **Circular LinkedList** is a variation where the last node's next pointer poin
 ### Doubly LinkedList
 A **Doubly LinkedList** is an extension of the basic LinkedList, where each node has two pointers: one pointing to the next node and another pointing to the previous node. This enables traversal in both directions.
 
-#### Optimization with Tail Pointer in Doubly LinkedList
+### Optimization with Tail Pointer in Doubly LinkedList
 Similar to the basic LinkedList, maintaining a tail pointer in a **Doubly LinkedList** allows constant-time append operations for both appending to the end and the beginning.
