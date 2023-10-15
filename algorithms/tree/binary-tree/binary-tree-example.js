@@ -2,7 +2,7 @@ const { TreeNode } = require('./tree-node')
 
 /*
 Binary Tree
-is a tree data structure in which each parent node can have at most two children.
+It is a tree data structure in which each parent node can have at most two children.
 
 Example 1:
 
@@ -12,6 +12,10 @@ Example 1:
   / \    /  \
  4   5  6    7
 
+- Full Binary Tree
+- Perfect Binary Tree
+- Complete Binary Tree
+- Balanced Binary Tree
 */
 
 const tree1 = new TreeNode(1);
@@ -35,6 +39,7 @@ Example 2:
   /  \     \
  1    2     1
 
+- Balanced Binary Tree
 */
 
 let tree2 = new TreeNode(5);
@@ -46,6 +51,7 @@ tree2.left.left = new TreeNode(1);
 tree2.left.right = new TreeNode(2);
 tree2.right.right = new TreeNode(1);
 
+
 /*
 Example 3:
 
@@ -56,6 +62,9 @@ Example 3:
 1    2   7   1
             /  \
            8    9
+
+- Full Binary Tree
+- Balanced Binary Tree
 */
 
 let tree3 = new TreeNode(5);
@@ -80,6 +89,9 @@ Example 4:
    4       3
  /  \     /
 1    2   7
+
+- Complete Binary Tree
+- Balanced Binary Tree
 */
 
 let tree4 = new TreeNode(5);
@@ -102,6 +114,8 @@ Example 5:
 1    2
     / \
    7   6
+
+- Full Binary Tree
 */
 
 let tree5 = new TreeNode(5);
@@ -124,6 +138,9 @@ Example 6:
    6       3
  /  \     /
 8    4  7
+
+- Complete Binary Tree
+- Balanced Binary Tree
 */
 
 let tree6 = new TreeNode(5);
