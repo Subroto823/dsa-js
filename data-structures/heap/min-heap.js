@@ -1,13 +1,22 @@
-class minHeap {
+/**
+ * MinHeap
+ * 
+ * Time Complexity:
+ * - enqueue (Push): O(log n)
+ * - dequeue (Pop): O(log n)
+ * - peek: O(1)
+ */
+
+class MinHeap {
     constructor() {
         this.heap = new Array();
     }
 
-    get length() {
+    size() {
         return this.heap.length;
     }
 
-    parent = (index) => {
+    parent(index) {
         return Math.floor((index - 1) / 2);
     }
 
@@ -17,12 +26,12 @@ class minHeap {
         this.heap[index2] = elem;
     }
 
-    insert = (element) => {
+    push(element) {
         this.heap.push(element);
-        this.heapifyUp(this.length - 1);
+        this.heapifyUp(this.size() - 1);
     }
 
-    heapifyUp = (index) => {
+    heapifyUp(index) {
         let currentIndex = index;
         let parentIndex = this.parent(currentIndex);
 
@@ -33,16 +42,26 @@ class minHeap {
         }
     }
 
+    pop() {
+        const minValue = this.heap[0];
+        this.heap[0] = this.heap[this.size() - 1];
+        this.heap.pop();
+        this.heapify(0);
+
+        return minValue;
+    }
+
+
     heapify(i) {
         let smallest = i;
         let l = 2 * i + 1;
         let r = 2 * i + 2;
 
-        if (l < this.length && this.heap[l] < this.heap[smallest]) {
+        if (l < this.size() && this.heap[l] < this.heap[smallest]) {
             smallest = l;
         }
 
-        if (r < this.length && this.heap[r] < this.heap[smallest]) {
+        if (r < this.size() && this.heap[r] < this.heap[smallest]) {
             smallest = r;
         }
 
@@ -52,54 +71,33 @@ class minHeap {
         }
     }
 
-    remove() {
-        let min = this.heap[0];
-        this.heap[0] = this.heap[this.length - 1];
-        this.heap.pop();
-        this.heapify(0);
-
-        return min;
-    }
-
-
-    removeValue(value) {
-        if (!value) return;
-
-        let i;
-        let len = this.length;
-
-        for (i = 0; i < len; i++) {
-            if (value === this.heap[i]) break;
-        }
-
-        this.swap(i, len - 1);
-        this.heap.pop();
-
-        // Build Min Heap
-        for (let j = Math.floor(len / 2) - 1; j >= 0; j--) {
-            this.heapify(j);
-        }
-    }
-
     printHeap() {
         let txt = "";
-        for (let i = 0; i < this.length; i++) {
+        for (let i = 0; i < this.size(); i++) {
             txt += this.heap[i] + " ";
         }
         process.stdout.write(txt + "\n");
     }
 };
 
-const heap = new minHeap();
-heap.insert(5);
-heap.insert(7);
-heap.insert(9);
-heap.insert(11);
-heap.insert(13);
-heap.insert(16);
-heap.insert(18);
-heap.insert(15);
-heap.removeValue(5);
-heap.removeValue(7);
 
-heap.printHeap();
+function main() {
+    const heap = new MinHeap();
+
+    heap.push(5);
+    heap.push(9);
+    heap.push(11);
+    heap.push(18);
+    heap.push(16);
+    heap.push(15);
+    heap.push(7);
+
+    console.log(heap.pop());
+    console.log(heap.pop());
+    heap.printHeap();
+}
+
+if (require.main === module) main();
+
+
+module.exports = MinHeap;
