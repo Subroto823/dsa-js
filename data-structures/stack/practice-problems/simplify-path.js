@@ -27,7 +27,7 @@ const simplifyPath = function(path) {
         else stack.push(item);
     }
     
-    return "/" + stack.join("/");
+    return "/" + stack.getItems().join("/");
 }
 
 const res1 = simplifyPath("../hello//world");
