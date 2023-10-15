@@ -86,7 +86,7 @@ function main() {
 
     heap.push(5);
     heap.push(9);
-    heap.push(11);
+    heap.push(12);
     heap.push(18);
     heap.push(16);
     heap.push(15);
