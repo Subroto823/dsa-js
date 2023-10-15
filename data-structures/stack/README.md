@@ -14,6 +14,13 @@ A stack supports the following primary operations:
 - **Peek/Top**: Retrieve the element from the top without removing it.
 
 
+## Complexity
+The time complexity of common stack operations:
+- Push: O(1)
+- Pop: O(1)
+- Peek/Top: O(1)
+
+
 # Stack Usage
 - Browser history tracking
 - Undo operation when typing
