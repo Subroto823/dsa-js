@@ -76,6 +76,11 @@ class MinHeap {
         }
     }
 
+    peek() {
+        if (this.isEmpty()) return null;
+        return this.heap[0]
+    }
+
     printHeap() {
         if (this.isEmpty()) {
             process.stdout.write("Heap is Empty :(\n");
@@ -103,7 +108,7 @@ function main() {
     heap.push(7);
 
     console.log(heap.pop());
-    console.log(heap.pop());
+    console.log(heap.peek());
     heap.printHeap();
 }
 
