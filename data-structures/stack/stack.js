@@ -8,23 +8,31 @@ class Stack {
     }
 
     pop() {
-        return this.items.pop();
+        if (!this.isEmpty()) {
+            return this.items.pop();
+        }
     }
 
     peek() {
-        return this.items[this.items.length - 1];
+        if (!this.isEmpty()) {
+            return this.items[this.size() - 1];
+        }
     }
 
     isEmpty() {
-        return this.items.length === 0;
+        return this.size() === 0;
     }
 
     size() {
         return this.items.length;
     }
 
-    join(y) {
-        return this.items.join(y)
+    getItems(y) {
+        return this.items;
+    }
+
+    clear() {
+        this.items = [];
     }
     
     print() {
