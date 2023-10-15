@@ -48,12 +48,12 @@ The DFS algorithm starts at the root node and explores as far as possible along 
     - Read the node's data.
     - Visit the right subtree.
     
-*(In a Binary Search Tree (BST), this produces a sorted sequence.)*
-
 3. Postorder Traversal (Left -> Right -> Root/Parent):
     - Visit the left subtree.
     - Visit the right subtree.
     - Read the node's data.
+
+*In a Binary Search Tree (BST), inorder traversal produces a sorted sequence.*
 
 
 ### BFS - Breadth First Search
