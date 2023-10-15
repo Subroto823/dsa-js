@@ -12,6 +12,10 @@ class MinHeap {
         this.heap = new Array();
     }
 
+    isEmpty() {
+        return this.size() === 0;
+    }
+
     size() {
         return this.heap.length;
     }
@@ -43,6 +47,8 @@ class MinHeap {
     }
 
     pop() {
+        if (this.isEmpty()) return null;
+
         const minValue = this.heap[0];
         this.heap[0] = this.heap[this.size() - 1];
         this.heap.pop();
@@ -50,7 +56,6 @@ class MinHeap {
 
         return minValue;
     }
-
 
     heapify(i) {
         let smallest = i;
@@ -72,6 +77,11 @@ class MinHeap {
     }
 
     printHeap() {
+        if (this.isEmpty()) {
+            process.stdout.write("Heap is Empty :(\n");
+            return;
+        }
+
         let txt = "";
         for (let i = 0; i < this.size(); i++) {
             txt += this.heap[i] + " ";

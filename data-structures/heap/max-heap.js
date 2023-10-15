@@ -1,13 +1,27 @@
+/**
+ * MaxHeap
+ * 
+ * Time Complexity:
+ * - enqueue (Push): O(log n)
+ * - dequeue (Pop): O(log n)
+ * - peek: O(1)
+ */
+
+
 class MaxHeap {
     constructor() {
         this.heap = new Array();
     }
 
-    get length() {
+    isEmpty() {
+        return this.size() === 0;
+    }
+
+    size() {
         return this.heap.length;
     }
 
-    parent = (index) => {
+    parent(index) {
         return Math.floor((index - 1) / 2);
     }
 
@@ -17,12 +31,12 @@ class MaxHeap {
         this.heap[index2] = elem;
     }
 
-    insert = (element) => {
+    push(element) {
         this.heap.push(element);
-        this.heapifyUp(this.length - 1);
+        this.heapifyUp(this.size() - 1);
     }
 
-    heapifyUp = (index) => {
+    heapifyUp(index) {
         let currentIndex = index;
         let parentIndex = this.parent(currentIndex);
 
@@ -33,16 +47,27 @@ class MaxHeap {
         }
     }
 
+    pop() {
+        if (this.isEmpty()) return null;
+
+        let maxValue = this.heap[0];
+        this.heap[0] = this.heap[this.size() - 1];
+        this.heap.pop();
+        this.heapify(0);
+
+        return maxValue;
+    }
+
     heapify(i) {
         let large = i;
         let l = 2 * i + 1;
         let r = 2 * i + 2;
 
-        if (l < this.length && this.heap[l] > this.heap[large]) {
+        if (l < this.size() && this.heap[l] > this.heap[large]) {
             large = l;
         }
 
-        if (r < this.length && this.heap[r] > this.heap[large]) {
+        if (r < this.size() && this.heap[r] > this.heap[large]) {
             large = r;
         }
 
@@ -52,53 +77,41 @@ class MaxHeap {
         }
     }
 
-    remove() {
-        let max = this.heap[0];
-        this.heap[0] = this.heap[this.length - 1];
-        this.heap.pop();
-        this.heapify(0);
-
-        return max;
-    }
-
-
-    removeValue(value) {
-        if (!value) return;
-
-        let i;
-        let len = this.length;
-
-        for (i = 0; i < len; i++) {
-            if (value === this.heap[i]) break;
-        }
-
-        this.swap(i, len - 1);
-        this.heap.pop();
-
-        // Build Max Heap
-        for (let j = Math.floor(len / 2) - 1; j >= 0; j--) {
-            this.heapify(j);
-        }
+    peek() {
+        if (this.isEmpty()) return null;
+        return this.heap[0]
     }
 
     printHeap() {
+        if (this.isEmpty()) {
+            process.stdout.write('Heap is Empty :(\n');
+            return;
+        }
+
         let txt = "";
-        for (let i = 0; i < this.length; i++) {
+        for (let i = 0; i < this.size(); i++) {
             txt += this.heap[i] + " ";
         }
         process.stdout.write(txt + "\n");
     }
 };
 
-const maxHeap = new MaxHeap();
-maxHeap.insert(5);
-maxHeap.insert(7);
-maxHeap.insert(9);
-maxHeap.insert(11);
-maxHeap.insert(13);
-maxHeap.insert(16);
-maxHeap.insert(18);
-maxHeap.insert(15);
-maxHeap.removeValue(18);
+function main() {
+    const heap = new MaxHeap();
+    
+    heap.push(5);
+    heap.push(9);
+    heap.push(12);
+    heap.push(18);
+    heap.push(16);
+    heap.push(15);
+    heap.push(7);
 
-maxHeap.printHeap();
+    console.log(heap.peek());
+    heap.printHeap();
+}
+
+if (require.main === module) main();
+
+
+module.exports = MaxHeap;
