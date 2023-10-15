@@ -20,6 +20,12 @@ class DoublyLinkedList extends LinkedList{
         this.tail = null;
     }
 
+    clear () {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
     prepend(value) {
         const node = new Node(value);
 
