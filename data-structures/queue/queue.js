@@ -1,9 +1,13 @@
-/*
- Queue
-
- The time complexity of dequeue() method is linear - O(n) , Because we have used shift() inside the dequeue.
- We can optimize the Big-O to Constant complexity of O(1) - using object instead of array as the list.
+/**
+ * Queue - Basic Implementation With Array
+ * 
+ * Time Complexity:
+ * - enqueue: O(1)
+ * - dequeue: O(n)
+ * 
+ * Using an object-based list can optimize the time complexity for dequeue to O(1) instead of O(n).
  */
+
 class Queue {
     constructor() {
         this.items = [];
@@ -41,15 +45,21 @@ class Queue {
 }
 
 
-const queue = new Queue();
+function main() {
+    const queue = new Queue();
 
-console.log(queue.isEmpty());
+    console.log(queue.isEmpty());
 
-queue.enqueue(20);
-queue.enqueue(10);
-queue.enqueue(30);
-console.log(queue.size());
-queue.print();
+    queue.enqueue(20);
+    queue.enqueue(10);
+    queue.enqueue(30);
+    console.log(queue.size());
+    queue.print();
 
-console.log(queue.dequeue());
-console.log(queue.peek());
+    console.log(queue.dequeue());
+    console.log(queue.peek());
+}
+
+if (require.main === module) main();
+
+module.exports = Queue;
