@@ -16,17 +16,8 @@ const { Node } = require('./node-d.js');
 
 class DoublyLinkedList extends LinkedList{
     constructor() {
-        this.head = null;
+        super();
         this.tail = null;
-        this.size = 0;
-    }
-
-    isEmpty() {
-        return this.size === 0;
-    }
-
-    getSize() {
-        return this.size;
     }
 
     prepend(value) {
@@ -119,18 +110,6 @@ class DoublyLinkedList extends LinkedList{
         }
     }
 
-    search(value) {
-        if(this.isEmpty()) return null;
-
-        let curr = this.head;
-
-        while(curr && curr.value !== value) {
-            curr = curr.next;
-        }
-
-        return curr;
-    }
-
     reverse() {
         let prev = null;
         let curr = this.head;
@@ -147,23 +126,6 @@ class DoublyLinkedList extends LinkedList{
 
         this.head = prev;
     }
-
-
-    print() {
-        if(this.isEmpty()) {
-            console.log("The list is empty!");
-        } else {
-            let curr = this.head;
-            let listValues = '';
-
-            while(curr) {
-                listValues += `${curr.value} `;
-                curr = curr.next;
-            }
-
-            console.log(listValues);
-        }
-    }
 }
 
 
@@ -177,7 +139,6 @@ function main() {
     list.append(40);
 
     list.print();
-
     list.reverse();
     list.print();
 
