@@ -29,7 +29,7 @@ A hierarchical data structure like a tree can be traversed in different ways.
 - Breadth First Search (BFS)
 
 
-### DFS - Depth First Search
+## DFS - Depth First Search
 The DFS algorithm starts at the root node and explores as far as possible along each branch before backtracking.
 
 * Depending on the order in which we do this, there can be three types of DFS traversals in a Binary Tree.
@@ -56,7 +56,7 @@ The DFS algorithm starts at the root node and explores as far as possible along 
 *In a Binary Search Tree (BST), inorder traversal produces a sorted sequence.*
 
 
-### BFS - Breadth First Search
+## BFS - Breadth First Search
 BFS (Breadth-First Search) traversal in a tree involves visiting nodes level by level, starting from the root and moving outward to each level from left to right.This traversal ensures that nodes at the same level are visited before moving on to deeper levels, making it a "level-order" traversal.
     
 * BFS Traversal Approach
