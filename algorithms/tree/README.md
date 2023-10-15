@@ -1,28 +1,42 @@
 # Tree
-A tree is a hierarchical data structure in computer science that consists of nodes connected by edges. It is a simple way to organize data in a branched or hierarchical manner. 
-
-* In a tree,
-    - There is one node called the "root" that serves as the starting point.
-    - Nodes are connected by directed edges.
-    - Each node can have zero or more child nodes, but it has exactly one parent node (except for the root).
-    - Nodes without any children are called "leaves."
-    - The length of the path from the root to a node is called its "depth."
-    - The level of a node is its depth plus one.
-    - A "subtree" is a smaller tree within a larger tree, consisting of a node and all its descendants.
-
-Trees are used to represent hierarchical structures like file systems, organization charts, or the structure of a webpage. They also play a crucial role in algorithms and data structures, such as binary search trees and heaps, which enable efficient data retrieval and manipulation.
+A tree is a hierarchical data structure that consists of nodes connected by edges. It is a simple way to organize data in a branched or hierarchical manner. 
+A tree is a non-linear data structure, compared to arrays, linked lists, stacks and queues which are linear data structures.
+A tree doesn't contain any loops or cycles.
 
 
-## Binary Tree
-A binary tree is a type of tree data structure in which each node has at most two children, referred to as the "left child" and the "right child." 
-This structure ensures that each node has a clear, binary (two-way) branching pattern. Binary trees are commonly used in computer science and data structures for efficient searching, sorting, and organizing data.
-
-## BST - Binary Search Tree
-A Binary Search Tree (BST) is a binary tree where each node's left child contains values less than the node's value, and the right child contains values greater than the node's value. 
-This property allows for efficient searching, insertion, and deletion of elements, making it a fundamental data structure for ordered data.
+## Why Tree Data Structure
+The tree data structure is valuable because it provides a hierarchical organization, facilitating efficient data retrieval and search operations. 
+Trees are preferred over arrays, linked lists, stacks, and queues when you need to represent hierarchical relationships, such as file systems, database indices, or structured data like XML. 
+They excel at optimizing search and insertion operations in scenarios where data is organized hierarchically.
 
 
-### Tree Traversal
+## Tree Terminologies:
+- **Node**: A node is an entity that contains a key or value and pointers to its child nodes.
+
+- **Parent Node**: A node that is the immediate predecessor of any node is called a parent node.
+
+- **Child Node**: A node that is an immediate successor of a node is called a child node.
+
+- **Root Node**: A node from which the tree originates is called the root node. It doesn't have a parent node and is the topmost node of the tree.
+
+- **Leaf Node**: Nodes that don't have any child nodes are called leaf nodes. They are the endpoints of each path in the tree.
+
+- **Siblings**: Child nodes with the same parent are called siblings.
+
+- **Ancestor Node**: An ancestor node is a node's parent's parent node or any higher-level ancestor in the tree.
+
+- **Path**: A path is a sequence of nodes and edges from one node to another.
+
+- **Degree**: The degree of a node is the total number of child nodes it has. The degree of a tree is the maximum degree of any node in the tree.
+
+- **Depth**: The depth of a node is the number of edges from the root to that node. The depth of the root node is always zero.
+
+- **Height**: The height of a node is the number of edges from the deepest leaf to that node. The height of the root node is the height of the tree.
+
+- **Forest**: A collection of disjoint trees is called a forest. You can create a forest by cutting the root of a tree.
+
+
+## Tree Traversal
 Tree traversal is a process of systematically visiting and exploring all the nodes in a tree data structure. 
 
 * A hierarchical data structure like a tree can be traversed in different ways.
@@ -30,42 +44,14 @@ Tree traversal is a process of systematically visiting and exploring all the nod
     - Breadth First Search (BFS)
 
 
-#### DFS - Depth First Search
-The DFS algorithm starts at the root node and explores as far as possible along each branch before backtracking.
+## Tree Usage
 
-* Depending on the order in which we do this, there can be three types of DFS traversals.
+- File systems for directory structure
+- A family tree
+- An organizational hierarchy
+- Document Object Model (DOM) representation in web development
+- Chatbots for decision-making and conversation flow
+- Abstract Syntax Trees (ASTs) are used to parse and analyze code.
 
-    1. Preorder
-    2. Inorder
-    3. Postorder
 
-
-1. Preorder Traversal (root/parent -> left -> right)
-    * Read the data of the node
-    * Visit the left subtree
-    * Visit the right subtree
-
-2. Inorder Traversal (left -> root/parent -> right)
-    * Visit the left subtree
-    * Read the data of the node
-    * Visit the right subtree
-
-    (Inorder traversal of a Binary Search Tree (BST) produces a sorted sequence of the elements stored in the tree.)
-
-3. Postorder Traversal (left -> right -> root/parent)
-    * Visit the left subtree
-    * Visit the right subtree
-    * Read the data of the node
-
-#### BFS - Breadth First Search
-BFS (Breadth-First Search) traversal in a tree involves visiting nodes level by level, starting from the root and moving outward to each level from left to right.This traversal ensures that nodes at the same level are visited before moving on to deeper levels, making it a "level-order" traversal.
-    
-* BFS Traversal Approach
-    - Create a queue
-    - Enqueue the root node
-    - While the queue is not empty
-        * Dequeue a node from the front of the queue
-        * Process the node
-        * Enqueue the node's left child if it exists
-        * Enqueue the node's right child if it exists
- 
+*In tree-related interviews, the questions usually revolve around specific tree types rather than generic trees. The key trees of interest are Binary Trees and Binary Search Trees (BSTs).*
