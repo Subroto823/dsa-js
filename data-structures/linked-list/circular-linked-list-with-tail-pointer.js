@@ -46,30 +46,6 @@ class LinkedList extends CircularLinkedList {
         }
     }
 
-    insertAt(index, value) {
-        if (index < 0 || index > this.getSize() || value === undefined) return;
-
-        if (index === 0) {
-            this.prepend(value);
-        } else if (index === this.getSize()) {
-            this.append(value);
-        } else {
-            const node = new Node(value);
-            let curr = this.head;
-            let count = index - 1;
-
-            while (count) {
-                curr = curr.next;
-                count--;
-            }
-
-            node.next = curr.next;
-            curr.next = node;
-
-            this.size++;
-        }
-    }
-
     removeFromFront() {
         if (!this.head) return null;
 
@@ -77,6 +53,7 @@ class LinkedList extends CircularLinkedList {
 
         if (this.getSize() === 1) {
             this.head = null;
+            this.tail = null;
         } else {
             this.head = removeNode.next;
             this.tail.next = this.head;
@@ -124,7 +101,7 @@ class LinkedList extends CircularLinkedList {
         }
 
         let removeNode = null;
-        let curr = this.head.next;
+        let curr = this.head.next;                                             
 
         while (curr.value !== this.head.value && curr.next.value !== value) {
             curr = curr.next;
@@ -136,33 +113,6 @@ class LinkedList extends CircularLinkedList {
             removeNode.next = null;
             this.size--;
         }
-
-        return removeNode;
-    }
-
-    removeFrom(index) {
-        if (!this.head || index < 0 || index >= this.getSize() || index === undefined) return null;
-
-        if (index === 0) {
-            return this.removeFromFront();
-        } else if (index === this.getSize() - 1) {
-            return this.removeFromEnd();
-        }
-
-        let removeNode = null;
-
-        let curr = this.head;
-        let count = index - 1;
-
-        while (curr.next.value !== this.head.value && count) {
-            curr = curr.next;
-            count--;
-        }
-
-        removeNode = curr.next;
-        curr.next = removeNode.next;
-        removeNode.next = null;
-        this.size--;
 
         return removeNode;
     }
