@@ -9,15 +9,12 @@
  * - Reverse:
      * Time Complexity: O(n)
      * Space Complexity: O(1)
- * - ReverseUsingStack:
-     * Time Complexity: O(n)
-     * Space Complexity: O(n)
-     * Additional Note: Swapping data can be costly compared to pointers if the size of the data item(s) is more.
  */
 
+const { LinkedList } = require('./linked-list.js');
 const { Node } = require('./node-d.js');
 
-class DoublyLinkedList {
+class DoublyLinkedList extends LinkedList{
     constructor() {
         this.head = null;
         this.tail = null;
@@ -90,75 +87,20 @@ class DoublyLinkedList {
         this.size--;
         return removeNode;
     }
-
-    insertAt(index, value) {
-        if(index < 0 || index > this.size) return;
-
-        if(index === 0) {
-            this.prepend(value);
-        } else if(index === this.size) {
-            this.append(value);
-        } else {
-            const node = new Node(value);
-            let prev = this.head;
-
-            while(--index) {
-                prev = prev.next;
-            }
-
-            node.next = prev.next;
-            prev.next = node;
-            node.next.prev = node;
-            node.prev = prev;
-
-            this.size++;
-        }
-    }
-
-    removeFrom(index = -1) {
-        if(index < 0 || index >= this.size) {
-            return null;
-        }
-
-        let removeNode = null;
-
-        if(index === 0) {
-            return this.removeFromFront();
-        } else if(index === this.size - 1) {
-            return this.removeFromEnd();
-        } else {
-            let prev = this.head;
-
-            while(--index) {
-                prev = prev.next;
-            }
-
-            removeNode = prev.next;
-            prev.next = removeNode.next;
-            removeNode.next.prev = prev;
-            removeNode.next = null;
-            removeNode.prev = null;
-        }
-
-        this.size--;
-        return removeNode;
-    }
-
-    removeValue(value) {
+    
+    remove(value) {
         if(this.isEmpty()) return null;
 
         if(this.head.value === value) {
             return this.removeFromFront()
         } else {
             let prev = this.head;
-            let i = 1;
 
             while(prev.next && prev.next.value !== value) {
                 prev = prev.next;
-                i++;
-            } 
-            
-            if(i === this.size - 1) {
+            }
+
+            if(prev.next === this.tail) {
                 return this.removeFromEnd();
             }
             
@@ -178,29 +120,14 @@ class DoublyLinkedList {
     }
 
     search(value) {
-        if(this.isEmpty()) return -1;
+        if(this.isEmpty()) return null;
 
-        let i = 0;
         let curr = this.head;
 
-        while(curr) {
-            if(curr.value === value) return i;
-            curr = curr.next;
-            i++;
-        }
-
-        return -1;
-    }
-
-    get(index) {
-        if(this.isEmpty() || index < 0 || index >= this.size) {
-            return null;
-        }
-        
-        let curr = this.head;
-        while(index--) {
+        while(curr && curr.value !== value) {
             curr = curr.next;
         }
+
         return curr;
     }
 
@@ -221,22 +148,6 @@ class DoublyLinkedList {
         this.head = prev;
     }
 
-    reverseUsingStack() {
-        const stack = [];
-        let cur = this.head;
-
-        while(cur) {
-            stack.push(cur.value);
-            cur = cur.next;  
-        }
-    
-        cur = this.head;
-
-        while(cur !== null) {
-            cur.value = stack.pop();
-            cur = cur.next;
-        }
-    }
 
     print() {
         if(this.isEmpty()) {
@@ -261,12 +172,12 @@ function main() {
 
     list.append(10);
     list.append(20);
-    list.print();
-
-    list.insertAt(2, 30)
-    list.print();
-
     list.append(40);
+    list.append(30);
+    list.append(40);
+
+    list.print();
+
     list.reverse();
     list.print();
 

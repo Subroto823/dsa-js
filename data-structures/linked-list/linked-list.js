@@ -4,6 +4,12 @@
  * Time Complexity:
  * - prepend: O(1)
  * - append: O(n) 
+ * - Reverse:
+    * Time Complexity: O(n)
+    * Space Complexity: O(1)
+ * - ReverseUsingStack:
+    * Time Complexity: O(n)
+    * Space Complexity: O(n)
  *
  * - It is possible to append a new node in constant time, but that involves maintaining a tail pointer that always point at the last node in the list
  */
@@ -104,6 +110,23 @@ class LinkedList {
         }
 
         this.head = prev;
+    }
+    
+    reverseUsingStack() {
+        const stack = [];
+        let cur = this.head;
+
+        while(cur) {
+            stack.push(cur.value);
+            cur = cur.next;  
+        }
+    
+        cur = this.head;
+
+        while(cur !== null) {
+            cur.value = stack.pop();
+            cur = cur.next;
+        }
     }
 
     print() {
