@@ -55,7 +55,9 @@ class DoublyLinkedList extends LinkedList{
 
         const removeNode = this.head;
         this.head = this.head.next;
-        this.head.prev = null;
+
+        if(this.head) this.head.prev = null;
+        else this.tail = null;
         removeNode.next = null;
 
         this.size--;
@@ -137,7 +139,7 @@ function main() {
     list.append(40);
     list.append(30);
     list.append(40);
-
+    
     list.print();
     list.reverse();
     list.print();
