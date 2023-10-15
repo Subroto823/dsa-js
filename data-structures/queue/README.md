@@ -2,7 +2,7 @@
 
 ## What is a Queue?
 A **Queue** is a linear data structure that follows the First In First Out (FIFO) principle. 
-the first element inserted into the queue is first element to be removed
+The first element inserted into the queue is first element to be removed
 It is used for managing data where the order of processing matters, such as task scheduling and data buffering.
 
 ## Queue Operations
@@ -31,7 +31,7 @@ A queue supports the following fundamental operations:
 ## Circular Queue
 A **Circular Queue** is a variation of the queue with the front and back connected, allowing for efficient memory usage.
 
-* Circular Queue Usage
+### Circular Queue Usage
 - Clock
 - Streaming data
 - Traffic lights
