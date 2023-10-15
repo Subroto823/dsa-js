@@ -9,46 +9,6 @@ class BinarySearchTree {
         return this.root === null;
     }
 
-    insert(value) {
-        this.root = this.insertNode(this.root, value);
-    }
-
-    insertNode(root, value) {
-        const newNode = new Node(value);
-        if (root === null) {
-            root = newNode;
-        } else if (value < root.value) {
-            root.left = this.insertNode(root.left, value);
-        } else if (value > root.value) {
-            root.right = this.insertNode(root.right, value);
-        }
-
-        return root;
-    }
-
-    preOrder(root) {
-        if (root) {
-            process.stdout.write(root.value + " ");
-            this.preOrder(root.left);
-            this.preOrder(root.right);
-        }
-    }
-
-    inOrder(root) {
-        if (root) {
-            this.inOrder(root.left);
-            process.stdout.write(root.value + " ");
-            this.inOrder(root.right);
-        }
-    }
-
-    postOrder(root) {
-        if (root) {
-            this.postOrder(root.left);
-            this.postOrder(root.right);
-            process.stdout.write(root.value + " ");
-        }
-    }
 
     // Find the inorder successor
     minValue(root) {
