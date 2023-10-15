@@ -97,11 +97,9 @@ class LinkedList {
             return this.removeFromFront();
         } else {
             let prev = this.head;
-            let i = 1;
 
             while (prev.next && prev.next.value !== value) {
                 prev = prev.next;
-                i++;
             }
 
             if (prev.next) {
@@ -109,24 +107,13 @@ class LinkedList {
                 prev.next = removeNode.next;
                 this.size--;
 
-                if (i === this.size) this.tail = prev;
+                if (removeNode === this.tail) this.tail = prev;
                 removeNode.next = null;
                 return removeNode;
             }
 
             return null;
         }
-    }
-
-    search(value) {
-        if (this.isEmpty()) return null;
-
-        let curr = this.head;
-        while (curr && curr.value !== value) {
-            curr = curr.next;
-        }
-
-        return curr;
     }
 
     reverse() {
