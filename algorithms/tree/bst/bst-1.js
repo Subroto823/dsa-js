@@ -9,25 +9,6 @@ class BinarySearchTree {
         return this.root === null;
     }
 
-    /*bfs
-    # here we are using array as a queue(for simplicity) which can lead to higher time complexity. Intstead of this we can use the optimized queue that we have created before. */
-    levelOrder() {
-        const queue = [];
-        queue.push(this.root);
-
-        while(queue.length) {
-            let curr = queue.shift();
-            process.stdout.write(curr.value + " ");
-            
-            if(curr.left) {
-                queue.push(curr.left);
-            }
-            if(curr.right) {
-                queue.push(curr.right);
-            }
-        }
-    }
-
     min(root) {
         if(!root.left) {
             return root.value;
