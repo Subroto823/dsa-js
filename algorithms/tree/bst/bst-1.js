@@ -9,44 +9,6 @@ class BinarySearchTree {
         return this.root === null;
     }
 
-    search(root, value) {
-        if(!root) {
-            return false;
-        } else {
-            if(root.value === value) {
-                return true;
-            } else if(value < root.value) {
-                return this.search(root.left, value);
-            } else {
-                return this.search(root.right, value);
-            }
-        }
-    }
-
-    preOrder(root) {
-        if(root) {
-            process.stdout.write(root.value + " ");
-            this.preOrder(root.left);
-            this.preOrder(root.right);
-        }
-    }
-
-    inOrder(root) {
-        if(root) {
-            this.inOrder(root.left);
-            process.stdout.write(root.value + " ");
-            this.inOrder(root.right);
-        }
-    }
-
-    postOrder(root) {
-        if(root) {
-            this.postOrder(root.left);
-            this.postOrder(root.right);
-            process.stdout.write(root.value + " ");
-        }
-    }
-
     /*bfs
     # here we are using array as a queue(for simplicity) which can lead to higher time complexity. Intstead of this we can use the optimized queue that we have created before. */
     levelOrder() {
