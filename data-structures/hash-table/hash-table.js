@@ -1,10 +1,14 @@
+/**
+ * Hash Table
+ */
+
 class HashTable {
-    constructor(size) {
+    constructor(size = 53) {
         this.table = new Array(size);
-        this.size = size;
+        this.size = 0;
     }
 
-    hash(key) {
+    _hash(key) {
         let total = 0;
         for(let i = 0; i < key.length; i++) {
             total += key.charCodeAt(i);

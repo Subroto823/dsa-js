@@ -9,7 +9,7 @@ class HashTable {
         this.size = size;
     }
 
-    hash(key) {
+    _hash(key) {
         let total = 0;
         for(let i = 0; i < key.length; i++) {
             total += key.charCodeAt(i);
@@ -19,19 +19,19 @@ class HashTable {
     }
 
     set(key, value) {
-        const index = this.hash(key);
+        const index = this._hash(key);
         this.table[index] = [key, value];
     }
 
     get(key) {
-        const index = this.hash(key);
+        const index = this._hash(key);
         if (this.table[index] !== undefined) {
             return this.table[index][1];
         }
     }
 
     remove(key) {
-        const index = this.hash(key);
+        const index = this._hash(key);
         this.table[index] = undefined;
     }
 
