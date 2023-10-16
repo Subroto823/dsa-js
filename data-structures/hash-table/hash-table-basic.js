@@ -36,10 +36,8 @@ class HashTable {
     }
 
     display() {
-        for(let i = 0; i < this.table.length; i++) {
-            if(this.table[i]) {
-                console.log(this.table[i]);
-            }
+        for(const item of this.table) {
+            if(item) console.log(item);
         }
     }
 }
