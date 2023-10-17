@@ -10,19 +10,17 @@ Constraints:
     * 1 <= N <= 1e6
 */
 
-function canCompleteCircuit(A, B) {
-    let n = A.length;
+const canCompleteCircuit = function (A, B) {
+    const n = A.length;
 
     A = A.concat(A);
     B = B.concat(B);
 
-    let curr = 0,
-        start = 0;
+    let curr = 0;
+    let start = 0;
 
     for (let i = 0; i < A.length; i++) {
-        if (i === start + n) {
-            return start;
-        }
+        if (i === start + n) return start;
 
         curr += A[i] - B[i];
 
@@ -31,6 +29,7 @@ function canCompleteCircuit(A, B) {
             start = i + 1;
         }
     }
+    
     return -1;
 }
 
