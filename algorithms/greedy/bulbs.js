@@ -13,21 +13,20 @@ Constraints:
 
 
 Solution(Efficient Approach)
-
-    * Traverse given array from left to right and keep pressing switch for off bulbs. 
-    * Keep track of the number of switch presses so far. If the number of presses are even, that means the current switch is in its original state else it is in the other state. 
-    * Depending on what state the bulb is in, we can increment the count of the number of presses. 
+    - Traverse given array from left to right and keep pressing switch for off bulbs. 
+    - Keep track of the number of switch presses so far. If the number of presses are even, that means the current switch is in its original state else it is in the other state.
+    - Depending on what state the bulb is in, we can increment the count of the number of presses. 
 */
-function bulbs(A) {
+
+const bulbs = function(A) {
     let cost = 0;
 
-    for (let i = 0; i < A.length; i++) {
-        let bulb = A[i];
-
+    for (let bulb of A) {
         if (cost % 2 === 1) bulb ^= 1;
         if (bulb % 2 === 1) continue;
         else cost++;
     }
+
     return cost;
 }
 
