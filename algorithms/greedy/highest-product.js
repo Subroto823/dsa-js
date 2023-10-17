@@ -18,16 +18,17 @@ Example:
     Output: -5 * -2 * 5 = 50
  */
 
-function maxp3 (A) {
+const maxp3 = function (A) {
     A.sort((a, b) => a - b);
 
     let n = A.length;
 
-    let hi3 = A[n - 1] * A[n - 2] * A[n - 3];
-    let lo2hi1 = A[0] * A[1] * A[n - 1];
+    const hi3 = A[n - 1] * A[n - 2] * A[n - 3];
+    const lo2hi1 = A[0] * A[1] * A[n - 1];
 
     return Math.max(hi3, lo2hi1);
 }
+
 
 numbers = [1, 2, 3, 4];
 console.log(maxp3(numbers));
