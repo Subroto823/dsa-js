@@ -2,27 +2,28 @@
 Problem Discussion
 
 Given a list of intervals: [start, end].
+Find the length of the maximal set of mutually disjoint intervals.
 
-Find the length of the maximal set of mutually disjoint intervals 
+Solution Idea:
+- Sort the events by their end times, and for each event, check if its start time overlaps with the end time of the previous event.
 */
 
-function solve (A) {
-    A.sort((a, b) => a[1] - b[1]);
+const disjointIntervals = function (intervals) {
+    intervals.sort((a, b) => a[1] - b[1]);
 
-    let [prevStart, prevEnd] = A[0];
-    let count = 1;
+    let prevEnd = -Infinity;
+    let count = 0;
 
-    for(let [start, end] of A) {
-        if(start <= prevEnd) {
-            continue;
-        } else {
-            prevStart = start;
-            prevEnd = end;
+    for (let [start, end] of intervals) {
+        if (start > prevEnd) {
             count++;
+            prevEnd = end;
         }
     }
+
     return count;
 }
 
+
 let intervals = [[1, 2], [2, 10], [4, 6]];
-console.log(solve(intervals));
+console.log(disjointIntervals(intervals));
