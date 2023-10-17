@@ -1,7 +1,7 @@
 /*
 Problem Discussion
 
-Given an array A of a random permutation of numbers from 1 to N. Given B, the number of swaps in A that we can make. Find the largest permutation possible. 
+Given an array nums of a random permutation of numbers from 1 to N. Given k, the number of swaps in A that we can make. Find the largest permutation possible. 
 
 
 Example:
@@ -18,43 +18,41 @@ Constraints:
     *  1 <= N <= 1e6
     * 1 <= B <= 1e9
 */
-const { swap } = require('../../helpers/swap.js');
+const { swap } = require('../../__helpers/swap');
 
-function solve(A, B) {
-    const indexMap = new Map();
+const largestPermutation = function (nums, k) {
+    const numsIndex = new Map();
 
-    A.forEach((element, i) => {
-        indexMap.set(element, i);
+    nums.forEach((num, i) => {
+        numsIndex.set(num, i);
     });
 
-    let n = A.length,
-        max = n,
-        i = 0;
+    const n = nums.length;
+    let max = n;
 
-    while (B && i < n) {
-        let j = indexMap.get(max);
+    for (let i = 0; i < n && k; i++) {
+        let j = numsIndex.get(max);
 
         if (i !== j) {
-            swap(A, i, j);
-            B--;
-
-            let tmp = indexMap.get(A[i]);
-            indexMap.set(A[i], indexMap.get(A[j]));
-            indexMap.set(A[j], tmp);
+            swap(nums, i, j);
+            numsIndex.set(max, i);
+            numsIndex.set(nums[j], j);
+            k--;
         }
-        i++;
+
         max--;
     }
-    return A;
+
+    return nums;
 }
 
-let A = [3, 2, 4, 1, 5], B = 3;
-console.log(solve(A, B));
+let nums = [3, 2, 4, 1, 5], k = 3;
+console.log(largestPermutation(nums, k));
 
-Input: A = [1, 2, 3, 4], B = 1
-console.log(solve(A, B));
+nums = [1, 2, 3, 4], k = 1
+console.log(largestPermutation(nums, k));
 
-Input: A = [1, 3, 2], B = 1
-console.log(solve(A, B));
+nums = [1, 3, 2], k = 1
+console.log(largestPermutation(nums, k));
 
 
