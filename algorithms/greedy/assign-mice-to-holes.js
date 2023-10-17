@@ -10,17 +10,21 @@ Constraints:
     * 1 <= N <= 1e5
     * -1e9 <= A[i] <= B[i] <= 1e9
 */
-function mice(A, B) {
+
+const mice = function (A, B) {
     A.sort((a, b) => a - b);
     B.sort((a, b) => a - b);
 
     let ans = 0;
-    A.forEach((elemA, i) => {
-        ans = Math.max(ans, Math.abs(elemA - B[i]));
-    });
+    for (let i = 0; i < A.length; i++) {
+        ans = Math.max(ans, Math.abs(A[i] - B[i]));
+    }
+
     return ans;
 }
 
-console.log(mice([3, 2, -4], [0, -2, 4]));
+let A = [3, 2, -4]
+let B = [0, -2, 4]
+console.log(mice(A, B));
 
 
