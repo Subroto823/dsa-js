@@ -11,11 +11,14 @@ Constraints:
     * 1 <= N <= 1e5
     * 1 <= A[i][0] <= A[i][1] <= 1e9
 */
-function solve(A) {
+
+const solve = function(intervals) {
     const data = [];
-    for (let [start, end] of A) {
+
+    for (let [start, end] of intervals) {
         data.push([start, 1], [end, -1]);
     }
+
     data.sort((a, b) => a[0] - b[0]);
 
     let curr = 0;
@@ -24,7 +27,9 @@ function solve(A) {
         curr += v;
         ans = Math.max(ans, curr);
     }
+
     return ans;
 }
 
-console.log(solve([[5, 10], [15, 20], [0, 30]]));
+let intervals = [[5, 10], [15, 20], [0, 30]];
+console.log(solve(intervals));
