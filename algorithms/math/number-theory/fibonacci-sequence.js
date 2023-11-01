@@ -1,9 +1,9 @@
-/*
- # Fibonacci Sequence 
-    # Time Complexity: O(n)
+/**
+ * Fibonacci Sequence 
+ * Time Complexity: O(n)
  */
 
-const fibonacciSequence = (number) => {
+const fibonacciSequence = function(number) {
     const sequence = [0, 1];
 
     for(let i = 2; i < number; i++) {
