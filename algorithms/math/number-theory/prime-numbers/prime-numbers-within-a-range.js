@@ -1,8 +1,10 @@
-/*
-# Prime Numbers within a range from 1 to n (Basic implementation)
-    Time Complexity:  O(n * sqrt(n))
-*/
-function isPrime(number) {
+/**
+ * Prime Numbers within a range from 1 to n
+ * 
+ * Naive Approach
+ * Time Complexity:  O(n * sqrt(n))
+ */
+var isPrime = function(number) {
     if (number <= 1) return false;
 
     for (let i = 2; i <= Math.sqrt(number); i++) {

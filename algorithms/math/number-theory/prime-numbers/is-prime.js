@@ -5,22 +5,17 @@
  * Time Complexity O(n)
  */
 
-var isPrime = function(number) {
-    if(number < 2) return false;
+var isPrime = function (number) {
+    if (number < 2) return false;
 
-    for(let i = 2; i < number; i++) {
-        if(number % i === 0 ) {
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
             return false;
         }
     }
 
     return true;
 }
-
-console.log(isPrime(2504987));
-console.log(isPrime(15));
-console.log();
-
 
 
 /**
@@ -32,11 +27,11 @@ console.log();
  * Time Complexity O(sqrt(n))
 */
 
-var isPrime =function(number) {
-    if(number < 2) return false;
+var isPrime = function (number) {
+    if (number < 2) return false;
 
-    for(let i = 2; i <= Math.sqrt(number) ; i++) {
-        if(number % i === 0 ) {
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
             return false;
         }
     }
@@ -44,16 +39,12 @@ var isPrime =function(number) {
     return true;
 }
 
-console.log(isPrime(2504987));
-console.log(isPrime(17));
-console.log();
-
 
 /**
  * More Efficient
  * Time Complexity: O(sqrt(n))
  */
-var isPrime = function(n) {
+var isPrimeII = function (n) {
     if (n <= 1) return false;
     if (n <= 3) return true;
 
@@ -72,6 +63,16 @@ var isPrime = function(n) {
     return true;
 }
 
-console.log(isPrime(999998727899999));
-console.log(isPrime(17));
-console.log();
+
+function main() {
+    console.log(isPrime(2504987));
+    console.log(isPrime(17));
+    console.log(isPrime(15));
+    console.log();
+
+    console.log(isPrime(17));
+    console.log(isPrime(999998727899999));
+}
+
+if (require.main === module) main();
+module.exports = isPrime;
