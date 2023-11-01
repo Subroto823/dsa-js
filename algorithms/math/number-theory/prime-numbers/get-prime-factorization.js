@@ -1,7 +1,8 @@
 /*
-# Prime Factorization
+Prime Factorization
 
-    Prime factorization is a way of breaking down a number into a multiplication of smaller numbers called prime numbers. It's like finding the "building blocks" that, when multiplied together, give you the original number.
+    Prime factorization is a way of breaking down a number into a multiplication of smaller numbers called prime numbers. 
+    It's like finding the "building blocks" that, when multiplied together, give you the original number.
 
     For example, let's say we want to prime factorize the number 12. We find the prime numbers that, when multiplied, give us 12:
 
@@ -9,11 +10,11 @@
 
     So, the prime factorization of 12 is 2 × 2 × 3. This tells us that 12 is made up of two 2's and one 3 when we multiply them together.
 
-    # Time Complexity: O(sqrt(n)))
 
+    - Time Complexity: O(sqrt(n)))
 */
 
-function primeFactorization(n) {
+var primeFactorization = function(n) {
     const factors = [];
 
     // Divide the number by 2 repeatedly while it's even
