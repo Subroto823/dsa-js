@@ -9,11 +9,8 @@
  */
 
 var gcdRec = function (a, b) {
-    if (b === 0) {
-        return a;
-    } else {
-        return gcdRec(b, a % b);
-    }
+    if (b === 0) return a;
+    return gcdRec(b, a % b);
 }
 
 
