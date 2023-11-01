@@ -7,18 +7,21 @@
  *  Time Complexity: O(log(min(a, b)))
  */
 
+const gcd = require('./gcd');
+
 var lcm = function(a, b) {
     return (a * b) / gcd(a, b);
 }
 
-function gcd(a, b) {
-    if (b === 0) {
-        return a;
-    }
-    return gcd(b, a % b);
+
+function main () {
+   console.log(lcm(8, 4));
+   console.log(lcm(6, 8));
 }
 
-console.log(lcm(6, 8));
+if (require.main === module) main();
+module.exports = lcm;
+
 
 /*
 LCM(6, 8)
