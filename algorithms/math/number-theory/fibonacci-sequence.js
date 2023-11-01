@@ -1,5 +1,7 @@
 /**
  * Fibonacci Sequence 
+ * 0, 1, 1, 2, 3, 5 ... so on
+ * 
  * Time Complexity: O(n)
  */
 
