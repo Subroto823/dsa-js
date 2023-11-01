@@ -4,12 +4,13 @@
  */
 
 const fibonacciSequence = function(number) {
-    const sequence = [0, 1];
+    const sequence = new Array(number).fill(0);
+    sequence[1] = 1;
 
     for(let i = 2; i < number; i++) {
-        next = sequence[i - 2] + sequence[i - 1];
-        sequence.push(next);
+        sequence[i] = sequence[i - 2] + sequence[i - 1];
     }
+
     return sequence;
 }
 
