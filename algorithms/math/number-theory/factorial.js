@@ -26,8 +26,6 @@ const factorial = function (num) {
     return product;
 }
 
-console.log(factorial(5));
-
 
 /**
  * Recursive Approach
@@ -37,4 +35,11 @@ const recursiveFactorial = function (number) {
     return number * recursiveFactorial(number - 1);
 }
 
+
+function main() {
+    console.log(factorial(5));
 console.log(recursiveFactorial(5));
+}
+
+if (require.main === module) main();
+module.exports = factorial;
