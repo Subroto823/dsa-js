@@ -16,23 +16,21 @@ For example, consider the set {A, B, C}. The permutations of this set are:
 In general, if you have n distinct elements, there are n! (n factorial) permutations of those elements.
 */
 
-var permutations = function(n) {
+const factorial = require('../number-theory/factorial');
+
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+var permutations = function (n) {
     return factorial(n);
 }
 
-var factorial = function(num) {
-    let result = 1;
-    for (let i = 2; i <= num; i++) {
-        result *= i;
-    }
-    return result;
+
+function main() {
+    const n = 5;
+    console.log(permutations(n));
 }
 
-const n = 5;
-const result = permutations(n); // 5! = 120
-console.log(result); // Output: 120
-
-/*
-Time Complexity: O(n)
-Space Complexity: O(1)
-*/
+if (require.main === module) main();
+module.exports = permutations;
