@@ -38,7 +38,7 @@ const recursiveFactorial = function (number) {
 
 function main() {
     console.log(factorial(5));
-console.log(recursiveFactorial(5));
+    console.log(recursiveFactorial(5));
 }
 
 if (require.main === module) main();
