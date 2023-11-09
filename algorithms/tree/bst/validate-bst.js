@@ -35,19 +35,21 @@ Example:
       4   5  6    7
 
     Output: false
-
-
-Idea Of The Solution:
-We know that inorder traversal in a BST always produces sorted data. We can use this property to validate a BST.
 */
 const {bst1} = require('./_bsts');
 const {tree1} = require('./../binary-tree/binary-tree-example');
 
 
+/**
+ * Using Inorder Traversal
+ * Time Complexity: O(n)
+ * 
+ * Idea Of The Solution:
+ * - We know that inorder traversal in a BST always produces sorted data. We can use this property to validate a BST.
+ */
 const isValidBST = function(root) {
     const inorder = function(root) {
         if (root === null) return true;
-
         if (!inorder(root.left)) return false;
 
         if (root.val <= prev) return false;
@@ -60,11 +62,28 @@ const isValidBST = function(root) {
     return inorder(root);
 }
 
+/**
+ * Approach 2
+ * Time Complexity: O(n)
+ */
+const validBST = function(root, min = -Infinity, max = Infinity) {
+    if (!root) return true;
+
+    if (root.val <= min || root.val >= max) {
+        return false;
+    }
+
+    return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
+};
+
+
 function main() {
     console.log(isValidBST(bst1));
     console.log(isValidBST(tree1));
+
+    console.log(validBST(bst1));
+    console.log(validBST(tree1));
 }
 
 if (require.main === module) main();
-
 module.exports = isValidBST;
