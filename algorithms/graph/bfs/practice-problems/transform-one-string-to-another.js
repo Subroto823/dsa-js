@@ -1,71 +1,83 @@
 /**
-@Transform one string to another
+Transform one string to another (Word Ladder)
 
 Problem Statement:
 
-    Given a dictionary D and two strings s and f, write a program to determine if s produces t. Assume that all characters are lowercase alphabets. If s does produce f, output the length of a shortest production sequence; otherwise, output -1.
+Given a start word, an end word, and a dictionary of valid words, return the number of words in the shortest transformation sequence from the start word to the end word.
+In each step, you can change one letter of the current word to create a new word, and that word must be in the dictionary.
+Return -1 if no such sequence exists.
 
 
-    @Solution Pseudocode:
+Example:
+    Input: 
+        beginWord = "hit"
+        endWord = "cog"
+        wordList = ["hot", "dot", "dog", "lot", "log", "cog"
 
-    function compareStrings
-        Compare two strings char by char
-        Return how many chars differ
+    Output: 5
 
-    function transformString
-        1. Build graph using compareStrings function. Add edges if and only if  the two strings differ by 1 character
-        2. Run BFS and increment length
-        3. Return length of production sequence
+    Explanation: One shortest transformation sequence is "hit" -> "hot" -> "dot" -> "dog" -> cog", which is 5 words long.
 
-    Time Complexity: O(M x M x N), where M is the length of each word and N is the total number of words in the dictionary
+
+Solution Approach:
+
+    1. Build Graph
+
+    - Treat each word as a node in a graph.
+    - Connect nodes with an edge if the corresponding words differ by just one letter.
+    - Use the given dictionary to determine valid edges.
+
+    2. BFS (Breadth-First Search)
+
+    - Start BFS from the start word.
+    - Explore neighbors (words that can be reached by changing one letter) level by level.
+    - Keep track of the minimum number of steps needed to reach the end word.
+
+
+    Time Complexity: O(M x N x N), where M is the length of each word and N is the total number of words in the dictionary.
+
+    Note: The provided solution can be further optimized.
 */
 
 
-function transformString(wordList, beginWord, endWord) {
-    let graph = buildGraph(wordList, beginWord);
+const transformString = function(beginWord, endWord, wordList) {
+    const graph = buildGraph(beginWord, wordList);
     if (!(endWord in graph)) return -1;
 
-    let queue = [beginWord];
-    let visited = {};
-    visited[beginWord] = true;
+    const queue = [beginWord];
+    const seen = new Set();
+    seen.add(beginWord);
     let count = 1;
 
     while (queue.length) {
-        let size = queue.length;
+        const n = queue.length;
 
-        for (let i = 0; i < size; i++) {
-            let currentWord = queue.shift();
+        for (let i = 0; i < n; i++) {
+            const word = queue.shift();
 
-            if (currentWord === endWord) {
+            if (word === endWord) {
                 return count;
             }
 
-            graph[currentWord].forEach(neighbor => {
-                if (!visited[neighbor]) {
+            graph[word].forEach(neighbor => {
+                if (!seen.has(neighbor)) {
                     queue.push(neighbor);
-                    visited[neighbor] = true;
+                    seen.add(neighbor);
                 }
             });
         }
+
         count++;
     }
+
     return -1;
 }
 
-function compareStrings(str1, str2) {
-    let diff = 0;
-    for (let i = 0; i < str1.length; i++) {
-        if (str1[i] !== str2[i]) diff++;
-    }
-    return diff;
-}
-
-function buildGraph(wordList, beginWord) {
-    let graph = {};
+const buildGraph = function(beginWord, wordList) {
+    const graph = {};
 
     for (let word of wordList) {
         graph[word] = [];
-
         for (let nextWord of wordList) {
             if (compareStrings(word, nextWord) === 1) {
                 graph[word].push(nextWord);
@@ -75,15 +87,23 @@ function buildGraph(wordList, beginWord) {
 
     if (!(beginWord in graph)) {
         graph[beginWord] = [];
-
         for (let nextWord of wordList) {
             if (compareStrings(beginWord, nextWord) === 1) {
                 graph[beginWord].push(nextWord);
             }
         }
     }
+
     return graph;
 }
 
+const compareStrings = function(str1, str2) {
+    let count = 0;
+    for (let i = 0; i < str1.length; i++) {
+        if (str1[i] !== str2[i]) count++;
+    }
+    return count;
+}
 
-console.log(transformString(["hot", "dot", "dog", "lot", "log", "cog"], "hit", "cog"))
+
+console.log(transformString("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]));
